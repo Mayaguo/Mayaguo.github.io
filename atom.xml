@@ -5,9 +5,9 @@
   <subtitle>博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://m.gmaya.top/"/>
+  <link href="http://www.gmaya.top/"/>
   <updated>2019-12-27T14:21:31.297Z</updated>
-  <id>http://m.gmaya.top/</id>
+  <id>http://www.gmaya.top/</id>
   
   <author>
     <name>GMaya</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://m.gmaya.top/2019/12/16/hello-world/"/>
-    <id>http://m.gmaya.top/2019/12/16/hello-world/</id>
+    <link href="http://www.gmaya.top/2019/12/16/hello-world/"/>
+    <id>http://www.gmaya.top/2019/12/16/hello-world/</id>
     <published>2019-12-16T14:16:00.000Z</published>
     <updated>2019-12-27T14:21:31.297Z</updated>
     
@@ -32,10 +32,10 @@
     </summary>
     
     
-      <category term="后端开发" scheme="http://m.gmaya.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+      <category term="后端开发" scheme="http://www.gmaya.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="Java" scheme="http://m.gmaya.top/tags/Java/"/>
+      <category term="Java" scheme="http://www.gmaya.top/tags/Java/"/>
     
   </entry>
   
