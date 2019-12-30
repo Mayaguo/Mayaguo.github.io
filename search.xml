@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>idea在jdk1.8情况下使用反编译插件</title>
+    <url>/2019/12/30/idea%E5%8F%8D%E7%BC%96%E8%AF%91/</url>
+    <content><![CDATA[<p>使用JD-GUI在jdk1.8情况下失效，我也查找了好多办法，最后看到idea有默认的，只是没有打开，瞬间搞定，记录一下！</p>
+<a id="more"></a>
+<p>没有反编译是显示compiled code</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">debug</span><span class="params">(java.lang.String... messages)</span> </span>&#123; <span class="comment">/* compiled code */</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">debug</span><span class="params">(java.lang.Object... messages)</span> </span>&#123; <span class="comment">/* compiled code */</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>idea不需要安装任何插件， 比如JD-GUI（这个在jdk1.8还是打不开）</p>
+<p>因为，安装idea默认有，只是没有打开罢了</p>
+<p>打开setting –&gt;plugings 搜索 Java Bytecode Decompiler</p>
+<p><img src="https://img-blog.csdnimg.cn/20191230114857888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="设置"><br>勾选，然后重启idea （注意：你的其他反编译插件就不要开了，关掉）</p>
+<p>重启之后会让你选择 是否同意使用此插件， 点击最左面accept，同意即可！</p>
+<p><img src="https://img-blog.csdnimg.cn/2019123011510349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="结果"></p>
+]]></content>
+      <categories>
+        <category>后端开发</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>idea插件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java性能测试大比拼</title>
     <url>/2019/12/28/java%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<p>实体类转换哪个快？Map循环遍历哪个快？转换为字符串哪个快？测试，分析，看源码，看底层知识。</p>
@@ -49,6 +71,7 @@
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>性能比较</tag>
       </tags>
   </entry>
   <entry>
@@ -88,6 +111,7 @@
       </categories>
       <tags>
         <tag>Java</tag>
+        <tag>Mybatis-plus</tag>
       </tags>
   </entry>
   <entry>
