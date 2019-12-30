@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.gitee.io/"/>
-  <updated>2019-12-30T05:47:22.550Z</updated>
+  <updated>2019-12-30T13:43:57.942Z</updated>
   <id>https://gmaya.gitee.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>认识酷q</title>
+    <link href="https://gmaya.gitee.io/2019/12/30/kuq-know/"/>
+    <id>https://gmaya.gitee.io/2019/12/30/kuq-know/</id>
+    <published>2019-12-30T13:41:04.000Z</published>
+    <updated>2019-12-30T13:43:57.942Z</updated>
+    
+    <content type="html"><![CDATA[<p>酷Q Air 是一个轻巧、免费、高效的机器人核心，功能需要安装“应用”实现。登录酷Q，完成教程后，建议 访问 酷Q应用发布板块，下载安装您所需要的应用，创造让大家喜爱并且属于你自己的专属机器人。</p><a id="more"></a><p><strong>酷q是干嘛的</strong></p><blockquote><p>酷Q Air 是一个轻巧、免费、高效的机器人核心，功能需要安装“应用”实现。登录酷Q，完成教程后，建议 访问 酷Q应用发布板块，下载安装您所需要的应用，创造让大家喜爱并且属于你自己的专属机器人。</p></blockquote><p>官网：<a href="https://cqp.cc/" target="_blank" rel="noopener">酷q社区</a></p><p>通俗的讲就是，打造一个属于自己的qq机器人，有点类似于现在的q群管家，qq小冰。但是你可以把他的功能再次扩大！（活跃群气氛必不可少）。主要有：入群欢迎，问答，便民（查天气，查快递等），各种小游戏娱乐，关键词禁言等等，需要看代码功底，当然你也可以去社区下载别人分享的插件，直接使用。</p><p>我也是在偶然的机会认识到了酷q，然后就爱不释手，从0开始学习了易语言，然后写出了第一个酷q插件<a href="https://cqp.cc/t/46270" target="_blank" rel="noopener">猜拳签到游戏</a>，当然我并不满足，然后又写出了查电影，问答，查运势，查天气，查新闻，随机笑话等，当然这些我并没有发布出来， 因为这些第三方接口我是免费用的，每天有限制几百条， 所以不适合分享，只是在自己的群里面使用而已。</p><p>如果你和我一样刚刚认识酷q，那么你不妨看一下这个<a href="https://docs.cqp.im/" target="_blank" rel="noopener">快速入门</a><br>使用<a href="https://cqp.cc/t/15124" target="_blank" rel="noopener">sdk</a>进行酷q开发。由于教程很多，我就没得写了，如果有不懂的可以留言评论或者到关于我页面查看联系方式。</p><p>但是我是java开发者，使用易语言难免有所不习惯，所以参考了<a href="https://cqp.cc/t/37318" target="_blank" rel="noopener">南荒喵</a>大佬的教程，使用支持java的sdk进行开发。</p><p>到了最后我在此demo上又加上mybatis-plus，springboot，连接数据库，等一系列操作。</p><p>有的时候思路是个好东西，当我弄完之后，我不知道写什么东西了，整天都是配环境，搭建环境，但是到最后写插件内容的时候，迷茫了，写什么呢，写什么好呢，写什么会有人用呢，看社区里面，那都是人家写出来的，你再写一遍干嘛呢。</p><p>好多东西都是 从简单，到复杂，到迷茫，到不知所措。（服务器自己买了一个，酷q是用的免费的）</p><p>然后我就认识了jsoup，百度百科是这样说的</p><blockquote><p>jsoup 是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API，可通过DOM，CSS以及类似于jQuery的操作方法来取出和操作数据。</p></blockquote><p>然后我就又陷入了进去，忘记了游戏，忘记了时间。</p><p>希望前进的路上不再迷茫！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;酷Q Air 是一个轻巧、免费、高效的机器人核心，功能需要安装“应用”实现。登录酷Q，完成教程后，建议 访问 酷Q应用发布板块，下载安装您所需要的应用，创造让大家喜爱并且属于你自己的专属机器人。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自我抒写" scheme="https://gmaya.gitee.io/categories/%E8%87%AA%E6%88%91%E6%8A%92%E5%86%99/"/>
+    
+    
+      <category term="随笔" scheme="https://gmaya.gitee.io/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>idea在jdk1.8情况下使用反编译插件</title>
