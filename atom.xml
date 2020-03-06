@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-03-02T08:23:55.676Z</updated>
+  <updated>2020-03-03T08:08:18.526Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>定时发送消息插件</title>
+    <link href="https://gmaya.top/2020/03/03/0303/"/>
+    <id>https://gmaya.top/2020/03/03/0303/</id>
+    <published>2020-03-03T05:11:12.000Z</published>
+    <updated>2020-03-03T08:08:18.526Z</updated>
+    
+    <content type="html"><![CDATA[<p>自定义定时发送消息，新增支持年月日周！</p><a id="more"></a><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在定时发送固定内容</p><h3 id="2-亮点"><a href="#2-亮点" class="headerlink" title="2. 亮点"></a>2. 亮点</h3><p>支持消息换行、群号勾选<br>在线更新（再也不用操心更新的问题了）<br>支持年月日周<br>比如：每年的1月1号上午8点发送一条消息<br>每月的10号，20号上午8点和下午8点发送一条消息<br>每周的1,3,5 上午12点和晚上7点发送一条消息<br>每天的和免费版本一致</p><h3 id="3-注意"><a href="#3-注意" class="headerlink" title="3. 注意"></a>3. 注意</h3><p>① 任务名称 不允许重复<br>② 时间类型选择 ：<br> 每天，只需要填写小时分钟框即可<br> 每周，填写天/周框，格式1,2,3,4,5,6,7 。小时分钟框也要填<br> 每月，填写天/周框，格式1，10,20,30 。小时分钟框也要填<br> 每年，填写月份框，格式1,5,10,12 。填写天/周框。填写小时分钟框</p><h3 id="4-演示"><a href="#4-演示" class="headerlink" title="4. 演示"></a>4. 演示</h3><p>参考免费版的即可<br><a href="https://cqp.cc/t/46664" target="_blank" rel="noopener">免费版本连接</a></p><h3 id="5-获取"><a href="#5-获取" class="headerlink" title="5. 获取"></a>5. 获取</h3><p><a href="https://www.lanzous.com/i9wdlwh" target="_blank" rel="noopener">蓝奏云下载</a></p><h3 id="5-更新"><a href="#5-更新" class="headerlink" title="5. 更新"></a>5. 更新</h3><p>当前版本：v2.0.1<br>内容：<br>1.新增自动更新功能<br>2.升级为付费插件（免费的随缘更新了。。）<br>3.新增年月日周定时发送信息<br>4.修复免费版一些问题<br>5.消息支持换行<br>6.群号勾选功能</p><h3 id="6-特殊说明"><a href="#6-特殊说明" class="headerlink" title="6. 特殊说明"></a>6. 特殊说明</h3><p> 插件使用需要获取激活码，请联系作者获取。五元永久<br> 不接受一切形式的退款/退差价且不接受更改授权机器人QQ</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自定义定时发送消息，新增支持年月日周！&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="酷q" scheme="https://gmaya.top/categories/%E9%85%B7q/"/>
+    
+    
+      <category term="酷q" scheme="https://gmaya.top/tags/%E9%85%B7q/"/>
+    
+      <category term="插件" scheme="https://gmaya.top/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>问答系统插件</title>
     <link href="https://gmaya.top/2020/03/02/0302/"/>
     <id>https://gmaya.top/2020/03/02/0302/</id>
     <published>2020-03-02T11:21:24.000Z</published>
-    <updated>2020-03-02T08:23:55.676Z</updated>
+    <updated>2020-03-03T05:54:34.115Z</updated>
     
-    <content type="html"><![CDATA[<p>还在为了在群中回复大量重复的问题烦恼么？只要是固定的问题固定的答案，交给我！</p><a id="more"></a><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在群内大量的重复问题和回答。</p><h3 id="2-亮点"><a href="#2-亮点" class="headerlink" title="2. 亮点"></a>2. 亮点</h3><p> 支持分群（各个群互不影响）<br>支持精确问/模糊问<br>支持一个群多个主人<br>支持问题换行<br>支持问答开关<br>在线更新（再也不用操心更新的问题了）</p><h3 id="3-演示"><a href="#3-演示" class="headerlink" title="3. 演示"></a>3. 演示</h3><p> <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjAxbTFjeDd0cmN2Y3h2MXJ0OC5naWY" alt="在这里插入图片描述"><br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjE4emNkeGs0dGVlYno1NHRydC5naWY" alt="在这里插入图片描述"></p><h3 id="4-获取"><a href="#4-获取" class="headerlink" title="4. 获取"></a>4. 获取</h3><p><a href="https://www.lanzous.com/i9vbsqf" target="_blank" rel="noopener">蓝奏云下载</a></p><h3 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5. 特殊说明"></a>5. 特殊说明</h3><p> 插件使用需要获取激活码，请联系作者获取。两元永久</p>]]></content>
+    <content type="html"><![CDATA[<p>还在为了在群中回复大量重复的问题烦恼么？只要是固定的问题固定的答案，交给我！</p><a id="more"></a><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在群内大量的重复问题和回答。</p><h3 id="2-亮点"><a href="#2-亮点" class="headerlink" title="2. 亮点"></a>2. 亮点</h3><p> 支持分群（各个群互不影响）<br>支持精确问/模糊问<br>支持一个群多个主人<br>支持问题换行<br>支持问答开关<br>在线更新（再也不用操心更新的问题了）</p><h3 id="3-演示"><a href="#3-演示" class="headerlink" title="3. 演示"></a>3. 演示</h3><p> <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjAxbTFjeDd0cmN2Y3h2MXJ0OC5naWY" alt="在这里插入图片描述"><br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjE4emNkeGs0dGVlYno1NHRydC5naWY" alt="在这里插入图片描述"></p><h3 id="4-获取"><a href="#4-获取" class="headerlink" title="4. 获取"></a>4. 获取</h3><p><a href="https://www.lanzous.com/i9w8ula" target="_blank" rel="noopener">蓝奏云下载</a></p><h3 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5. 特殊说明"></a>5. 特殊说明</h3><p> 插件使用需要获取激活码，请联系作者获取。两元永久</p>]]></content>
     
     <summary type="html">
     
@@ -60,9 +85,9 @@
       <category term="酷q" scheme="https://gmaya.top/categories/%E9%85%B7q/"/>
     
     
-      <category term="工具类" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    
       <category term="酷q" scheme="https://gmaya.top/tags/%E9%85%B7q/"/>
+    
+      <category term="工具类" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
   </entry>
   
