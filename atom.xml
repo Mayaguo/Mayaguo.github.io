@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-03-03T08:08:18.526Z</updated>
+  <updated>2020-03-06T09:51:31.207Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win10安装git</title>
+    <link href="https://gmaya.top/2020/03/06/0306/"/>
+    <id>https://gmaya.top/2020/03/06/0306/</id>
+    <published>2020-03-06T09:57:08.000Z</published>
+    <updated>2020-03-06T09:51:31.207Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p>去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git官网</a>下载win版本64位<br>安装全部下一步到结束</p><h2 id="下载小乌龟"><a href="#下载小乌龟" class="headerlink" title="下载小乌龟"></a>下载小乌龟</h2><p>去<a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">tortoriseGit官网</a>下载64位小乌龟。<br>然后下面还有一个中文语言包（不下载也行），Language Packs 下面的 Chinese, simplified<br>先安装小乌龟，一路暴力下一步到结束。安装语言包，一路到结束。<br>鼠标右键打开小乌龟设置，选择语言为中文，结束！</p><h2 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h2><p>鼠标右键 打开 Git Bash</p><p>输入下面的命令<br>将邮箱换成你自己的邮箱、然后回车</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -o -t rsa -b <span class="number">4096</span> -C <span class="string">"email@example.com"</span></span><br></pre></td></tr></table></figure><p>然后出现提示 密钥保存的位置。记一下<br>使用默认密钥地址，继续回车<br>提示你对密钥设置密码，这里无需设置，直接按回车键就好，要按两次回车键。<br>之后就会显示保存成功<br>然后打开默认位置，看一下有没有两个文件<br><img src="https://img-blog.csdnimg.cn/20200306173738233.png" alt="密钥"></p><h2 id="添加密钥到Git服务器"><a href="#添加密钥到Git服务器" class="headerlink" title="添加密钥到Git服务器"></a>添加密钥到Git服务器</h2><p>登录进来之后点击右上角的图标，选择settings设置SSH密钥<br><img src="https://img-blog.csdnimg.cn/2020030617384577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>选择 SSH keys<br>然后 new SSH keys<br>将刚才生成的公钥放进去保存即可。</p><h2 id="配置本地私钥"><a href="#配置本地私钥" class="headerlink" title="配置本地私钥"></a>配置本地私钥</h2><p>在文件夹空白处右键选择TortoiseGit的设置(setting)选项<br><img src="https://img-blog.csdnimg.cn/20200306174116319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>一直点下一步到下面的这个页面，中间会让你输入你的名称和邮箱（名称随便写，邮箱还写你那个邮箱），然后点击 生成PuTTY密钥对<br><img src="https://img-blog.csdnimg.cn/20200306174318690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>选择你刚才的私钥<br><img src="https://img-blog.csdnimg.cn/20200306174349611.png" alt="在这里插入图片描述"><br>然后点击Save private key 保存成PuTTY 格式的私钥<br><img src="https://img-blog.csdnimg.cn/20200306174436984.png" alt="在这里插入图片描述"><br>保存成功后关闭窗口</p><h2 id="TortoiseGit克隆项目加载私钥"><a href="#TortoiseGit克隆项目加载私钥" class="headerlink" title="TortoiseGit克隆项目加载私钥"></a>TortoiseGit克隆项目加载私钥</h2><p>右键Git克隆弹出如下窗口<br><img src="https://img-blog.csdnimg.cn/20200306174550620.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200306174746242.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;下载git&quot;&gt;&lt;a href=&quot;#下载git&quot; class=&quot;headerlink&quot; title=&quot;下载git&quot;&gt;&lt;/a&gt;下载git&lt;/h2&gt;&lt;p&gt;去&lt;a href=&quot;https://git-scm.com/download/win&quot; target=&quot;_blank
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="安装git" scheme="https://gmaya.top/tags/%E5%AE%89%E8%A3%85git/"/>
+    
+  </entry>
   
   <entry>
     <title>定时发送消息插件</title>
