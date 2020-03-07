@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>易语言对接腾讯ai智能闲聊</title>
-    <url>/2020/03/07/0307/</url>
+    <url>/0307/</url>
     <content><![CDATA[<p>基础闲聊接口提供基于文本的基础聊天能力，可以让您的应用快速拥有具备上下文语义理解的机器聊天功能。</p>
 <a id="more"></a>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
@@ -32,7 +32,7 @@
   </entry>
   <entry>
     <title>win10安装git</title>
-    <url>/2020/03/06/0306/</url>
+    <url>/0306/</url>
     <content><![CDATA[<h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p>去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git官网</a>下载win版本64位<br>安装全部下一步到结束</p>
 <h2 id="下载小乌龟"><a href="#下载小乌龟" class="headerlink" title="下载小乌龟"></a>下载小乌龟</h2><p>去<a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">tortoriseGit官网</a>下载64位小乌龟。<br>然后下面还有一个中文语言包（不下载也行），Language Packs 下面的 Chinese, simplified<br>先安装小乌龟，一路暴力下一步到结束。安装语言包，一路到结束。<br>鼠标右键打开小乌龟设置，选择语言为中文，结束！</p>
 <h2 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h2><p>鼠标右键 打开 Git Bash</p>
@@ -52,7 +52,7 @@
   </entry>
   <entry>
     <title>定时发送消息插件</title>
-    <url>/2020/03/03/0303/</url>
+    <url>/0303/</url>
     <content><![CDATA[<p>自定义定时发送消息，新增支持年月日周！</p>
 <a id="more"></a>
 <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在定时发送固定内容</p>
@@ -73,7 +73,7 @@
   </entry>
   <entry>
     <title>问答系统插件</title>
-    <url>/2020/03/02/0302/</url>
+    <url>/0302/</url>
     <content><![CDATA[<p>还在为了在群中回复大量重复的问题烦恼么？只要是固定的问题固定的答案，交给我！</p>
 <a id="more"></a>
 <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在群内大量的重复问题和回答。</p>
@@ -92,7 +92,7 @@
   </entry>
   <entry>
     <title>酷q表情使用</title>
-    <url>/2020/01/19/0119/</url>
+    <url>/0119/</url>
     <content><![CDATA[<p>酷q表情整合，快速找到要使用的表情。</p>
 <a id="more"></a>
 <h3 id="1-表情1"><a href="#1-表情1" class="headerlink" title="1. 表情1"></a>1. 表情1</h3><p>在消息内添加</p>
@@ -109,13 +109,13 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>酷q</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
     <title>Excel导出导入</title>
-    <url>/2020/01/16/0116/</url>
+    <url>/0116/</url>
     <content><![CDATA[<p>快速、简单避免OOM的java处理Excel工具，64M内存1分钟内读取75M(46W行25列)的Excel。</p>
 <a id="more"></a>
 <h2 id="1-EasyExcel介绍"><a href="#1-EasyExcel介绍" class="headerlink" title="1. EasyExcel介绍"></a>1. EasyExcel介绍</h2><h3 id="1-1-为什么使用EasyExcel？"><a href="#1-1-为什么使用EasyExcel？" class="headerlink" title="1.1 为什么使用EasyExcel？"></a>1.1 为什么使用EasyExcel？</h3><blockquote>
@@ -137,13 +137,13 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>工具类</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
     <title>建站心得</title>
-    <url>/2020/01/10/0110/</url>
+    <url>/0110/</url>
     <content><![CDATA[<p>从偶然发现个人博客开始，就开始着手搭建一个自己的博客网站，也许写不出什么有技术含量的东西，但是也图个新鲜，练练手，记录一下自己的成长经历！<br>但是就是这个随手开始弄得网站，前前后后花了将近一个月，SO,我要将自己的过程记录下来！</p>
 <a id="more"></a>
 
@@ -167,7 +167,7 @@
   </entry>
   <entry>
     <title>认识酷q</title>
-    <url>/2019/12/30/kuq-know/</url>
+    <url>/kuq-know/</url>
     <content><![CDATA[<p>酷Q Air 是一个轻巧、免费、高效的机器人核心，功能需要安装“应用”实现。登录酷Q，完成教程后，建议 访问 酷Q应用发布板块，下载安装您所需要的应用，创造让大家喜爱并且属于你自己的专属机器人。</p>
 <a id="more"></a>
 <p><strong>酷q是干嘛的</strong></p>
@@ -198,7 +198,7 @@
   </entry>
   <entry>
     <title>idea在jdk1.8情况下使用反编译插件</title>
-    <url>/2019/12/30/idea-decompilation/</url>
+    <url>/idea-decompilation/</url>
     <content><![CDATA[<p>使用JD-GUI在jdk1.8情况下失效，我也查找了好多办法，最后看到idea有默认的，只是没有打开，瞬间搞定，记录一下！</p>
 <a id="more"></a>
 <p>没有反编译是显示compiled code</p>
@@ -220,7 +220,7 @@
   </entry>
   <entry>
     <title>Java性能测试大比拼</title>
-    <url>/2019/12/28/property-compare/</url>
+    <url>/property-compare/</url>
     <content><![CDATA[<p>实体类转换哪个快？Map循环遍历哪个快？转换为字符串哪个快？测试，分析，看源码，看底层知识。</p>
 <a id="more"></a>
 
@@ -272,7 +272,7 @@
   </entry>
   <entry>
     <title>Mybatis-plus之自动生成</title>
-    <url>/2019/12/27/Mybatis-plus/</url>
+    <url>/Mybatis-plus/</url>
     <content><![CDATA[<p>MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
 <a id="more"></a>
 <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>本文章首次是在csdn上写的，本次发布到自己的博客中，增添一点色彩。</p>
@@ -312,7 +312,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/2019/12/16/hello-world/</url>
+    <url>/hello-world/</url>
     <content><![CDATA[<p>我的第一篇文章必须是Hello World , 这是对编程最基本的尊重!</p>
 <a id="more"></a>
 

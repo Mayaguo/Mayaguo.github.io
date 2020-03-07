@@ -18,8 +18,8 @@
   
   <entry>
     <title>易语言对接腾讯ai智能闲聊</title>
-    <link href="https://gmaya.top/2020/03/07/0307/"/>
-    <id>https://gmaya.top/2020/03/07/0307/</id>
+    <link href="https://gmaya.top/0307/"/>
+    <id>https://gmaya.top/0307/</id>
     <published>2020-03-07T03:29:25.000Z</published>
     <updated>2020-03-07T04:13:43.987Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>win10安装git</title>
-    <link href="https://gmaya.top/2020/03/06/0306/"/>
-    <id>https://gmaya.top/2020/03/06/0306/</id>
+    <link href="https://gmaya.top/0306/"/>
+    <id>https://gmaya.top/0306/</id>
     <published>2020-03-06T09:57:08.000Z</published>
     <updated>2020-03-06T09:51:31.207Z</updated>
     
@@ -67,8 +67,8 @@
   
   <entry>
     <title>定时发送消息插件</title>
-    <link href="https://gmaya.top/2020/03/03/0303/"/>
-    <id>https://gmaya.top/2020/03/03/0303/</id>
+    <link href="https://gmaya.top/0303/"/>
+    <id>https://gmaya.top/0303/</id>
     <published>2020-03-03T05:11:12.000Z</published>
     <updated>2020-03-03T08:08:18.526Z</updated>
     
@@ -92,8 +92,8 @@
   
   <entry>
     <title>问答系统插件</title>
-    <link href="https://gmaya.top/2020/03/02/0302/"/>
-    <id>https://gmaya.top/2020/03/02/0302/</id>
+    <link href="https://gmaya.top/0302/"/>
+    <id>https://gmaya.top/0302/</id>
     <published>2020-03-02T11:21:24.000Z</published>
     <updated>2020-03-03T05:54:34.115Z</updated>
     
@@ -117,8 +117,8 @@
   
   <entry>
     <title>酷q表情使用</title>
-    <link href="https://gmaya.top/2020/01/19/0119/"/>
-    <id>https://gmaya.top/2020/01/19/0119/</id>
+    <link href="https://gmaya.top/0119/"/>
+    <id>https://gmaya.top/0119/</id>
     <published>2020-01-19T12:20:52.000Z</published>
     <updated>2020-03-02T08:11:25.893Z</updated>
     
@@ -134,16 +134,16 @@
       <category term="酷q" scheme="https://gmaya.top/categories/%E9%85%B7q/"/>
     
     
-      <category term="工具类" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    
       <category term="酷q" scheme="https://gmaya.top/tags/%E9%85%B7q/"/>
+    
+      <category term="工具类" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
     
   </entry>
   
   <entry>
     <title>Excel导出导入</title>
-    <link href="https://gmaya.top/2020/01/16/0116/"/>
-    <id>https://gmaya.top/2020/01/16/0116/</id>
+    <link href="https://gmaya.top/0116/"/>
+    <id>https://gmaya.top/0116/</id>
     <published>2020-01-16T14:40:12.000Z</published>
     <updated>2020-01-16T06:16:04.795Z</updated>
     
@@ -159,16 +159,16 @@
       <category term="后端开发" scheme="https://gmaya.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="Java" scheme="https://gmaya.top/tags/Java/"/>
-    
       <category term="工具类" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
+    
+      <category term="Java" scheme="https://gmaya.top/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>建站心得</title>
-    <link href="https://gmaya.top/2020/01/10/0110/"/>
-    <id>https://gmaya.top/2020/01/10/0110/</id>
+    <link href="https://gmaya.top/0110/"/>
+    <id>https://gmaya.top/0110/</id>
     <published>2020-01-10T13:20:33.000Z</published>
     <updated>2020-01-14T02:18:38.583Z</updated>
     
@@ -190,8 +190,8 @@
   
   <entry>
     <title>认识酷q</title>
-    <link href="https://gmaya.top/2019/12/30/kuq-know/"/>
-    <id>https://gmaya.top/2019/12/30/kuq-know/</id>
+    <link href="https://gmaya.top/kuq-know/"/>
+    <id>https://gmaya.top/kuq-know/</id>
     <published>2019-12-30T13:41:04.000Z</published>
     <updated>2020-01-19T07:07:28.651Z</updated>
     
@@ -213,8 +213,8 @@
   
   <entry>
     <title>idea在jdk1.8情况下使用反编译插件</title>
-    <link href="https://gmaya.top/2019/12/30/idea-decompilation/"/>
-    <id>https://gmaya.top/2019/12/30/idea-decompilation/</id>
+    <link href="https://gmaya.top/idea-decompilation/"/>
+    <id>https://gmaya.top/idea-decompilation/</id>
     <published>2019-12-30T05:41:01.000Z</published>
     <updated>2020-01-14T02:18:30.161Z</updated>
     
@@ -238,8 +238,8 @@
   
   <entry>
     <title>Java性能测试大比拼</title>
-    <link href="https://gmaya.top/2019/12/28/property-compare/"/>
-    <id>https://gmaya.top/2019/12/28/property-compare/</id>
+    <link href="https://gmaya.top/property-compare/"/>
+    <id>https://gmaya.top/property-compare/</id>
     <published>2019-12-28T15:23:56.000Z</published>
     <updated>2020-01-14T02:18:19.298Z</updated>
     
@@ -263,8 +263,8 @@
   
   <entry>
     <title>Mybatis-plus之自动生成</title>
-    <link href="https://gmaya.top/2019/12/27/Mybatis-plus/"/>
-    <id>https://gmaya.top/2019/12/27/Mybatis-plus/</id>
+    <link href="https://gmaya.top/Mybatis-plus/"/>
+    <id>https://gmaya.top/Mybatis-plus/</id>
     <published>2019-12-27T14:16:25.000Z</published>
     <updated>2020-01-14T02:18:12.005Z</updated>
     
@@ -288,8 +288,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://gmaya.top/2019/12/16/hello-world/"/>
-    <id>https://gmaya.top/2019/12/16/hello-world/</id>
+    <link href="https://gmaya.top/hello-world/"/>
+    <id>https://gmaya.top/hello-world/</id>
     <published>2019-12-16T14:16:00.000Z</published>
     <updated>2020-01-14T02:18:34.242Z</updated>
     
