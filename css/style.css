@@ -555,6 +555,15 @@ body {
   content: "\e00d";
   padding-right: 0.3em;
 }
+.post .post-meta .leancloud-visitors-count {
+  height: 16px;
+  line-height: 16px;
+}
+.post .post-meta .leancloud-visitors-count:before {
+  font-family: "iconfont" !important;
+  content: "\e00d";
+  padding-right: 0.3em;
+}
 .post .comment-count {
   float: right;
   display: inline-block;
