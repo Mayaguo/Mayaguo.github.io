@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-03-07T04:13:43.987Z</updated>
+  <updated>2020-03-09T01:25:11.205Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>获取qq音乐分享链接</title>
+    <link href="https://gmaya.top/0308/"/>
+    <id>https://gmaya.top/0308/</id>
+    <published>2020-03-08T06:12:15.000Z</published>
+    <updated>2020-03-09T01:25:11.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>拿着qq音乐分享接口练练手</p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想要写个插件。支持qq，微信，在群里面点歌，这就要获取音乐接口的api 了。<br>注：只允许个人学习使用。</p><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过浏览器分析音乐查询接口，分享接口，等等<br><strong>qq音乐搜索接口：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//c.y.qq.com/soso/fcgi-bin/client_search_cp?p=1&amp;n=1&amp;w=水手&amp;format=json&amp;inCharset=utf8&amp;outCharset=utf-8</span></span><br></pre></td></tr></table></figure><p>其中：w=歌名，p=页数，n=条数，format=格式。剩下两个就是编码格式了</p><p>结果：<br>得到以下几个参数：<br>albumname：专辑<br>albumid ： 专辑id<br>albummid : 专辑图片<br>songname ：歌名<br>singer[0].name:歌手名字<br>songid ： 分享链接使用</p><p><strong>音乐分享链接：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//i.y.qq.com/v8/playsong.html?songid=</span></span><br></pre></td></tr></table></figure><p>例子：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//i.y.qq.com/v8/playsong.html?songid=4829638</span></span><br></pre></td></tr></table></figure><p><strong>获取专辑图片：</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//y.gtimg.cn/music/photo_new/T002R300x300M000专辑图片.jpg</span></span><br></pre></td></tr></table></figure><p>例子：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//y.gtimg.cn/music/photo_new/T002R300x300M000002MwneO44kDAi.jpg</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;拿着qq音乐分享接口练练手&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="接口" scheme="https://gmaya.top/categories/%E6%8E%A5%E5%8F%A3/"/>
+    
+    
+      <category term="随笔" scheme="https://gmaya.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>易语言对接腾讯ai智能闲聊</title>
