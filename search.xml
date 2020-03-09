@@ -35,7 +35,7 @@
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
 <p>腾讯闲聊服务基于AI Lab领先的NLP引擎能力、数据运算能力和千亿级互联网语料数据的支持，同时集成了广泛的知识问答能力，可实现上百种自定义属性配置，以及男、女不同的语言风格及说话方式，从而让聊天变得更睿智、简单和有趣</p>
 </blockquote>
-<p>注：同时我将此接口制作成插件，可以应用在QQ和微信上。再也不怕自己一个人没人聊天了。<br><img src="http://s1.wailian.download/2020/03/09/20200307120859.jpg" alt="展示"></p>
+<p>注：同时我将此接口制作成插件，可以应用在QQ和微信上。再也不怕自己一个人没人聊天了。<br><img src="https://s1.wailian.download/2020/03/09/20200307120859.jpg" alt="展示"></p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先在<a href="https://ai.qq.com/" target="_blank" rel="noopener">腾讯ai官网</a>注册自己的账号，将智能闲聊接入。然后在控制台-应用管理，找到刚接入的智能闲聊，在应用信息里面得到APPID，APPKEY两个参数。<br><img src="/img/0307/20200307114018.png" alt="首页"></p>
 <p>基础闲聊API地址：</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>api.ai.qq.com<span class="regexp">/fcgi-bin/</span>nlp<span class="regexp">/nlp_textchat</span></span><br></pre></td></tr></table></figure>
