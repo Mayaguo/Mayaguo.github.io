@@ -35,7 +35,7 @@
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
 <p>腾讯闲聊服务基于AI Lab领先的NLP引擎能力、数据运算能力和千亿级互联网语料数据的支持，同时集成了广泛的知识问答能力，可实现上百种自定义属性配置，以及男、女不同的语言风格及说话方式，从而让聊天变得更睿智、简单和有趣</p>
 </blockquote>
-<p>注：同时我将此接口制作成插件，可以应用在QQ和微信上。再也不怕自己一个人没人聊天了。<br><img src="https://s1.wailian.download/2020/03/09/20200307120859.jpg" alt="展示"></p>
+<p>注：同时我将此接口制作成插件，可以应用在QQ和微信上。再也不怕自己一个人没人聊天了。</p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>首先在<a href="https://ai.qq.com/" target="_blank" rel="noopener">腾讯ai官网</a>注册自己的账号，将智能闲聊接入。然后在控制台-应用管理，找到刚接入的智能闲聊，在应用信息里面得到APPID，APPKEY两个参数。<br><img src="/img/0307/20200307114018.png" alt="首页"></p>
 <p>基础闲聊API地址：</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">https:<span class="regexp">//</span>api.ai.qq.com<span class="regexp">/fcgi-bin/</span>nlp<span class="regexp">/nlp_textchat</span></span><br></pre></td></tr></table></figure>
@@ -78,46 +78,6 @@
       </tags>
   </entry>
   <entry>
-    <title>定时发送消息插件</title>
-    <url>/0303/</url>
-    <content><![CDATA[<p>自定义定时发送消息，新增支持年月日周！</p>
-<a id="more"></a>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在定时发送固定内容</p>
-<h3 id="2-亮点"><a href="#2-亮点" class="headerlink" title="2. 亮点"></a>2. 亮点</h3><p>支持消息换行、群号勾选<br>在线更新（再也不用操心更新的问题了）<br>支持年月日周<br>比如：每年的1月1号上午8点发送一条消息<br>每月的10号，20号上午8点和下午8点发送一条消息<br>每周的1,3,5 上午12点和晚上7点发送一条消息<br>每天的和免费版本一致</p>
-<h3 id="3-注意"><a href="#3-注意" class="headerlink" title="3. 注意"></a>3. 注意</h3><p>① 任务名称 不允许重复<br>② 时间类型选择 ：<br> 每天，只需要填写小时分钟框即可<br> 每周，填写天/周框，格式1,2,3,4,5,6,7 。小时分钟框也要填<br> 每月，填写天/周框，格式1，10,20,30 。小时分钟框也要填<br> 每年，填写月份框，格式1,5,10,12 。填写天/周框。填写小时分钟框</p>
-<h3 id="4-演示"><a href="#4-演示" class="headerlink" title="4. 演示"></a>4. 演示</h3><p>参考免费版的即可<br><a href="https://cqp.cc/t/46664" target="_blank" rel="noopener">免费版本连接</a></p>
-<h3 id="5-获取"><a href="#5-获取" class="headerlink" title="5. 获取"></a>5. 获取</h3><p><a href="https://www.lanzous.com/i9wdlwh" target="_blank" rel="noopener">蓝奏云下载</a></p>
-<h3 id="5-更新"><a href="#5-更新" class="headerlink" title="5. 更新"></a>5. 更新</h3><p>当前版本：v2.0.1<br>内容：<br>1.新增自动更新功能<br>2.升级为付费插件（免费的随缘更新了。。）<br>3.新增年月日周定时发送信息<br>4.修复免费版一些问题<br>5.消息支持换行<br>6.群号勾选功能</p>
-<h3 id="6-特殊说明"><a href="#6-特殊说明" class="headerlink" title="6. 特殊说明"></a>6. 特殊说明</h3><p> 插件使用需要获取激活码，请联系作者获取。五元永久<br> 不接受一切形式的退款/退差价且不接受更改授权机器人QQ</p>
-]]></content>
-      <categories>
-        <category>酷q</category>
-      </categories>
-      <tags>
-        <tag>酷q</tag>
-        <tag>插件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>问答系统插件</title>
-    <url>/0302/</url>
-    <content><![CDATA[<p>还在为了在群中回复大量重复的问题烦恼么？只要是固定的问题固定的答案，交给我！</p>
-<a id="more"></a>
-<h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><p> 主要解决在群内大量的重复问题和回答。</p>
-<h3 id="2-亮点"><a href="#2-亮点" class="headerlink" title="2. 亮点"></a>2. 亮点</h3><p> 支持分群（各个群互不影响）<br>支持精确问/模糊问<br>支持一个群多个主人<br>支持问题换行<br>支持问答开关<br>在线更新（再也不用操心更新的问题了）</p>
-<h3 id="3-演示"><a href="#3-演示" class="headerlink" title="3. 演示"></a>3. 演示</h3><p> <img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjAxbTFjeDd0cmN2Y3h2MXJ0OC5naWY" alt="在这里插入图片描述"><br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWdjLmNxcC5tZS9mb3J1bS8yMDIwMDMvMDIvMTUzMjE4emNkeGs0dGVlYno1NHRydC5naWY" alt="在这里插入图片描述"></p>
-<h3 id="4-获取"><a href="#4-获取" class="headerlink" title="4. 获取"></a>4. 获取</h3><p><a href="https://www.lanzous.com/i9w8ula" target="_blank" rel="noopener">蓝奏云下载</a></p>
-<h3 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5. 特殊说明"></a>5. 特殊说明</h3><p> 插件使用需要获取激活码，请联系作者获取。两元永久</p>
-]]></content>
-      <categories>
-        <category>酷q</category>
-      </categories>
-      <tags>
-        <tag>酷q</tag>
-        <tag>插件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>酷q表情使用</title>
     <url>/0119/</url>
     <content><![CDATA[<p>酷q表情整合，快速找到要使用的表情。</p>
@@ -136,8 +96,8 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>酷q</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
@@ -164,8 +124,8 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>工具类</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
