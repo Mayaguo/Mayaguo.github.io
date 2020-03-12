@@ -26,7 +26,7 @@
   <meta name="description" content="一分耕耘，一分收获。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GMaya">
-<meta property="og:url" content="https://gmaya.top/archives/2020/01/index.html">
+<meta property="og:url" content="https://gmaya.top/categories/hexo/index.html">
 <meta property="og:site_name" content="GMaya">
 <meta property="og:description" content="一分耕耘，一分收获。">
 <meta property="og:locale" content="zh_CN">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="个人技术">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://gmaya.top/archives/2020/01/">
+<link rel="canonical" href="https://gmaya.top/categories/hexo/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>归档 | GMaya</title>
+  <title>分类: hexo | GMaya</title>
   
 
 
@@ -198,7 +198,9 @@
   <div class="post-block">
     <div class="posts-collapse">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 12 篇日志。 继续努力。</span>
+        <h1 class="collection-header">hexo
+          <small>分类</small>
+        </h1>
       </div>
 
       
@@ -211,61 +213,20 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
-              datetime="2020-01-19T20:20:52+08:00"
-              content="2020-01-19">
-          01-19
+              datetime="2020-03-12T13:01:11+08:00"
+              content="2020-03-12">
+          03-12
         </time>
       </div>
 
       <h2 class="post-title">
-          <a class="post-title-link" href="/0119/" itemprop="url">
-            <span itemprop="name">酷q表情使用</span>
+          <a class="post-title-link" href="/20200312/" itemprop="url">
+            <span itemprop="name">hexo配置最新next主题的几个问题</span>
           </a>
       </h2>
 
     </header>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-16T22:40:12+08:00"
-              content="2020-01-16">
-          01-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/0116/" itemprop="url">
-            <span itemprop="name">Excel导出导入</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-10T21:20:33+08:00"
-              content="2020-01-10">
-          01-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/0110/" itemprop="url">
-            <span itemprop="name">建站心得</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
 
     </div>
   </div>
@@ -465,6 +426,16 @@
   
 
   
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/categories/hexo/',]
+      });
+      });
+  </script>
 
 
 <script>

@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo配置最新next主题的几个问题</title>
+    <url>/20200312/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/SiestaKey_ZH-CN1759696989_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>截止到写这博客的时间，花费了一天左右的时间，将next主题美化了一下，以此记录。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>我的博客使用next模板为Mist，打开主题配置文件<br><img data-src="https://img-blog.csdnimg.cn/20200312112907956.png" alt=""></p>
+<h2 id="添加背景线条效果"><a href="#添加背景线条效果" class="headerlink" title="添加背景线条效果"></a>添加背景线条效果</h2><p><img data-src="https://img-blog.csdnimg.cn/2020031211451787.png" alt=""><br>我是参考<a href="https://github.com/theme-next/theme-next-canvas-nest" target="_blank" rel="noopener">canvas-nest</a>官方网站</p>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><p>在根目录的source 文件夹下创建_data文件夹，然后创建footer.swig<br><img data-src="https://img-blog.csdnimg.cn/20200312113617444.png" alt=""><br>注意不要将位置创建到主题里面去，然后将代码拷贝进去即可</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script color=<span class="string">"0,0,0"</span> opacity=<span class="string">"0.5"</span> zIndex=<span class="string">"-1"</span> count=<span class="string">"99"</span> src=<span class="string">"https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>其中color是颜色值，opacity是透明度，zIndex是现在层级，count是线条数量。</p>
+<h3 id="设置路径"><a href="#设置路径" class="headerlink" title="设置路径"></a>设置路径</h3><p>打开<strong>主题配置文件</strong><br>搜索 custom_file_path 将footer注释打开<br><img data-src="https://img-blog.csdnimg.cn/20200312113927646.png" alt=""><br>然后 hexo g  ， hexo s  ，启动看看效果</p>
+<h2 id="首页文章之间周围有边框"><a href="#首页文章之间周围有边框" class="headerlink" title="首页文章之间周围有边框"></a>首页文章之间周围有边框</h2><p>刚开始这个首页文章之间没有边框，每个文章之间没有明显的间隔。<br>效果：<br><img data-src="https://img-blog.csdnimg.cn/20200312135123740.png" alt=""><br>打开：\themes\next\source\css_common\components\post\post.styl<br><img data-src="https://img-blog.csdnimg.cn/20200312135622899.png" alt=""><br>大概35行，找到motion.transition.post_block<br>修改前：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (hexo-config(<span class="string">'motion.transition.post_block'</span>)) &#123;</span><br><span class="line">    .post-block, .pagination, .comments &#123;</span><br><span class="line">      opacity: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>修改后：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (hexo-config(<span class="string">'motion.transition.post_block'</span>)) &#123;</span><br><span class="line">  .post-block&#123;</span><br><span class="line">     opacity: <span class="number">0</span>;</span><br><span class="line">     padding: <span class="number">25</span>px;</span><br><span class="line">     -webkit-box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px rgba(<span class="number">202</span>, <span class="number">203</span>, <span class="number">203</span>, <span class="number">.5</span>);</span><br><span class="line">     -moz-box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px rgba(<span class="number">202</span>, <span class="number">203</span>, <span class="number">204</span>, <span class="number">.5</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> .pagination, .comments &#123;</span><br><span class="line">    opacity: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后 hexo g  ， hexo s  ，启动看看效果</p>
+<h2 id="修改文章之间的间隔"><a href="#修改文章之间的间隔" class="headerlink" title="修改文章之间的间隔"></a>修改文章之间的间隔</h2><p>默认的文章间距120px，有点大。</p>
+<p>打开：\themes\next\source\css_schemes\Mist_posts-expand.styl<br><img data-src="https://img-blog.csdnimg.cn/20200312140746217.png" alt=""><br>大概24行，找到.post-block:not<br>修改前：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">.post-block:not(:first-child) &#123;</span><br><span class="line">  margin-top: <span class="number">120</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将120px，修改为你想要的间距，我改成了20px<br>修改后：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">.post-block:not(:first-child) &#123;</span><br><span class="line">  margin-top: <span class="number">20</span>px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="评论数显示为英文问题"><a href="#评论数显示为英文问题" class="headerlink" title="评论数显示为英文问题"></a>评论数显示为英文问题</h2><p>我使用的Valine评论，但是文章标题下面显示的评论数为英文。<br>打开：\themes\next\languages\zh-CN.yml<br><img data-src="https://img-blog.csdnimg.cn/2020031214110617.png" alt=""><br>在post下面新增：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">comments.valine:</span> <span class="string">评论数</span></span><br></pre></td></tr></table></figure>
+<p>注意空格，和下面保持对齐<br><img data-src="https://img-blog.csdnimg.cn/2020031214125048.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>获取qq音乐分享链接</title>
     <url>/0308/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/2.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/2ca911872a193a63a.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想要写个插件。支持qq，微信，在群里面点歌，这就要获取音乐接口的api 了。<br>注：只允许个人学习使用。</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过浏览器分析音乐查询接口，分享接口，等等<br><strong>qq音乐搜索接口：</strong></p>
@@ -30,7 +64,7 @@
   <entry>
     <title>易语言对接腾讯ai智能闲聊</title>
     <url>/0307/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/3.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/38621881e9146614e.jpg" alt=""></p>
 <a id="more"></a>
 
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
@@ -64,7 +98,7 @@
   <entry>
     <title>win10安装git</title>
     <url>/0306/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/4.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/42284a29cf41f91ef.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p>去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git官网</a>下载win版本64位<br>安装全部下一步到结束</p>
 <h2 id="下载小乌龟"><a href="#下载小乌龟" class="headerlink" title="下载小乌龟"></a>下载小乌龟</h2><p>去<a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">tortoriseGit官网</a>下载64位小乌龟。<br>然后下面还有一个中文语言包（不下载也行），Language Packs 下面的 Chinese, simplified<br>先安装小乌龟，一路暴力下一步到结束。安装语言包，一路到结束。<br>鼠标右键打开小乌龟设置，选择语言为中文，结束！</p>
@@ -86,7 +120,7 @@
   <entry>
     <title>酷q表情使用</title>
     <url>/0119/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/5.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/58bbe62ac415d6f92.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="表情1"><a href="#表情1" class="headerlink" title="表情1"></a>表情1</h2><p>在消息内添加</p>
 <p>[CQ:face,id=XXX]</p>
@@ -109,7 +143,7 @@
   <entry>
     <title>Excel导出导入</title>
     <url>/0116/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/6.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/64c7182e49f7d0710.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="1-EasyExcel介绍"><a href="#1-EasyExcel介绍" class="headerlink" title="1. EasyExcel介绍"></a>1. EasyExcel介绍</h2><h3 id="1-1-为什么使用EasyExcel？"><a href="#1-1-为什么使用EasyExcel？" class="headerlink" title="1.1 为什么使用EasyExcel？"></a>1.1 为什么使用EasyExcel？</h3><blockquote>
 <p>Java解析、生成Excel比较有名的框架有Apache poi、jxl。但他们都存在一个严重的问题就是非常的耗内存，poi有一套SAX模式的API可以一定程度的解决一些内存溢出的问题，但POI还是有一些缺陷，比如07版Excel解压缩以及解压后存储都是在内存中完成的，内存消耗依然很大。easyexcel重写了poi对07版Excel的解析，能够原本一个3M的excel用POI sax依然需要100M左右内存降低到几M，并且再大的excel不会出现内存溢出，03版依赖POI的sax模式。在上层做了模型转换的封装，让使用者更加简单方便</p>
@@ -140,7 +174,7 @@
   <entry>
     <title>建站心得</title>
     <url>/0110/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/7.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/799c2afb5e71ab9ae.jpg" alt=""></p>
 <a id="more"></a>
 <p>从偶然发现个人博客开始，就开始着手搭建一个自己的博客网站，也许写不出什么有技术含量的东西，但是也图个新鲜，练练手，记录一下自己的成长经历！<br>但是就是这个随手开始弄得网站，前前后后花了将近一个月，SO,我要将自己的过程记录下来！</p>
 <h3 id="1-买服务器"><a href="#1-买服务器" class="headerlink" title="1. 买服务器"></a>1. 买服务器</h3><p>&lt;此步骤可以省略&gt;<br>我是购买的腾讯云，首次大幅度优惠，99/年。当然，博客如果都是静态页面，也可以不需要服务器，直接部署到github，或者码云上，都是可以的（免费）。<br>如果你只需要搭建博客不需要其他的，可以不买服务器，忽略即可。我是因为还要用服务器干点其他的。</p>
@@ -164,7 +198,7 @@
   <entry>
     <title>认识酷q</title>
     <url>/kuq-know/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/8.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/81bc7bcc4eb1ba03c.jpg" alt=""></p>
 <a id="more"></a>
 
 <p>##酷q是干嘛的</p>
@@ -196,7 +230,7 @@
   <entry>
     <title>idea在jdk1.8情况下使用反编译插件</title>
     <url>/idea-decompilation/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/9.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/9.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用JD-GUI在jdk1.8情况下失效，我也查找了好多办法，最后看到idea有默认的，只是没有打开，瞬间搞定，记录一下！</p>
 <p>没有反编译是显示compiled code</p>
@@ -219,7 +253,7 @@
   <entry>
     <title>Java性能测试大比拼</title>
     <url>/property-compare/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/11.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/113decce27b2d5f5bd.jpg" alt=""></p>
 <a id="more"></a>
 
 <p>实体类转换哪个快？Map循环遍历哪个快？转换为字符串哪个快？测试，分析，看源码，看底层知识。</p>
@@ -272,7 +306,7 @@
   <entry>
     <title>Mybatis-plus之自动生成</title>
     <url>/Mybatis-plus/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/10.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/104c0c7cc995b2dab6.jpg" alt=""></p>
 <a id="more"></a>
 
 <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>本文章首次是在csdn上写的，本次发布到自己的博客中，增添一点色彩。</p>
@@ -316,7 +350,7 @@
   <entry>
     <title>Hello World</title>
     <url>/hello-world/</url>
-    <content><![CDATA[<p><img data-src="/images/banner/1.png" alt=""></p>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/160172f10791af664.jpg" alt=""></p>
 <a id="more"></a>
 
 <h2 id="各种语言的Hello-World"><a href="#各种语言的Hello-World" class="headerlink" title="各种语言的Hello World"></a>各种语言的Hello World</h2><h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ System.out.println(<span class="string">"Hello,World!"</span>);</span><br></pre></td></tr></table></figure>
