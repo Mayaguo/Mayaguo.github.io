@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Spring Cloud Hystrix断路器（四）</title>
+    <url>/20200318/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/18/KeichitsuCrocuse_ZH-CN1061292366_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>在微服务场景中，通常会有很多层的服务调用。如果一个底层服务出现问题，故障会被向上传播给用户。我们需要一种机制，当底层服务不可用时，可以阻断故障的传播。这就是断路器的作用。他是系统服务稳定性的最后一重保障。</p>
+</blockquote>
+<p>常常会遇到正在使用某个系统，点击到某一个功能的时候显示该模块正在升级或者请稍后查看等。怎么实现呢？？</p>
+<h2 id="使用Feign整合Hystrix"><a href="#使用Feign整合Hystrix" class="headerlink" title="使用Feign整合Hystrix"></a>使用Feign整合Hystrix</h2><p>默认是不开启的，需要修改配置文件application.yml，添加下面的代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">feign:</span><br><span class="line">  hystrix:</span><br><span class="line">    #开启Hystrix熔断，默认false</span><br><span class="line">    enabled: <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+<p>新增支付模块熔断器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  支付模块熔断器</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/18 9:35</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayClientFallBack</span> <span class="keyword">implements</span> <span class="title">PayClient</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> String <span class="title">getPay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"支付模块正在抢修，请稍后！"</span> +<span class="string">" :feign演示"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200318094335346.png" alt=""><br>修改PayClient接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"pay"</span>,fallback = PayClientFallBack<span class="class">.<span class="keyword">class</span>) // 服务名称</span></span><br></pre></td></tr></table></figure>
+<p>启动服务端，启动pay客户端，启动order客户端。<br>访问<a href="http://localhost:8082/getOrder" target="_blank" rel="noopener">http://localhost:8082/getOrder</a><br><img data-src="https://img-blog.csdnimg.cn/20200318094502143.png" alt=""><br>然后把pay客户端关掉！<br><img data-src="https://img-blog.csdnimg.cn/20200318094538663.png" alt=""></p>
+<h2 id="使用RestTemplat整合Hystrix"><a href="#使用RestTemplat整合Hystrix" class="headerlink" title="使用RestTemplat整合Hystrix"></a>使用RestTemplat整合Hystrix</h2><p>pom添加j依赖</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;!--熔断器--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>启动类新增注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@EnableCircuitBreaker</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<p>@SpringBootApplication+@EnableDiscoveryClient+@EnableCircuitBreaker<br>也可以使用@SpringCloudApplication 一个顶替仨</p>
+<p>SpringCloudApplication注解 源码：<br><img data-src="https://img-blog.csdnimg.cn/20200318100928732.png" alt=""></p>
+<p>修改订单接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  订单接口接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:03</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Autowired</span></span><br><span class="line"><span class="comment">//    private PayClient payClient; // 注入支付模块服务</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"getRestTemplateFallBack"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String pay = restTemplate.getForObject(<span class="string">"http://pay/getPay"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="comment">//        String pay = payClient.getPay();</span></span><br><span class="line">        <span class="keyword">return</span> pay;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getRestTemplateFallBack</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"不好啦，机房着火了，restTemplate演示！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/202003181003090.png" alt=""><br>当然，当接口多的时候，还可以改造</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  订单接口接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:03</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@DefaultProperties</span>(defaultFallback = <span class="string">"defaultFallback"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Autowired</span></span><br><span class="line"><span class="comment">//    private PayClient payClient; // 注入支付模块服务</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line"><span class="comment">//    @HystrixCommand(fallbackMethod = "getRestTemplateFallBack")</span></span><br><span class="line">    <span class="meta">@HystrixCommand</span> <span class="comment">// 使用默认熔断，加一个注解就行</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String pay = restTemplate.getForObject(<span class="string">"http://pay/getPay"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="comment">//        String pay = payClient.getPay();</span></span><br><span class="line">        <span class="keyword">return</span> pay;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getRestTemplateFallBack</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"不好啦，机房着火了，restTemplate演示！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">defaultFallback</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"默认熔断！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/2020031810064596.png" alt=""><br>重启查看</p>
+<p><img data-src="https://img-blog.csdnimg.cn/202003181009599.png" alt=""><br><strong>最后：</strong><br>额外配置，如需更多，请查看专业解释</p>
+<p>如果设置和默认值一样，没必要写出来配置</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">feign:</span><br><span class="line">  hystrix:</span><br><span class="line">    #开启Hystrix熔断，默认false</span><br><span class="line">    enabled: <span class="keyword">true</span></span><br><span class="line">hystrix:</span><br><span class="line">  command:</span><br><span class="line">    # 全局设置</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      execution:</span><br><span class="line">        isolation:</span><br><span class="line">          # 命令执行超时时间，默认1000ms，只在线程池隔离中有效。</span><br><span class="line">          thread:</span><br><span class="line">            timeoutInMilliseconds: <span class="number">1000</span></span><br><span class="line">            # 发生超时是是否中断，默认true，只在线程池隔离中有效。</span><br><span class="line">            interruptOnTimeout: <span class="keyword">true</span></span><br><span class="line">        # 执行是否启用超时，默认启用true，只在线程池隔离中有效。</span><br><span class="line">        timeout:</span><br><span class="line">          enabled: <span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>SpringCloud</category>
+      </categories>
+      <tags>
+        <tag>SpringCloud</tag>
+        <tag>Hystrix</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Short 类型直接和数值1做对比</title>
     <url>/20200317/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/17/Knowth_ZH-CN0295374506_1920x1080.jpg" alt=""></p>
@@ -404,8 +445,8 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>酷q</tag>
         <tag>工具类</tag>
+        <tag>酷q</tag>
       </tags>
   </entry>
   <entry>
@@ -435,8 +476,8 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>Java</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
