@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>IDEA常用插件</title>
+    <url>/20200319/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/19/EquinoxAngkor_ZH-CN1157590532_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<p>分享自己平时常用的idea插件</p>
+<p>1.Mybatis Log Plugin</p>
+<p>功能:把 mybatis 输出的sql日志还原成完整的sql语句。 将日志输出的sql语句中的问号 ? 替换成真正的参数值</p>
+<p>直接在软件Plugins中下载即可,注意下载完要重启idea</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20190527161235710.png" alt=""></p>
+<p>在Tools中点击 即可进入</p>
+<p><img data-src="https://img-blog.csdnimg.cn/2019052716143126.png" alt=""></p>
+<p>2.Rainbow Brackets</p>
+<p>功能:彩虹方括号</p>
+<p>让你的括号变得魔力转圈圈</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20190527161806200.png" alt=""></p>
+<p>3.Free Mybatis plugin</p>
+<p>功能:在serviceImpl直接去到mapper.xml中的该方法</p>
+<p>选中方法名,快捷键Ctrl + T </p>
+<p><img data-src="https://img-blog.csdnimg.cn/20190527164208747.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+        <tag>插件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring Cloud Hystrix断路器（四）</title>
     <url>/20200318/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/18/KeichitsuCrocuse_ZH-CN1061292366_1920x1080.jpg" alt=""></p>
