@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gmaya.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Spring Cloud Eureka服务通信Ribbon&#x2F;Feign（三）">
+<meta property="og:url" content="https://gmaya.top/2020/20200316-2/index.html">
+<meta property="og:site_name" content="GMaya">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://s1.wailian.download/2020/03/16/PlutoCrescent_ZH-CN3538488331_1920x1080.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316104221227.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316104311198.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316104405772.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316104620686.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316104718476.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316110022486.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316111440912.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316111506428.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316112723276.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316134202712.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316135308761.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316142558747.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200316143337289.png">
+<meta property="article:published_time" content="2020-03-16T14:12:12.000Z">
+<meta property="article:modified_time" content="2020-03-16T07:21:10.770Z">
+<meta property="article:author" content="GMaya">
+<meta property="article:tag" content="SpringCloud">
+<meta property="article:tag" content="Eureka">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://s1.wailian.download/2020/03/16/PlutoCrescent_ZH-CN3538488331_1920x1080.jpg">
+
+<link rel="canonical" href="https://gmaya.top/2020/20200316-2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Spring Cloud Eureka服务通信Ribbon/Feign（三） | GMaya</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0e55601a9032e26ff859010f72e59ff7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GMaya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">生命不止，奋斗不息。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gmaya.top/2020/20200316-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="GMaya">
+      <meta itemprop="description" content="一分耕耘，一分收获。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GMaya">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring Cloud Eureka服务通信Ribbon/Feign（三）
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-16 22:12:12" itemprop="dateCreated datePublished" datetime="2020-03-16T22:12:12+08:00">2020-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index"><span itemprop="name">SpringCloud</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/20200316-2/" class="post-meta-item leancloud_visitors" data-flag-title="Spring Cloud Eureka服务通信Ribbon/Feign（三）" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论数：</span>
+    
+    <a title="valine" href="/2020/20200316-2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/20200316-2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img data-src="http://s1.wailian.download/2020/03/16/PlutoCrescent_ZH-CN3538488331_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>每一个客户端就是一个完整的项目，是一个模块，假如我有订单模块，支付模块，用户模块，等等，那么我这些模块之间怎么相互调用呢？采用HttpClient工具类访问？</p>
+<h2 id="Ribbon-和-Feign-简介"><a href="#Ribbon-和-Feign-简介" class="headerlink" title="Ribbon 和 Feign 简介"></a>Ribbon 和 Feign 简介</h2><h3 id="Ribbon-简介"><a href="#Ribbon-简介" class="headerlink" title="Ribbon 简介"></a>Ribbon 简介</h3><blockquote>
+<p>Ribbon 是 Netflix 发布的开源项目，主要功能是提供客户端的软件负载均衡算法，将Netflix的中间层服务连接在一起。Ribbon 客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出 Load Balancer 后面所有的机器，Ribbon 会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。我们也很容易使用Ribbon实现自定义的负载均衡算法。简单地说，Ribbon 是一个客户端负载均衡器。</p>
+</blockquote>
+<h3 id="Feign-简介"><a href="#Feign-简介" class="headerlink" title="Feign 简介"></a>Feign 简介</h3><blockquote>
+<p>Feign 是一个声明式的 web service 客户端，它使得编写 web service 客户端更为容易。创建接口，为接口添加注解，即可使用Feign。Feign可以使用Feign注解或者JAX-RS注解，还支持热插拔的编码器和解码器。Spring Cloud 为Feign添加了Spring MVC的注解支持，并整合了Ribbon和Eureka来为使用 Feign 时提供负载均衡。</p>
+</blockquote>
+<h2 id="创建支付模块（客户端）"><a href="#创建支付模块（客户端）" class="headerlink" title="创建支付模块（客户端）"></a>创建支付模块（客户端）</h2><p>起名pay项目，也可以去spring官网 <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a>按照之前的办法创建<br>再介绍一个方法，直接在idea中创建<br><img data-src="https://img-blog.csdnimg.cn/20200316104221227.png" alt=""><br>下一步<br><img data-src="https://img-blog.csdnimg.cn/20200316104311198.png" alt=""><br>填写组织和项目名称<br><img data-src="https://img-blog.csdnimg.cn/20200316104405772.png" alt=""><br>搜索添加<br><img data-src="https://img-blog.csdnimg.cn/20200316104620686.png" alt=""><br>下一步<br><img data-src="https://img-blog.csdnimg.cn/20200316104718476.png" alt=""><br>完成<br>然后按照客户端的修改操作进行修改<br>修改application.yml<br>因为是小demo，所以就不使用集群了，电脑有点卡。真实情况每个服务端和客户端有可能都不在一个服务器上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">    name: pay</span><br><span class="line">server:</span><br><span class="line">  port: <span class="number">8081</span></span><br><span class="line">eureka:</span><br><span class="line">  client:</span><br><span class="line">    service-url:</span><br><span class="line">      #注册中心路径，表示我们向这个注册中心注册服务，如果向多个注册中心注册，用“，”进行分隔</span><br><span class="line">      #defaultZone: http://server01:8761/eureka/,http://server02:8762/eureka/</span><br><span class="line">      defaultZone: http:<span class="comment">//server01:8761/eureka/</span></span><br></pre></td></tr></table></figure>
+<p>修改启动项<br>添加注解@EnableDiscoveryClient<br>添加一个正常情况下的最简洁支付接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  支付接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 10:53</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getPay"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPay</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 返回支付信息</span></span><br><span class="line">       <span class="keyword">return</span> <span class="string">"this pay！！！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建订单模块（客户端）"><a href="#创建订单模块（客户端）" class="headerlink" title="创建订单模块（客户端）"></a>创建订单模块（客户端）</h2><p>跟上面支付模块一模一样的操作。。。<br>注意：<br><img data-src="https://img-blog.csdnimg.cn/20200316110022486.png" alt=""><br>创建订单最简洁订单的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  订单接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:03</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 返回订单信息</span></span><br><span class="line">       <span class="keyword">return</span> <span class="string">"this order！！！"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>此时两个正常的项目已经创建完毕，那么我订单模块怎么去调用支付模块呢？</strong></p>
+<h2 id="方式一：RestTemplate调用"><a href="#方式一：RestTemplate调用" class="headerlink" title="方式一：RestTemplate调用"></a>方式一：RestTemplate调用</h2><p>修改订单模块接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">       RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();</span><br><span class="line">       String forObject = restTemplate.getForObject(<span class="string">"http://localhost:8081/getPay"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">      <span class="keyword">return</span> forObject;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>启动服务端，启动支付端，启动订单端<br>调用支付接口<br><img data-src="https://img-blog.csdnimg.cn/20200316111440912.png" alt=""><br>调用订单接口<br><img data-src="https://img-blog.csdnimg.cn/20200316111506428.png" alt=""><br>可以看出调用成功，但是缺点也很明显，必须要知道对方的url地址，对于多个实例那就难受了，所以是不可取的。</p>
+<h2 id="方式二：通过-LoadBalanced"><a href="#方式二：通过-LoadBalanced" class="headerlink" title="方式二：通过 @LoadBalanced"></a>方式二：通过 @LoadBalanced</h2><p>添加RestTemplateConfig配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  RestTemplate配置类</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:24</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200316112723276.png" alt=""><br>修改订单接口<br>此时只需要填写调用的项目名就好了，跟ip无关。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  订单接口接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:03</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String forObject = restTemplate.getForObject(<span class="string">"http://PAY/getPay"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="keyword">return</span> forObject;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重启订单项目查看</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20200316134202712.png" alt=""><br><strong>@LoadBalanced 源码</strong><br>注解源码注释中说，用来标记restTemplate使之配置使用LoadBalancerClient</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Annotation to mark a RestTemplate or WebClient bean to be configured to use a</span></span><br><span class="line"><span class="comment"> * LoadBalancerClient.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> Spencer Gibb</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Target</span>(&#123; ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD &#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Qualifier</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> LoadBalanced &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LoadBalancerClient则表示客户端负载均衡器。<br><img data-src="https://img-blog.csdnimg.cn/20200316135308761.png" alt=""><br>所以使用@LoadBalanced就代表使用ribbon实现客户端的负载均衡<br>负载均衡的策略默认使用的是轮询算法</p>
+<blockquote>
+<p>负载均衡是在同一个功能的微服务中根据不同的策略选择不同的微服务，因此这些微服务对外暴露的实例名称要相同（spring.application.name）<br>ribbon是一个客户端的负载均衡，必须要连接eureka，才能在指定的微服务实例中按照策略选择</p>
+</blockquote>
+<p>假设支付模块（pay）部署在两台或者多台服务器，只有端口号不一样，其他的都一样，那么我订单模块按照轮询算法去调用支付模块。</p>
+<h2 id="方式三：通过-Feign"><a href="#方式三：通过-Feign" class="headerlink" title="方式三：通过 Feign"></a>方式三：通过 Feign</h2><p>第一步：添加Feign依赖<br>打开订单模块pom文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>第二步：修改订单模块启动类OrderApplication<br>添加注解@EnableFeignClients<br><img data-src="https://img-blog.csdnimg.cn/20200316142558747.png" alt=""><br>第三步：声明需要调用的接口<br>创建PayClient接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  支付接口声明</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 14:28</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"pay"</span>) <span class="comment">// 服务名称</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PayClient</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getPay"</span>) <span class="comment">//  这里要和pay提供的接口一致</span></span><br><span class="line">    <span class="function">String <span class="title">getPay</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200316143337289.png" alt=""><br>修改OrderController</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @ Description   :  订单接口接口</span></span><br><span class="line"><span class="comment"> * @ Author        :  GMaya</span></span><br><span class="line"><span class="comment"> * @ CreateDate    :  2020/3/16 11:03</span></span><br><span class="line"><span class="comment"> * @ Version       :  1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> PayClient payClient; <span class="comment">// 注入支付模块服务</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getOrder"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        String pay = payClient.getPay();</span><br><span class="line">        <span class="keyword">return</span> pay;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启订单模块项目，一切正常！</p>
+<p>只有先入门，才能追查源码以及骚操作！</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatQR.png" alt="GMaya 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/AliPayQR.jpg" alt="GMaya 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GMaya
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://gmaya.top/2020/20200316-2/" title="Spring Cloud Eureka服务通信Ribbon&#x2F;Feign（三）">https://gmaya.top/2020/20200316-2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/SpringCloud/" rel="tag"><i class="fa fa-tag"></i> SpringCloud</a>
+              <a href="/tags/Eureka/" rel="tag"><i class="fa fa-tag"></i> Eureka</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/20200316/" rel="prev" title="Spring Cloud Eureka高可用的服务注册中心（二）">
+      <i class="fa fa-chevron-left"></i> Spring Cloud Eureka高可用的服务注册中心（二）
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/20200317/" rel="next" title="Short 类型直接和数值1做对比">
+      Short 类型直接和数值1做对比 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ribbon-和-Feign-简介"><span class="nav-number">2.</span> <span class="nav-text">Ribbon 和 Feign 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ribbon-简介"><span class="nav-number">2.1.</span> <span class="nav-text">Ribbon 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feign-简介"><span class="nav-number">2.2.</span> <span class="nav-text">Feign 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建支付模块（客户端）"><span class="nav-number">3.</span> <span class="nav-text">创建支付模块（客户端）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建订单模块（客户端）"><span class="nav-number">4.</span> <span class="nav-text">创建订单模块（客户端）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式一：RestTemplate调用"><span class="nav-number">5.</span> <span class="nav-text">方式一：RestTemplate调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式二：通过-LoadBalanced"><span class="nav-number">6.</span> <span class="nav-text">方式二：通过 @LoadBalanced</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式三：通过-Feign"><span class="nav-number">7.</span> <span class="nav-text">方式三：通过 Feign</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GMaya"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">GMaya</p>
+  <div class="site-description" itemprop="description">一分耕耘，一分收获。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:gmaya@qq.com" title="E-Mail → mailto:gmaya@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="订阅 → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>订阅</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sitemap.xml" title="网站地图 → &#x2F;sitemap.xml"><i class="fa fa-fw fa-sitemap"></i>网站地图</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/gfl1427097103" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;gfl1427097103" rel="noopener" target="_blank">我的CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备20000931号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GMaya</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">46k</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/2020/20200316-2/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('/js/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'V0Q5bpLttOJ6cRIpYKb8aMdi-gzGzoHsz',
+      appKey     : 'orowwJ71I8dKewPCYdDmwjqz',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！吐槽一番吧！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

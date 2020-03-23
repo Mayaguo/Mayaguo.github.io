@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>使用redis实现序列号工具类</title>
-    <url>/20200323/</url>
+    <url>/2020/20200323/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/23/LenticularVideo_ZH-CN2275732856_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>项目中难免会带有字符的序列号,有的是每月从1开始, 有的是每天等等.<br>以前也使用过存表的方式,每次获取之后加1.<br>这次又了解了一个.记录一下<br>redis为单线程，不存在线程安全问题.</p>
@@ -23,7 +23,7 @@
   </entry>
   <entry>
     <title>分享一下uTools工具</title>
-    <url>/20200321/</url>
+    <url>/2020/20200321/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/21/SaltonSea_ZH-CN1265210111_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <p>持续加班ing..<br>分享 一个自己正在使用的工具<br><a href="https://www.u.tools/" target="_blank" rel="noopener">uTools你的生产力工具集
@@ -42,7 +42,7 @@
   </entry>
   <entry>
     <title>IDEA常用插件</title>
-    <url>/20200319/</url>
+    <url>/2020/20200319/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/19/EquinoxAngkor_ZH-CN1157590532_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <p>分享自己平时常用的idea插件</p>
@@ -71,7 +71,7 @@
   </entry>
   <entry>
     <title>Spring Cloud Hystrix断路器（四）</title>
-    <url>/20200318/</url>
+    <url>/2020/20200318/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/18/KeichitsuCrocuse_ZH-CN1061292366_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
@@ -112,7 +112,7 @@
   </entry>
   <entry>
     <title>Short 类型直接和数值1做对比</title>
-    <url>/20200317/</url>
+    <url>/2020/20200317/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/17/Knowth_ZH-CN0295374506_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <p>今天写项目遇到了Short 返回1 需要做个判断，所以就多想了一下，研究了一下<br>大声的告诉我，是true还是true还是true！！！</p>
@@ -136,7 +136,7 @@
   </entry>
   <entry>
     <title>Spring Cloud Eureka服务通信Ribbon/Feign（三）</title>
-    <url>/20200316-2/</url>
+    <url>/2020/20200316-2/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/16/PlutoCrescent_ZH-CN3538488331_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>每一个客户端就是一个完整的项目，是一个模块，假如我有订单模块，支付模块，用户模块，等等，那么我这些模块之间怎么相互调用呢？采用HttpClient工具类访问？</p>
@@ -188,7 +188,7 @@
   </entry>
   <entry>
     <title>Spring Cloud Eureka高可用的服务注册中心（二）</title>
-    <url>/20200316/</url>
+    <url>/2020/20200316/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/16/YukonGames_ZH-CN0135612170_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -227,7 +227,7 @@
   </entry>
   <entry>
     <title>Spring Cloud Eureka最简单的入门（一）</title>
-    <url>/20200315/</url>
+    <url>/2020/20200315/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/15/MetamorphicRocks_ZH-CN9753251368_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -265,7 +265,7 @@
   </entry>
   <entry>
     <title>浅谈 MySQL 中优化 SQL 语句查询常用的 30 种方法</title>
-    <url>/20200314/</url>
+    <url>/2020/20200314/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/14/Cirkelbroen_ZH-CN9645986135_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -358,7 +358,7 @@
   </entry>
   <entry>
     <title>idea新建springboot项目pom文件报错</title>
-    <url>/20200313/</url>
+    <url>/2020/20200313/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/13/FrenchColorado_ZH-CN9446885520_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前也有过类似的情况，只不过都是把spring-boot-starter-parent版本号改成本地仓库已经有的，然后继续开发。今天想写个demo，就新建了一个，然后版本号不一致，就一直报错，所以找了一天问题，才解决。太可怕了</p>
@@ -380,7 +380,7 @@
   </entry>
   <entry>
     <title>hexo配置最新next主题的几个问题</title>
-    <url>/20200312/</url>
+    <url>/2020/20200312/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/SiestaKey_ZH-CN1759696989_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>截止到写这博客的时间，花费了一天左右的时间，将next主题美化了一下，以此记录。</p>
@@ -414,7 +414,7 @@
   </entry>
   <entry>
     <title>获取qq音乐分享链接</title>
-    <url>/0308/</url>
+    <url>/2020/0308/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/2ca911872a193a63a.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>想要写个插件。支持qq，微信，在群里面点歌，这就要获取音乐接口的api 了。<br>注：只允许个人学习使用。</p>
@@ -441,7 +441,7 @@
   </entry>
   <entry>
     <title>易语言对接腾讯ai智能闲聊</title>
-    <url>/0307/</url>
+    <url>/2020/0307/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/38621881e9146614e.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -475,7 +475,7 @@
   </entry>
   <entry>
     <title>win10安装git</title>
-    <url>/0306/</url>
+    <url>/2020/0306/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/42284a29cf41f91ef.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p>去<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git官网</a>下载win版本64位<br>安装全部下一步到结束</p>
@@ -497,7 +497,7 @@
   </entry>
   <entry>
     <title>酷q表情使用</title>
-    <url>/0119/</url>
+    <url>/2020/0119/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/58bbe62ac415d6f92.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="表情1"><a href="#表情1" class="headerlink" title="表情1"></a>表情1</h2><p>在消息内添加</p>
@@ -514,13 +514,13 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>酷q</tag>
         <tag>工具类</tag>
+        <tag>酷q</tag>
       </tags>
   </entry>
   <entry>
     <title>Excel导出导入</title>
-    <url>/0116/</url>
+    <url>/2020/0116/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/64c7182e49f7d0710.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="1-EasyExcel介绍"><a href="#1-EasyExcel介绍" class="headerlink" title="1. EasyExcel介绍"></a>1. EasyExcel介绍</h2><h3 id="1-1-为什么使用EasyExcel？"><a href="#1-1-为什么使用EasyExcel？" class="headerlink" title="1.1 为什么使用EasyExcel？"></a>1.1 为什么使用EasyExcel？</h3><blockquote>
@@ -545,13 +545,13 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>Java</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
     <title>建站心得</title>
-    <url>/0110/</url>
+    <url>/2020/0110/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/799c2afb5e71ab9ae.jpg" alt=""></p>
 <a id="more"></a>
 <p>从偶然发现个人博客开始，就开始着手搭建一个自己的博客网站，也许写不出什么有技术含量的东西，但是也图个新鲜，练练手，记录一下自己的成长经历！<br>但是就是这个随手开始弄得网站，前前后后花了将近一个月，SO,我要将自己的过程记录下来！</p>
@@ -575,7 +575,7 @@
   </entry>
   <entry>
     <title>认识酷q</title>
-    <url>/kuq-know/</url>
+    <url>/2019/kuq-know/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/81bc7bcc4eb1ba03c.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -607,7 +607,7 @@
   </entry>
   <entry>
     <title>idea在jdk1.8情况下使用反编译插件</title>
-    <url>/idea-decompilation/</url>
+    <url>/2019/idea-decompilation/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/9.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用JD-GUI在jdk1.8情况下失效，我也查找了好多办法，最后看到idea有默认的，只是没有打开，瞬间搞定，记录一下！</p>
@@ -630,7 +630,7 @@
   </entry>
   <entry>
     <title>Java性能测试大比拼</title>
-    <url>/property-compare/</url>
+    <url>/2019/property-compare/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/113decce27b2d5f5bd.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -683,7 +683,7 @@
   </entry>
   <entry>
     <title>Mybatis-plus之自动生成</title>
-    <url>/Mybatis-plus/</url>
+    <url>/2019/Mybatis-plus/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/104c0c7cc995b2dab6.jpg" alt=""></p>
 <a id="more"></a>
 
@@ -727,7 +727,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/hello-world/</url>
+    <url>/2019/hello-world/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/12/160172f10791af664.jpg" alt=""></p>
 <a id="more"></a>
 
