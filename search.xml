@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python爬取全球疫情Demo</title>
+    <url>/2020/20200402-2/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/04/02/PascuaFlorida_ZH-CN7720904158_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>仅仅学习而已,不做其他非法操作.<br>习惯用小demo来熟练各种方法与技巧</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>进入腾讯新闻找到疫情入口<br><a href="https://news.qq.com/zt2020/page/feiyan.htm#/global" target="_blank" rel="noopener">https://news.qq.com/zt2020/page/feiyan.htm#/global</a><br>然后F12分析接口.<br>这对于java老鸟来说,分分钟找到.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist</span><br></pre></td></tr></table></figure>
+<p>然后分析json,取什么值, 用什么.</p>
+<h2 id="撸代码"><a href="#撸代码" class="headerlink" title="撸代码"></a>撸代码</h2><h3 id="装工具"><a href="#装工具" class="headerlink" title="装工具"></a>装工具</h3><p>由于是从0开始学的python,所以什么也没有,<br>只有一个python环境,所以直接来到jb家<a href="https://www.jetbrains.com/" target="_blank" rel="noopener">jetbrains</a>,撸一个pycharm, 用过idea的都知道,直接和idea安装方式一样,一毛一样!!!</p>
+<h3 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h3><p>进来不多说, 一个hello例子必须要有</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># @Author: GMaya</span></span><br><span class="line">print(<span class="string">'hello word!'</span>)</span><br></pre></td></tr></table></figure>
+<p>右键执行<br><img data-src="https://img-blog.csdnimg.cn/20200402202028116.png" alt=""></p>
+<h3 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h3><p>想要访问互联网, 你不得一个requests请求么?<br>刚好,导入这个<br>在python安装目录 –&gt; Scripts 包下,进入cmd<br>输入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install requests</span><br></pre></td></tr></table></figure>
+<p>等待安装完成!<br>然后在ide里面设置引入<br><img data-src="https://img-blog.csdnimg.cn/2020040220292135.png" alt=""></p>
+<h3 id="访问接口"><a href="#访问接口" class="headerlink" title="访问接口"></a>访问接口</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># @Author: GMaya</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建会话对象</span></span><br><span class="line">session = requests.session()</span><br><span class="line"><span class="comment"># 请求接口</span></span><br><span class="line">result = session.get(<span class="string">'https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist'</span>)</span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line">print(result.text)</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://img-blog.csdnimg.cn/2020040220394210.png" alt=""><br>握草,真是方便快捷狠啊</p>
+<p>走一步学一部,看下这个requests包是啥</p>
+<blockquote>
+<p>Requests为Python处理了所有HTTP/1.1操作， 与Web服务的无缝集成。不需要为URL手动添加查询字符串或POST数据进行表单处理。基于urllib3, 能自动处理Keep-alive和HTTP连接池。</p>
+</blockquote>
+<p>此处 自行百度学习了小半个小时,以后用到复杂的再说.</p>
+<h3 id="处理结果"><a href="#处理结果" class="headerlink" title="处理结果"></a>处理结果</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># @Author: GMaya</span></span><br><span class="line"><span class="keyword">import</span> requests, json, jsonpath</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建会话对象</span></span><br><span class="line">session = requests.session()</span><br><span class="line"><span class="comment"># 请求接口</span></span><br><span class="line">result = session.get(<span class="string">'https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist'</span>)</span><br><span class="line"><span class="comment"># 打印结果</span></span><br><span class="line">print(result.text)</span><br><span class="line"><span class="comment"># 解析json结果</span></span><br><span class="line">resJson = json.loads(result.text)</span><br><span class="line">data = jsonpath.jsonpath(resJson, <span class="string">'$.data.*'</span>)</span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> data:</span><br><span class="line">    res = <span class="string">'日期:'</span> + d[<span class="string">'date'</span>] + <span class="string">'--'</span> + d[<span class="string">'continent'</span>] + <span class="string">'--'</span> + d[<span class="string">'name'</span>] + <span class="string">'--'</span> + <span class="string">'新增确诊:'</span> + str(</span><br><span class="line">        d[<span class="string">'confirmAdd'</span>]) + <span class="string">'累计确诊:'</span> + str(d[<span class="string">'confirm'</span>]) + <span class="string">'治愈:'</span> + str(d[<span class="string">'heal'</span>]) + <span class="string">'死亡:'</span> + str(d[<span class="string">'dead'</span>])</span><br><span class="line">    <span class="comment"># 保存数据到我的d盘</span></span><br><span class="line">    file = <span class="string">'D:\download\global-yq.txt'</span></span><br><span class="line">    <span class="keyword">with</span> open(file, <span class="string">'a+'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(res + <span class="string">'\n'</span>)  <span class="comment"># 加\n换行显示</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200402220637483.png" alt=""><br>结果已经保存到本地文本里面了.<br>有不懂的命令直接文档里面找,还是很容易的<br><a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">文档连接</a></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python你好!</title>
+    <url>/2020/20200402/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/04/02/ShyGuy_ZH-CN7391687938_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这年头,谁不是熟悉好几个语言!<br>HTML是不是语言!   超文本标记语言&lt;/邪笑&gt;</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>百度搜索Python进入官网<a href="https://www.python.org/" target="_blank" rel="noopener">https://www.python.org/</a><br><img data-src="https://img-blog.csdnimg.cn/20200402160640863.png" alt=""><br><img data-src="https://img-blog.csdnimg.cn/20200402160716709.png" alt=""></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>双击打开安装包, 注意选择第二个,自定义安装, 谁吧我的软件安装到c盘,我跟谁急<br>下面还有一个add python 勾上! 这样就不需要配置环境变量了.<br>其他的都默认,go!<br>完成!</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>cmd进入,输入python<br><img data-src="https://img-blog.csdnimg.cn/2020040216125876.png" alt=""><br>输入</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">"hello python!!"</span>)</span><br></pre></td></tr></table></figure>
+<p>退出<br>按ctrl+z,回车</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>定时任务@Scheduled入门</title>
     <url>/2020/20200330/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/03/30/WalkingCentral_ZH-CN6818231087_1920x1080.jpg" alt=""></p>
 <a id="more"></a>
-<p>一个最简单的例子:<br>启动类添加注解<br>测试</p>
+<p>一个最简单的例子:<br>启动类添加注解</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@EnableScheduling</span> <span class="comment">// 开启定时任务</span></span><br></pre></td></tr></table></figure>
 <p><img data-src="https://img-blog.csdnimg.cn/20200330113812718.png" alt=""></p>
 <h2 id="编写单线程demo"><a href="#编写单线程demo" class="headerlink" title="编写单线程demo"></a>编写单线程demo</h2><p><img data-src="https://img-blog.csdnimg.cn/20200330135435331.png" alt=""></p>
@@ -632,8 +685,8 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>酷q</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
@@ -663,8 +716,8 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>工具类</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
