@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java中的多重for循环怎么跳出最外层</title>
+    <url>/2020/20200408/</url>
+    <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/04/08/PinkMoon_ZH-CN9026483067_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="笔记记录"><a href="#笔记记录" class="headerlink" title="笔记记录"></a>笔记记录</h2><p>不加任何代码,最里层的break,只能跳出最内层的循环, 如果想要跳出最外面的,就要新增一个标记.<br>在想要跳出循环的地方加标记,然后break标记.</p>
+<p>同理换成continue 标记; 效果一样.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试多重for循环 break</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">forTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line">    tab: <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是i...."</span> + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; a; j++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"我是j...."</span> + j);</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span> tab;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python一键获取所有高清无码王者皮肤图片</title>
     <url>/2020/20200406/</url>
     <content><![CDATA[<p><img data-src="http://s1.wailian.download/2020/04/06/CastleDay_ZH-CN8752542375_1920x1080.jpg" alt=""></p>
