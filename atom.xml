@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-04-11T12:39:23.878Z</updated>
+  <updated>2020-04-11T13:14:30.833Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分享一下Typora工具</title>
+    <link href="https://gmaya.top/2020/20200411/"/>
+    <id>https://gmaya.top/2020/20200411/</id>
+    <published>2020-04-11T13:11:11.000Z</published>
+    <updated>2020-04-11T13:14:30.833Z</updated>
+    
+    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/11/SeventeenSolstice_ZH-CN4901756341_1920x1080.jpg" alt=""></p><a id="more"></a><p>分享 一个自己正在使用的工具</p><blockquote><p>Typora 是一款支持实时预览的 Markdown 文本编辑器。</p></blockquote><p>Typora官网<a href="https://www.typora.io/" target="_blank" rel="noopener">https://www.typora.io/</a><br>简直是编辑博客的不二之选！免费免费免费！！！<br>同时你也可以编写文档，编写简历，支持导出多种模式。太香了<br><img data-src="https://img-blog.csdnimg.cn/20200411210630663.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/11/SeventeenSolstice_ZH-CN4901756341_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Boot整合RabbitMQ入门</title>
@@ -214,29 +237,6 @@
     <summary type="html">
     
       &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/02/PascuaFlorida_ZH-CN7720904158_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="https://gmaya.top/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="https://gmaya.top/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python你好!</title>
-    <link href="https://gmaya.top/2020/20200402/"/>
-    <id>https://gmaya.top/2020/20200402/</id>
-    <published>2020-04-02T11:32:11.000Z</published>
-    <updated>2020-04-11T12:24:26.237Z</updated>
-    
-    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/02/ShyGuy_ZH-CN7391687938_1920x1080.jpg" alt=""></p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这年头,谁不是熟悉好几个语言!<br>HTML是不是语言!   超文本标记语言&lt;/邪笑&gt;</p><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>百度搜索Python进入官网<a href="https://www.python.org/" target="_blank" rel="noopener">https://www.python.org/</a><br><img data-src="https://img-blog.csdnimg.cn/20200402160640863.png" alt=""><br><img data-src="https://img-blog.csdnimg.cn/20200402160716709.png" alt=""></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>双击打开安装包, 注意选择第二个,自定义安装, 谁吧我的软件安装到c盘,我跟谁急<br>下面还有一个add python 勾上! 这样就不需要配置环境变量了.<br>其他的都默认,go!<br>完成!</p><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>cmd进入,输入python<br><img data-src="https://img-blog.csdnimg.cn/2020040216125876.png" alt=""><br>输入</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"hello python!!"</span>)</span><br></pre></td></tr></table></figure><p>退出<br>按ctrl+z,回车</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/02/ShyGuy_ZH-CN7391687938_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
