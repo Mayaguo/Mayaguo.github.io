@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux安装Nginx</title>
+    <url>/2020/20200413-3/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/RapaNuiFestival_ZH-CN1417623441_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇安装完jdk，tomcat 就在来一个Nginx。</p>
+<h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>进入你想要安装的目录</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure>
+<p>创建nginx文件夹</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mkdir nginx</span><br></pre></td></tr></table></figure>
+<p>进入nginx目录下</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">cd nginx/</span><br></pre></td></tr></table></figure>
+<p>下载nginx<br>在线下载或者自己下载好然后上传过来。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx<span class="literal">-1</span>.<span class="number">16.1</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>提示: 如果你没有wget,请先安装wget</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">yum <span class="literal">-y</span> install wget</span><br></pre></td></tr></table></figure>
+<p>安装所需的插件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">yum install gcc c++</span><br><span class="line">yum install -y pcre pcre-devel</span><br><span class="line">yum install -y zlib zlib-devel</span><br><span class="line">yum install -y openssl openssl-devel</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用于编译c、c++代码的GCC；<br>用c语言编写的正则表达式函数库Pcre(使用rewrite模块)；<br>用于数据压缩的函式库的Zlib；<br>安全套接字层密码库OpenSSL（启用SSL支持）</p>
+</blockquote>
+<p>解压，编译<br>按照顺序执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">tar -zxvf nginx-<span class="number">1.16</span><span class="number">.1</span>.tar.gz</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cd nginx-<span class="number">1.16</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">./configure</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">make &amp;&amp; sudo make install</span><br></pre></td></tr></table></figure>
+<h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h2><p><strong>启动</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cd sbin/</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">./nginx</span><br></pre></td></tr></table></figure>
+<p><strong>停用</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">./nginx -s stop</span><br></pre></td></tr></table></figure>
+<p><strong>重启</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">./nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>检查修改的nginx.conf配置是否正确</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">./nginx -t</span><br></pre></td></tr></table></figure>
+<p>启动完之后，浏览器访问<a href="http://192.168.21.129/" target="_blank" rel="noopener">http://192.168.21.129/</a><br>如果没有开启80端口，是不行的<br>开启80端口<br>我使用的是centos7<br>加入80规则<br>–permanent #永久生效，没有此参数设置，重启后会失效。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=<span class="keyword">public</span> --add-port=<span class="number">80</span>/tcp --permanent</span><br></pre></td></tr></table></figure>
+<p>重启防火墙</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p>刷新页面<a href="http://192.168.21.129/" target="_blank" rel="noopener">http://192.168.21.129/</a><br><img data-src="https://img-blog.csdnimg.cn/20200413141903835.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux安装Tomcat</title>
+    <url>/2020/20200413-2/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/CorsicaHeart_ZH-CN2795615037_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇安装完jdk，就在来一个Tomcat。</p>
+<h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>进入你想要安装的目录</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure>
+<p>创建tomcat文件夹</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mkdir tomcat</span><br></pre></td></tr></table></figure>
+<p>进入tomcat目录下</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">cd tomcat/</span><br></pre></td></tr></table></figure>
+<p>下载tomcat 8<br>在线下载或者自己下载好然后上传过来。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">wget https://mirror.bit.edu.cn/apache/tomcat/tomcat<span class="literal">-8</span>/v8.<span class="number">5.54</span>/bin/apache<span class="literal">-tomcat</span><span class="literal">-8</span>.<span class="number">5.54</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>提示: 如果你没有wget,请先安装wget</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">yum <span class="literal">-y</span> install wget</span><br></pre></td></tr></table></figure>
+
+<p>解压</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> apache<span class="literal">-tomcat</span><span class="literal">-8</span>.<span class="number">5.54</span>.tar.gz</span><br></pre></td></tr></table></figure>
+<p>开启默认8080端口<br>我使用的是centos7<br>加入8080 规则<br>–permanent #永久生效，没有此参数设置，重启后会失效。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> -<span class="literal">-zone</span>=public -<span class="literal">-add</span><span class="literal">-port</span>=<span class="number">8080</span>/tcp -<span class="literal">-permanent</span></span><br></pre></td></tr></table></figure>
+<p>重启防火墙</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> -<span class="literal">-reload</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200413134305824.png" alt=""></p>
+<p>启动</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">./bin/startup.sh</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问： <a href="http://192.168.21.129:8080/" target="_blank" rel="noopener">http://192.168.21.129:8080/</a><br><img data-src="https://img-blog.csdnimg.cn/2020041313435613.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Tomcat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux安装jdk1.8</title>
+    <url>/2020/20200413/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/EastereggsBerlin_ZH-CN7293755224_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直都想写一遍这个，虽然不是经常用到。这次准备搞一下Nginx,所以就从0开始，记录一下。</p>
+<h2 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h2><p>进入你想要安装的目录</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure>
+
+<p>创建jdk文件夹</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">mkdir jdk1<span class="number">.8</span></span><br></pre></td></tr></table></figure>
+<p>进入jdk目录下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cd jdk1<span class="number">.8</span>/</span><br></pre></td></tr></table></figure>
+
+<p>下载jdk1.8</p>
+<p>在线下载或者自己下载好然后上传过来。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http:<span class="comment">//download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz</span></span><br></pre></td></tr></table></figure>
+
+<p>耐心等待。。。<br><img data-src="https://img-blog.csdnimg.cn/20200413112955686.png" alt=""><br>解压</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">tar -zxvf jdk-<span class="number">8</span>u131-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>先找到你的jdk安装目录记录一下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">/usr/local/jdk1<span class="number">.8</span>/jdk1<span class="number">.8</span><span class="number">.0_131</span></span><br></pre></td></tr></table></figure>
+
+<p>添加环境变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure>
+<p>输入a，在文本最后面加上</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1<span class="number">.8</span>/jdk1<span class="number">.8</span><span class="number">.0_131</span></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure>
+<p>按 esc，然后：wq 保存退出。<br>加载环境变量</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<p>查看版本号，看是否安装成功！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200413130521190.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>jdk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>分享一下Typora工具</title>
     <url>/2020/20200411/</url>
     <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/11/SeventeenSolstice_ZH-CN4901756341_1920x1080.jpg" alt=""></p>
