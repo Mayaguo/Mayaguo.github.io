@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>记一次优化我的个人博客</title>
+    <url>/2020/20200414-2/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/SneezeSpring_ZH-CN1577114008_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>优化一下自己的博客访问速度等！不要求画面多么炫酷，但是，必须要快！快！！<br>我的博客：<a href="https://gmaya.top">https://gmaya.top</a>欢迎访问哟！</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>话不多说，先看效果<br>优化前：<br><img data-src="https://img-blog.csdnimg.cn/20200414142404240.png" alt="优化前"><br>优化后：<br><img data-src="https://img-blog.csdnimg.cn/2020041414265240.png" alt="优化后"></p>
+<h2 id="Hexo内部优化"><a href="#Hexo内部优化" class="headerlink" title="Hexo内部优化"></a>Hexo内部优化</h2><p>我的个人博客站点使用hexo搭建，使用next模板。<br>模板配置文件搜索：motion<br>enable：是否开启页面动画，就是刚进来有没有那个慢吞吞的特效<br>async：是否开启异步加载，就是你的页面内容和特效是一起加载的。<br><img data-src="https://img-blog.csdnimg.cn/20200414141036404.png" alt=""></p>
+<h2 id="Nginx优化访问"><a href="#Nginx优化访问" class="headerlink" title="Nginx优化访问"></a>Nginx优化访问</h2><p>我的博客静态页面是通过Nginx代理的</p>
+<h3 id="修改worker-connections"><a href="#修改worker-connections" class="headerlink" title="修改worker_connections"></a>修改worker_connections</h3><p>默认是1024，相对而言扩大5倍，根据自己服务器决定</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">events &#123;</span><br><span class="line">    worker_connections  <span class="number">5024</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="修改http配置"><a href="#修改http配置" class="headerlink" title="修改http配置"></a>修改http配置</h3><p>需要哪个就加上哪个</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span><br><span class="line">    #                  '$status $body_bytes_sent "$http_referer" '</span><br><span class="line">    #                  '"$http_user_agent" "$http_x_forwarded_for"';</span><br><span class="line"></span><br><span class="line">    #access_log  logs/access.log  main;</span><br><span class="line">	# 关闭日志</span><br><span class="line">	access_log      off;</span><br><span class="line">	# 隐藏响应头中的有关操作系统和web server（Nginx）版本号的信息，这样对于安全性是有好处的。</span><br><span class="line">    server_tokens   off;</span><br><span class="line">    sendfile        on;</span><br><span class="line">	# 等数据包累计到一定大小发送，启用 sendfile 生效</span><br><span class="line">    tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    #keepalive_timeout  0;</span><br><span class="line">    keepalive_timeout  <span class="number">65</span>;</span><br><span class="line">	# 开启gzip</span><br><span class="line">    gzip  on;</span><br><span class="line">	# 启用gzip压缩的最小文件；小于设置值的文件将不会被压缩</span><br><span class="line">    gzip_min_length <span class="number">1</span>k;</span><br><span class="line">	# gzip 压缩级别 1-10</span><br><span class="line">    gzip_comp_level <span class="number">2</span>;</span><br><span class="line">	# 禁用IE 6 gzip</span><br><span class="line">	gzip_disable <span class="string">"MSIE [1-6]\."</span>;</span><br><span class="line">	gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php;</span><br><span class="line">	# 是否在http header中添加Vary: Accept-Encoding，建议开启</span><br><span class="line">    gzip_vary on;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="开启https访问"><a href="#开启https访问" class="headerlink" title="开启https访问"></a>开启https访问</h3><p>不喜欢网站一直显示不安全。<br>如果是http请求，将转发到https</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       <span class="number">80</span>;</span><br><span class="line">    server_name  gmaya.top;</span><br><span class="line">    rewrite ^(.*)$ https:<span class="comment">//$host:443/$1 permanent;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态资源缓存"><a href="#静态资源缓存" class="headerlink" title="静态资源缓存"></a>静态资源缓存</h3><p>如果不是https，直接把内容加到80端口即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">  server &#123;</span><br><span class="line">      listen       <span class="number">443</span> ssl;</span><br><span class="line">      server_name  gmaya.top;</span><br><span class="line"># 添加自己的证书</span><br><span class="line">      ssl_certificate      xxx.crt;</span><br><span class="line">      ssl_certificate_key  xxx.key;</span><br><span class="line"></span><br><span class="line">      ssl_session_cache    shared:SSL:<span class="number">1</span>m;</span><br><span class="line">      ssl_session_timeout  <span class="number">5</span>m;</span><br><span class="line"></span><br><span class="line">      ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">      ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">location ~* \.(css|js|ico|gif|jpg|jpeg|png)$ &#123;</span><br><span class="line">	# 同上，通配所有以.css/.js/...结尾的请求 </span><br><span class="line">	access_log off; </span><br><span class="line">	#忽略头部禁止缓存申明，类似与CDN的强制缓存功能</span><br><span class="line">	proxy_ignore_headers <span class="string">"Cache-Control"</span> <span class="string">"Expires"</span> <span class="string">"Set-Cookie"</span>;</span><br><span class="line">	# 开启缓存，时间864000秒，</span><br><span class="line">	add_header Cache-Control <span class="string">"public,max-age=864000"</span>;</span><br><span class="line">	root   C:\dev\blog;</span><br><span class="line">          index  index.html index.htm;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(html|xml)$ &#123;</span><br><span class="line">          access_log off;</span><br><span class="line">          # max-age&lt;=0 时向server发送http请求确认 ,该资源是否有修改, 有的话 返回200 , 无的话 返回304。</span><br><span class="line">          add_header Cache-Control no-cache;</span><br><span class="line">	root   C:\dev\blog;</span><br><span class="line">          index  index.html index.htm;</span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">      location / &#123;</span><br><span class="line">	access_log off;</span><br><span class="line">          root   C:\dev\blog;</span><br><span class="line">          index  index.html index.htm;</span><br><span class="line">      &#125;</span><br><span class="line">	</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我博客上还有很多外链，哎，懒得换咯！（如果有一天外链挂了，再迁移过来。）</p>
+<p>虽然一天到晚，总浏览量还不到20，哈哈。</p>
+]]></content>
+      <categories>
+        <category>优化</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux下Nginx的入门学习记录</title>
     <url>/2020/20200414/</url>
     <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/14/BWFlipper_ZH-CN1813139386_1920x1080.jpg" alt=""></p>
