@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-04-17T09:03:09.315Z</updated>
+  <updated>2020-04-17T09:37:35.166Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win10系统hexo博客自动发布自动拉取</title>
+    <link href="https://gmaya.top/2020/20200417-2/"/>
+    <id>https://gmaya.top/2020/20200417-2/</id>
+    <published>2020-04-17T09:34:14.000Z</published>
+    <updated>2020-04-17T09:37:35.166Z</updated>
+    
+    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/17/NBNMSipapu_ZH-CN2293681419_1920x1080.jpg" alt=""></p><a id="more"></a><p>我之前的流程是这样发布个人博客的。</p><ol><li>本地(win10)编写博客</li><li>本地上传博客到github</li><li>服务器（win10）通过git拉取最新代码</li><li>因为是nginx代理的，所以这个时候直接域名访问就是最新的了。</li></ol><p><strong>问题</strong>：<br>每次本地上传完都需要远程控制服务器，然后手动拉取代码。</p><p>更改后实现的效果：</p><ol><li>本地(win10)编写博客</li><li>本地上传博客到github</li></ol><p>其实就是 本地编写完，然后 hexo s 查看没问题，然后 hexo g  hexo d ，完事！</p><p>本地（win）无需做任何修改，hexo d 只要吧博客上传到github就行。</p><p><strong>服务器（win）做以下更改：</strong><br>存放博客根目录新建文件 pull.bat   名称随意<br>里面加上一句命令</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><p>对，就是这么简单粗暴的一个命令。</p><p><strong>然后win系统新增任务计划</strong><br><img data-src="https://img-blog.csdnimg.cn/20200417172615283.png" alt=""><br>点击<strong>创建任务</strong></p><p><img data-src="https://img-blog.csdnimg.cn/20200417172735415.png" alt=""><br>常规设置<br><img data-src="https://img-blog.csdnimg.cn/20200417172853501.png" alt=""><br>触发器设置<br>看自己想法设置间隔时间，博客没那么频繁，所以一个小时拉取一次<br><img data-src="https://img-blog.csdnimg.cn/20200417173000618.png" alt=""><br>操作设置</p><p><img data-src="https://img-blog.csdnimg.cn/20200417173159535.png" alt=""></p><p>保存！哈哈。</p><p>我服务器有点东西必须用win，没办法。 等到时候用linux在弄一个，原理应该都是这样！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/17/NBNMSipapu_ZH-CN2293681419_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="自动拉取git" scheme="https://gmaya.top/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/"/>
+    
+      <category term="win10" scheme="https://gmaya.top/tags/win10/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux下RabbitMQ另外一种延迟功能实现</title>
@@ -234,29 +259,6 @@
     
     
       <category term="RabbitMQ" scheme="https://gmaya.top/tags/RabbitMQ/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中的多重for循环怎么跳出最外层</title>
-    <link href="https://gmaya.top/2020/20200408/"/>
-    <id>https://gmaya.top/2020/20200408/</id>
-    <published>2020-04-08T06:01:12.000Z</published>
-    <updated>2020-04-11T12:31:42.200Z</updated>
-    
-    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/08/PinkMoon_ZH-CN9026483067_1920x1080.jpg" alt=""></p><a id="more"></a><h2 id="笔记记录"><a href="#笔记记录" class="headerlink" title="笔记记录"></a>笔记记录</h2><p>不加任何代码,最里层的break,只能跳出最内层的循环, 如果想要跳出最外面的,就要新增一个标记.<br>在想要跳出循环的地方加标记,然后break标记.</p><p>同理换成continue 标记; 效果一样.</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试多重for循环 break</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">forTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line">    tab: <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">"我是i...."</span> + i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; a; j++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"我是j...."</span> + j);</span><br><span class="line">            <span class="keyword">if</span> (j == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span> tab;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/08/PinkMoon_ZH-CN9026483067_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="https://gmaya.top/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="https://gmaya.top/tags/Java/"/>
     
   </entry>
   
