@@ -27,7 +27,7 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用RabbitMQ两种延迟消息方法，</p>
 <ol>
 <li>通过消息过期后进入死信交换器，再由交换器转发到延迟消费队列，实现延迟功能</li>
-<li>使用 rabbitmq-delayed-message-exchange 插件实现延迟功能。<br>如果版本合适，第二种方法比第一个简单点，没那么绕。</li>
+<li>使用 rabbitmq-delayed-message-exchange 插件实现延迟功能。<br>如果版本合适，第二种方法比第一个简单点，没那么绕。。</li>
 </ol>
 ]]></content>
       <categories>
