@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Linux下RabbitMQ另外一种延迟功能实现</title>
+    <url>/2020/20200417/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/17/HimachalFalls_ZH-CN2187203976_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前面写了使用死信对列实现了：<br>订单下单之后 30 分钟后，用户如果没有付钱，系统需要自动取消订单。<br>今天在研究一下另外一种<br>rabbitmq-delayed-message-exchange插件</p>
+<blockquote>
+<p>注意：延迟插件 rabbitmq-delayed-message-exchange 是在 RabbitMQ 3.5.7 及以上的版本才支持的，依赖 Erlang/OPT 18.0 及以上运行环境。</p>
+</blockquote>
+<p>完整代码链接<a href="https://gitee.com/GMaya/springboot-rabbitmq" target="_blank" rel="noopener">https://gitee.com/GMaya/springboot-rabbitmq</a></p>
+<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>首先找到RabbitMQ插件目录<br>我的是在</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">/usr/lib/rabbitmq/lib/rabbitmq_server-<span class="number">3.6</span><span class="number">.15</span>/plugins</span><br></pre></td></tr></table></figure>
+<p>然后下载插件<br><a href="https://www.rabbitmq.com/community-plugins.html" target="_blank" rel="noopener">https://www.rabbitmq.com/community-plugins.html</a><br>下载需要的版本，我下载的是3.6.x<br><img data-src="https://img-blog.csdnimg.cn/20200417140527781.png" alt=""><br>解压之后把rabbitmq_delayed_message_exchange-20171215-3.6.x.ez文件上传到plugins目录</p>
+<p>然后开启插件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_delayed_message_exchange</span><br></pre></td></tr></table></figure>
+<p>查看开启的插件列表</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">rabbitmq-plugins list</span><br></pre></td></tr></table></figure>
+<p>重启服务</p>
+<h2 id="集成到spring-boot"><a href="#集成到spring-boot" class="headerlink" title="集成到spring boot"></a>集成到spring boot</h2><h3 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用rabbitmq-delayed-message-exchange 构建一个的延迟队列</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> GMaya</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@dateTime</span> 2020/4/17 14:17</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayMQConfig</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建Queue</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Queue <span class="title">delayedQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Queue(<span class="string">"delayedQueue"</span>, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建延迟交换机</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">CustomExchange <span class="title">customExchange</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; args = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">        args.put(<span class="string">"x-delayed-type"</span>, <span class="string">"direct"</span>);</span><br><span class="line">        <span class="comment">//参数二为类型：必须是x-delayed-message</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomExchange(<span class="string">"delayed-Exchange"</span>, <span class="string">"x-delayed-message"</span>, <span class="keyword">true</span>, <span class="keyword">false</span>, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  绑定队列到交换器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> queue</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> exchange</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">Binding <span class="title">binding</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> BindingBuilder.bind(delayedQueue()).to(customExchange()).with(<span class="string">"delayedQueue"</span>).noargs();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * delayed消息生产着</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> GMaya</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@dateTime</span> 2020/4/17 14:20</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelaySender</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> AmqpTemplate amqpTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMsg</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">"生产者===订单号：&#123;&#125;"</span>, msg);</span><br><span class="line">        <span class="comment">// 这里把消息生产出来，指定交换机和queue</span></span><br><span class="line">        amqpTemplate.convertAndSend(<span class="string">"delayed-Exchange"</span>, <span class="string">"delayedQueue"</span>, msg, <span class="keyword">new</span> MessagePostProcessor() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> Message <span class="title">postProcessMessage</span><span class="params">(Message message)</span> <span class="keyword">throws</span> AmqpException </span>&#123;</span><br><span class="line">                MessageProperties messageProperties = message.getMessageProperties();</span><br><span class="line">                <span class="comment">// 这里是延迟时间，单位ms，这里延迟10s</span></span><br><span class="line">                messageProperties.setHeader(<span class="string">"x-delay"</span>,<span class="number">10000</span>);</span><br><span class="line">                <span class="keyword">return</span> message;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 消费者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> GMaya</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@dateTime</span> 2020/4/17 14:27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayReceiver</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RabbitListener</span>(queues = <span class="string">"delayedQueue"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">orderMsg</span><span class="params">(String msg)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        log.info(<span class="string">"消费者===订单号：&#123;&#125;"</span>, msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在HelloController中注入调用<br>启动项目访问测试<br><a href="http://localhost:8088/hello?msg=hello,delay" target="_blank" rel="noopener">http://localhost:8088/hello?msg=hello,delay</a><br><img data-src="https://img-blog.csdnimg.cn/20200417144124808.png" alt=""><br>完美延迟！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用RabbitMQ两种延迟消息方法，</p>
+<ol>
+<li>通过消息过期后进入死信交换器，再由交换器转发到延迟消费队列，实现延迟功能</li>
+<li>使用 rabbitmq-delayed-message-exchange 插件实现延迟功能。<br>如果版本合适，第二种方法比第一个简单点，没那么绕。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>RabbitMQ</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记一次优化我的个人博客</title>
     <url>/2020/20200414-2/</url>
     <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/SneezeSpring_ZH-CN1577114008_1920x1080.jpg" alt=""></p>
@@ -1237,8 +1275,8 @@
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>酷q</tag>
         <tag>工具类</tag>
+        <tag>酷q</tag>
       </tags>
   </entry>
   <entry>
@@ -1268,8 +1306,8 @@
         <category>后端开发</category>
       </categories>
       <tags>
-        <tag>工具类</tag>
         <tag>Java</tag>
+        <tag>工具类</tag>
       </tags>
   </entry>
   <entry>
