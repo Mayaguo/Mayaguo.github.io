@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>给hexo博客加404公益页面</title>
+    <url>/2020/20200419/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/19/VernalFalls_ZH-CN2664125316_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<p>腾讯公益404页面，寻找丢失儿童，让大家一起关注此项公益事业！<br>效果如：<br><a href="https://gmaya.top/404.html">https://gmaya.top/404.html</a></p>
+<p>目的：<br>如果访问网站不存在的页面，则返回腾讯公益404页面</p>
+<p>使用方法，新建 404.html 页面，放到主题的 source 目录下，内容如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"content-type"</span> content=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span><br><span class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"all"</span> /&gt;</span><br><span class="line">  &lt;meta name=<span class="string">"robots"</span> content=<span class="string">"index,follow"</span>/&gt;</span><br><span class="line">  &lt;link rel=<span class="string">"stylesheet"</span> type=<span class="string">"text/css"</span> href=<span class="string">"https://qzone.qq.com/gy/404/style/404style.css"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script type="text/</span>plain<span class="string">" src="</span>https:<span class="comment">//www.qq.com/404/search_children.js"</span></span><br><span class="line">          charset=<span class="string">"utf-8"</span> homePageUrl=<span class="string">"/"</span></span><br><span class="line">          homePageName=<span class="string">"回到我的主页"</span>&gt;</span><br><span class="line">  &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">  &lt;script src="https:/</span><span class="regexp">/qzone.qq.com/gy</span><span class="regexp">/404/</span>data.js<span class="string">" charset="</span>utf<span class="number">-8</span><span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">  &lt;script src="</span>https:<span class="comment">//qzone.qq.com/gy/404/page.js" charset="utf-8"&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改nginx配置，只要访问的页面不存在则跳转到404公益页面。</p>
+<p>在nginx.conf的443端口下添加</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">error_page  <span class="number">404</span>      /<span class="number">404.</span>html;</span><br></pre></td></tr></table></figure>
+
+<p>重启即可</p>
+]]></content>
+      <categories>
+        <category>优化</category>
+      </categories>
+      <tags>
+        <tag>优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>win10系统hexo博客自动发布自动拉取</title>
     <url>/2020/20200417-2/</url>
     <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/17/NBNMSipapu_ZH-CN2293681419_1920x1080.jpg" alt=""></p>
