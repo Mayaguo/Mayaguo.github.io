@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-04-21T03:33:32.772Z</updated>
+  <updated>2020-04-22T05:51:27.326Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>泰山版《Java开发手册》</title>
+    <link href="https://gmaya.top/2020/20200422/"/>
+    <id>https://gmaya.top/2020/20200422/</id>
+    <published>2020-04-22T05:49:14.000Z</published>
+    <updated>2020-04-22T05:51:27.326Z</updated>
+    
+    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/22/GPS_ZH-CN5160095061_1920x1080.jpg" alt=""></p><a id="more"></a><blockquote><p>会当凌绝顶，一览众山小。经过一年的修炼，《Java开发手册》泰山版于4.22正式发布。</p></blockquote><p>每次阿里推出最新的开发手册，自己都会去喵一眼，看一下。养成好习惯</p><blockquote><p>《Java开发手册》始于阿里内部规约，在全球Java开发者共同努力下，已成为业界普遍遵循的开发规范。手册涵盖编程规约、异常日志、单元测试、安全规约、MySQL数据库、工程规约、设计规约七大维度。此次泰山版发布，将带来三大亮点：新增5条日期时间规约；新增2条表别名sql规约；新增统一错误码规约。</p></blockquote><p>官网地址：<a href="https://developer.aliyun.com/topic/java2020" target="_blank" rel="noopener">https://developer.aliyun.com/topic/java2020</a></p><p>蓝奏云下载链接：<a href="https://ww.lanzous.com/ibranzg" target="_blank" rel="noopener">https://ww.lanzous.com/ibranzg</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/22/GPS_ZH-CN5160095061_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>分布式雪花算法工具类</title>
@@ -236,31 +259,6 @@
       <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
     
       <category term="Tomcat" scheme="https://gmaya.top/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux安装jdk1.8</title>
-    <link href="https://gmaya.top/2020/20200413/"/>
-    <id>https://gmaya.top/2020/20200413/</id>
-    <published>2020-04-13T05:09:11.000Z</published>
-    <updated>2020-04-13T05:44:59.674Z</updated>
-    
-    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/EastereggsBerlin_ZH-CN7293755224_1920x1080.jpg" alt=""></p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直都想写一遍这个，虽然不是经常用到。这次准备搞一下Nginx,所以就从0开始，记录一下。</p><h2 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h2><p>进入你想要安装的目录</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure><p>创建jdk文件夹</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir jdk1<span class="number">.8</span></span><br></pre></td></tr></table></figure><p>进入jdk目录下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd jdk1<span class="number">.8</span>/</span><br></pre></td></tr></table></figure><p>下载jdk1.8</p><p>在线下载或者自己下载好然后上传过来。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate --no-cookies --header <span class="string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http:<span class="comment">//download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz</span></span><br></pre></td></tr></table></figure><p>耐心等待。。。<br><img data-src="https://img-blog.csdnimg.cn/20200413112955686.png" alt=""><br>解压</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-<span class="number">8</span>u131-linux-x64.tar.gz</span><br></pre></td></tr></table></figure><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>先找到你的jdk安装目录记录一下</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/jdk1<span class="number">.8</span>/jdk1<span class="number">.8</span><span class="number">.0_131</span></span><br></pre></td></tr></table></figure><p>添加环境变量</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure><p>输入a，在文本最后面加上</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/jdk1<span class="number">.8</span>/jdk1<span class="number">.8</span><span class="number">.0_131</span></span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure><p>按 esc，然后：wq 保存退出。<br>加载环境变量</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><p>查看版本号，看是否安装成功！</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure><p><img data-src="https://img-blog.csdnimg.cn/20200413130521190.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/13/EastereggsBerlin_ZH-CN7293755224_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://gmaya.top/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
-    
-      <category term="jdk" scheme="https://gmaya.top/tags/jdk/"/>
     
   </entry>
   
