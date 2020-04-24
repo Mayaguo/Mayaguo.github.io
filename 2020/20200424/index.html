@@ -23,21 +23,20 @@
     var CONFIG = {"hostname":"gmaya.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一分耕耘，一分收获。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GMaya">
-<meta property="og:url" content="https://gmaya.top/tags/seata/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="撞库、脱库和洗库">
+<meta property="og:url" content="https://gmaya.top/2020/20200424/index.html">
 <meta property="og:site_name" content="GMaya">
-<meta property="og:description" content="一分耕耘，一分收获。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg">
+<meta property="article:published_time" content="2020-04-24T02:55:14.000Z">
+<meta property="article:modified_time" content="2020-04-24T02:57:58.081Z">
 <meta property="article:author" content="GMaya">
-<meta property="article:tag" content="JAVA">
-<meta property="article:tag" content="数据库">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="个人技术">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg">
 
-<link rel="canonical" href="https://gmaya.top/tags/seata/">
+<link rel="canonical" href="https://gmaya.top/2020/20200424/">
 
 
 <script id="page-configurations">
@@ -45,11 +44,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>标签: seata | GMaya</title>
+  <title>撞库、脱库和洗库 | GMaya</title>
   
 
 
@@ -197,54 +196,173 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">seata
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gmaya.top/2020/20200424/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="GMaya">
+      <meta itemprop="description" content="一分耕耘，一分收获。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GMaya">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          撞库、脱库和洗库
         </h1>
-      </div>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-24 10:55:14" itemprop="dateCreated datePublished" datetime="2020-04-24T10:55:14+08:00">2020-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E6%88%91%E6%8A%92%E5%86%99/" itemprop="url" rel="index"><span itemprop="name">自我抒写</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/20200424/" class="post-meta-item leancloud_visitors" data-flag-title="撞库、脱库和洗库" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论数：</span>
+    
+    <a title="valine" href="/2020/20200424/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/20200424/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>156</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <p><img data-src="https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h2><p>“撞库”一般就是指黑客拿到已经泄露的用户信息，然后去各个网站进行登录，一旦你的账号密码在各个网站都一样，那么就相当于撞库成功。<br>建议：各个网站的登录账号和密码不要一样。</p>
+<h2 id="脱库"><a href="#脱库" class="headerlink" title="脱库"></a>脱库</h2><p>“拖库”就是黑客通过技术手段，盗取数据库信息的过程。<br>建议：做防sql注入，文件上传漏洞等。</p>
+<h2 id="洗库"><a href="#洗库" class="headerlink" title="洗库"></a>洗库</h2><p>“洗库”就是将得到的数据信息进行贩卖。变现。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-27T15:12:11+08:00"
-              content="2020-03-27">
-          03-27
-        </time>
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatQR.png" alt="GMaya 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/AliPayQR.jpg" alt="GMaya 支付宝">
+        <p>支付宝</p>
       </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/20200327-2/" itemprop="url">
-            <span itemprop="name">Spring Cloud 整合最新版seata分布式事务 (六)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-    </div>
   </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GMaya
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://gmaya.top/2020/20200424/" title="撞库、脱库和洗库">https://gmaya.top/2020/20200424/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"><i class="fa fa-tag"></i> 随笔</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/20200422/" rel="prev" title="泰山版《Java开发手册》">
+      <i class="fa fa-chevron-left"></i> 泰山版《Java开发手册》
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -291,6 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#撞库"><span class="nav-number">1.</span> <span class="nav-text">撞库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脱库"><span class="nav-number">2.</span> <span class="nav-text">脱库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#洗库"><span class="nav-number">3.</span> <span class="nav-text">洗库</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -455,7 +574,7 @@
       quicklink({
         timeout : 2000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/tags/seata/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/2020/20200424/',]
       });
       });
   </script>

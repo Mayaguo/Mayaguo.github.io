@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-04-22T07:27:38.865Z</updated>
+  <updated>2020-04-24T02:57:58.081Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>撞库、脱库和洗库</title>
+    <link href="https://gmaya.top/2020/20200424/"/>
+    <id>https://gmaya.top/2020/20200424/</id>
+    <published>2020-04-24T02:55:14.000Z</published>
+    <updated>2020-04-24T02:57:58.081Z</updated>
+    
+    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg" alt=""></p><a id="more"></a><h2 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h2><p>“撞库”一般就是指黑客拿到已经泄露的用户信息，然后去各个网站进行登录，一旦你的账号密码在各个网站都一样，那么就相当于撞库成功。<br>建议：各个网站的登录账号和密码不要一样。</p><h2 id="脱库"><a href="#脱库" class="headerlink" title="脱库"></a>脱库</h2><p>“拖库”就是黑客通过技术手段，盗取数据库信息的过程。<br>建议：做防sql注入，文件上传漏洞等。</p><h2 id="洗库"><a href="#洗库" class="headerlink" title="洗库"></a>洗库</h2><p>“洗库”就是将得到的数据信息进行贩卖。变现。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="自我抒写" scheme="https://gmaya.top/categories/%E8%87%AA%E6%88%91%E6%8A%92%E5%86%99/"/>
+    
+    
+      <category term="随笔" scheme="https://gmaya.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>泰山版《Java开发手册》</title>
@@ -234,31 +257,6 @@
       <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
     
       <category term="Nginx" scheme="https://gmaya.top/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux安装Tomcat</title>
-    <link href="https://gmaya.top/2020/20200413-2/"/>
-    <id>https://gmaya.top/2020/20200413-2/</id>
-    <published>2020-04-13T05:45:11.000Z</published>
-    <updated>2020-04-13T05:47:11.558Z</updated>
-    
-    <content type="html"><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/13/CorsicaHeart_ZH-CN2795615037_1920x1080.jpg" alt=""></p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇安装完jdk，就在来一个Tomcat。</p><h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>进入你想要安装的目录</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure><p>创建tomcat文件夹</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir tomcat</span><br></pre></td></tr></table></figure><p>进入tomcat目录下</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd tomcat/</span><br></pre></td></tr></table></figure><p>下载tomcat 8<br>在线下载或者自己下载好然后上传过来。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirror.bit.edu.cn/apache/tomcat/tomcat<span class="literal">-8</span>/v8.<span class="number">5.54</span>/bin/apache<span class="literal">-tomcat</span><span class="literal">-8</span>.<span class="number">5.54</span>.tar.gz</span><br></pre></td></tr></table></figure><p>提示: 如果你没有wget,请先安装wget</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="literal">-y</span> install wget</span><br></pre></td></tr></table></figure><p>解压</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar <span class="literal">-zxvf</span> apache<span class="literal">-tomcat</span><span class="literal">-8</span>.<span class="number">5.54</span>.tar.gz</span><br></pre></td></tr></table></figure><p>开启默认8080端口<br>我使用的是centos7<br>加入8080 规则<br>–permanent #永久生效，没有此参数设置，重启后会失效。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> -<span class="literal">-zone</span>=public -<span class="literal">-add</span><span class="literal">-port</span>=<span class="number">8080</span>/tcp -<span class="literal">-permanent</span></span><br></pre></td></tr></table></figure><p>重启防火墙</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall<span class="literal">-cmd</span> -<span class="literal">-reload</span></span><br></pre></td></tr></table></figure><p><img data-src="https://img-blog.csdnimg.cn/20200413134305824.png" alt=""></p><p>启动</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/startup.sh</span><br></pre></td></tr></table></figure><p>浏览器访问： <a href="http://192.168.21.129:8080/" target="_blank" rel="noopener">http://192.168.21.129:8080/</a><br><img data-src="https://img-blog.csdnimg.cn/2020041313435613.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img data-src=&quot;https://s1.wailian.download/2020/04/13/CorsicaHeart_ZH-CN2795615037_1920x1080.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://gmaya.top/categories/Linux/"/>
-    
-    
-      <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
-    
-      <category term="Tomcat" scheme="https://gmaya.top/tags/Tomcat/"/>
     
   </entry>
   

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>撞库、脱库和洗库</title>
+    <url>/2020/20200424/</url>
+    <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="撞库"><a href="#撞库" class="headerlink" title="撞库"></a>撞库</h2><p>“撞库”一般就是指黑客拿到已经泄露的用户信息，然后去各个网站进行登录，一旦你的账号密码在各个网站都一样，那么就相当于撞库成功。<br>建议：各个网站的登录账号和密码不要一样。</p>
+<h2 id="脱库"><a href="#脱库" class="headerlink" title="脱库"></a>脱库</h2><p>“拖库”就是黑客通过技术手段，盗取数据库信息的过程。<br>建议：做防sql注入，文件上传漏洞等。</p>
+<h2 id="洗库"><a href="#洗库" class="headerlink" title="洗库"></a>洗库</h2><p>“洗库”就是将得到的数据信息进行贩卖。变现。</p>
+]]></content>
+      <categories>
+        <category>自我抒写</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>泰山版《Java开发手册》</title>
     <url>/2020/20200422/</url>
     <content><![CDATA[<p><img data-src="https://s1.wailian.download/2020/04/22/GPS_ZH-CN5160095061_1920x1080.jpg" alt=""></p>
