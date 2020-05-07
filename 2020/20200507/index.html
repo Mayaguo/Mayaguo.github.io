@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gmaya.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="有关Druid的一些配置">
+<meta property="og:url" content="https://gmaya.top/2020/20200507/index.html">
+<meta property="og:site_name" content="GMaya">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507142829844.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507142735819.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507133602139.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200507140225156.png">
+<meta property="article:published_time" content="2020-05-07T06:07:14.000Z">
+<meta property="article:modified_time" content="2020-05-07T06:33:59.830Z">
+<meta property="article:author" content="GMaya">
+<meta property="article:tag" content="Druid">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg">
+
+<link rel="canonical" href="https://gmaya.top/2020/20200507/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>有关Druid的一些配置 | GMaya</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0e55601a9032e26ff859010f72e59ff7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GMaya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">生命不止，奋斗不息。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">51</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gmaya.top/2020/20200507/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="GMaya">
+      <meta itemprop="description" content="一分耕耘，一分收获。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GMaya">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          有关Druid的一些配置
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-07 14:07:14" itemprop="dateCreated datePublished" datetime="2020-05-07T14:07:14+08:00">2020-05-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/20200507/" class="post-meta-item leancloud_visitors" data-flag-title="有关Druid的一些配置" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论数：</span>
+    
+    <a title="valine" href="/2020/20200507/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/20200507/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img data-src="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Druid 是 Java 语言中最好的数据库连接池。 Druid 能够提供强大的监控和扩展功能。</p>
+</blockquote>
+<p>官方链接<a href="https://github.com/alibaba/druid" target="_blank" rel="noopener">https://github.com/alibaba/druid</a></p>
+<p>以下所有配置基于springboot2.2.6配置</p>
+<h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>maven项目直接引用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--阿里数据库连接池 --&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;1.1.14&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Druid的一些常用配置"><a href="#Druid的一些常用配置" class="headerlink" title="Druid的一些常用配置"></a>Druid的一些常用配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span></span><br><span class="line">    <span class="attr">druid:</span></span><br><span class="line">      <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">jdbc:mysql://127.0.0.1:3306/gmaya?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">      <span class="comment"># 初始化时建立物理连接的个数</span></span><br><span class="line">      <span class="attr">initial-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="comment"># 最大连接池数量，并不是连接池越大越好。</span></span><br><span class="line">      <span class="attr">max-active:</span> <span class="number">10</span></span><br><span class="line">      <span class="comment"># 最小连接池数量</span></span><br><span class="line">      <span class="attr">min-idle:</span> <span class="number">5</span></span><br><span class="line">      <span class="comment"># 获取连接时最大等待时间，单位毫秒。</span></span><br><span class="line">      <span class="attr">max-wait:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大.</span></span><br><span class="line">      <span class="attr">pool-prepared-statements:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100</span></span><br><span class="line">      <span class="attr">max-pool-prepared-statement-per-connection-size:</span> <span class="number">20</span></span><br><span class="line">      <span class="comment"># 申请连接时会执行validationQuery检测连接是否有效,开启会降低性能.官方写的默认true，但是看源码里面好像是默认false</span></span><br><span class="line">      <span class="attr">test-on-borrow:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 归还连接时会执行validationQuery检测连接是否有效,开启会降低性能,默认为false</span></span><br><span class="line">      <span class="attr">test-on-return:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 合并多个DruidDataSource的监控数据</span></span><br><span class="line">      <span class="comment"># 设置为true会和time-between-log-stats-millis冲突，启动项目失败</span></span><br><span class="line">      <span class="attr">use-global-data-source-stat:</span> <span class="literal">false</span></span><br><span class="line">      <span class="comment"># 配置扩展插件</span></span><br><span class="line">      <span class="comment">#监控统计用的filter:stat</span></span><br><span class="line">      <span class="comment">#日志用的filter:log4j</span></span><br><span class="line">      <span class="comment">#防御sql注入的filter:wall</span></span><br><span class="line">      <span class="attr">filters:</span> <span class="string">stat,wall,slf4j</span></span><br><span class="line">      <span class="comment"># 用来检测连接是否有效的sql 必须是一个查询语句</span></span><br><span class="line">      <span class="comment"># mysql中为 select 'x'</span></span><br><span class="line">      <span class="comment"># oracle中为 select 1 from dual</span></span><br><span class="line">      <span class="attr">validation-query:</span> <span class="string">select</span> <span class="string">'x'</span></span><br><span class="line">      <span class="comment"># 通过connectProperties属性来打开mergeSql功能；慢SQL记录</span></span><br><span class="line">      <span class="attr">connect-properties:</span> <span class="string">druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000</span></span><br><span class="line">      <span class="comment"># 定时输出统计信息到日志中，并每次输出日志会导致清零（reset）连接池相关的计数器。</span></span><br><span class="line">      <span class="attr">time-between-log-stats-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="comment">#验证连接的有效性,建议配置为true，不影响性能，并且保证安全性。</span></span><br><span class="line">      <span class="attr">test-while-idle:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment">#1) Destroy线程会检测连接的间隔时间，如果连接空闲时间大于等于minEvictableIdleTimeMillis则关闭物理连接。</span></span><br><span class="line">      <span class="comment">#2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明</span></span><br><span class="line">      <span class="attr">time-between-eviction-runs-millis:</span> <span class="number">60000</span></span><br><span class="line">      <span class="comment"># 连接保持空闲而不被驱逐的最小时间(连接池空闲连接的有效时间)</span></span><br><span class="line">      <span class="attr">min-evictable-idle-time-millis:</span> <span class="number">300000</span></span><br><span class="line">      <span class="comment"># 浏览器监控页面</span></span><br><span class="line">      <span class="attr">stat-view-servlet:</span></span><br><span class="line">        <span class="comment"># 是否启用监控页面，启用建议设置密码或白名单以保障安全</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">url-pattern:</span> <span class="string">'/druid/*'</span></span><br><span class="line">        <span class="comment"># IP白名单(没有配置或者为空，则允许所有访问)</span></span><br><span class="line">        <span class="attr">allow:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">,192.168.0.1</span></span><br><span class="line">        <span class="comment"># IP黑名单 (存在共同时，deny优先于allow)</span></span><br><span class="line">        <span class="attr">deny:</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">        <span class="attr">login-username:</span> <span class="string">gmaya</span></span><br><span class="line">        <span class="attr">login-password:</span> <span class="string">gmaya</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 配置DruidStatFilter</span></span><br><span class="line">      <span class="attr">web-stat-filter:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">url-pattern:</span> <span class="string">'/*'</span></span><br><span class="line">        <span class="comment"># 排除一些不必要的url，比如.js,/css/等等</span></span><br><span class="line">        <span class="attr">exclusions:</span> <span class="string">'*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'</span></span><br></pre></td></tr></table></figure>
+
+
+<p>注意：建议配置白名单，密码访问。<br><strong>test-on-borrow默认值问题：</strong><br>官方文档解释：<br><img data-src="https://img-blog.csdnimg.cn/20200507142829844.png" alt=""><br>然而自己查看实际效果却不一样，不知道是不是我的问题。<br>在源码中发现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataMap.put(<span class="string">"TestOnBorrow"</span>, <span class="keyword">this</span>.isTestOnBorrow()); </span><br><span class="line">dataMap.put(<span class="string">"TestOnReturn"</span>, <span class="keyword">this</span>.isTestOnReturn());</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.testOnBorrow = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">this</span>.testOnReturn = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DEFAULT_TEST_ON_BORROW = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DEFAULT_TEST_ON_RETURN = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure>
+
+<p>或者把这两个参数注释。启动查看页面<br><img data-src="https://img-blog.csdnimg.cn/20200507142735819.png" alt=""></p>
+<h2 id="数据库密码加密"><a href="#数据库密码加密" class="headerlink" title="数据库密码加密"></a>数据库密码加密</h2><p>找到maven仓库中druid 的jar包</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\maven-repository\com\alibaba\druid\<span class="number">1.1</span><span class="number">.14</span></span><br></pre></td></tr></table></figure>
+<p>然后打开cmd输入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -cp druid-<span class="number">1.1</span><span class="number">.14</span>.jar com.alibaba.druid.filter.config.ConfigTools 你的密码</span><br></pre></td></tr></table></figure>
+<p>然后得到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">privateKey:MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAty+xzmC/<span class="number">4596</span>DAoD+OI0zThfJq6P5ZdcBx+iTrBisD9ViQSwOUktzYi1o4ZiJ+Akv2rR9Q47+CpEvjH123nvQIDAQABAkEAj+IycrujfRKCNnqXbCGg/<span class="number">6</span>BLfIKYG+mrKx05yzzYBz4e8R1/c1HCOn8D5YWDtKEXX5o1FKmJPHFyd0/OL8MhsQIhAP/P35Vitx7jN1B8gmgcmRhKYTgc6bVrkwNG8oLZaYr/AiEAt1IobJLPTOZffLkAY9K365IsK9Ky7a7uq4KniN8yOUMCIHWMbP41PVZ5LHrUrAvxUDxEOYZSauZNx2FTIa8U/pW7AiEArQv47MSIuuacLHfWTmSTCOQqnhN+o68FzRDAZQuLtVECIQCdBeUAddQSBtT7n32N36PWZS3oKnQ1sGVY2xCRC8o5Iw==</span><br><span class="line">publicKey:MFwwDQYJKoZIhvcNAQEBBQADS32sc5gv+OfegwKA/jiNM04Xyauj+WXXAcfok6wYrA/VYkEsDlJLc2ItaOGYifgJL9q0fUOO/gqRL4x0K1gJ70CAwEAAQ==</span><br><span class="line">password:FsnBV+<span class="number">3</span>RyPMUBHjG4unvXV21Z1tC+xi19Xy5f/JSm0ktb5m17+B5fOzyDNTcFACmhx3zg/lMaFOIy0UfOA==</span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200507133602139.png" alt=""><br>然后更改配置<br>将明文密码替换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">password: gMs08dqeyRQC3fsgEvb4pgmr2W/xVDgewGJLOJFZZOm8wfsVI0397uXGIe1W0rXJQl/meyB/GhqLt82fD8kiZw==</span><br></pre></td></tr></table></figure>
+<p>新增密码解密，同时config.decrypt.key=上面生成的publicKey.</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ConfigFilter,开启密码加密功能</span></span><br><span class="line"><span class="attr">filter:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment"># 配置参数，让ConfigFilter解密密码</span></span><br><span class="line"><span class="attr">connection-properties:</span> <span class="string">config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAK23puqpHZjqJ7+DQkJBWKIYdc0nkSqZeLVrQtwMvRwXCRgtG5+/IKO8xhMTSGwhjglloiTiVnJ9IynvpyFVpgUCAwEAAQ==</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/20200507140225156.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatQR.png" alt="GMaya 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/AliPayQR.jpg" alt="GMaya 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GMaya
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://gmaya.top/2020/20200507/" title="有关Druid的一些配置">https://gmaya.top/2020/20200507/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Druid/" rel="tag"><i class="fa fa-tag"></i> Druid</a>
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/20200426/" rel="prev" title="给个人博客添加腾讯cos存储">
+      <i class="fa fa-chevron-left"></i> 给个人博客添加腾讯cos存储
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么使用"><span class="nav-number">2.</span> <span class="nav-text">怎么使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Druid的一些常用配置"><span class="nav-number">3.</span> <span class="nav-text">Druid的一些常用配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库密码加密"><span class="nav-number">4.</span> <span class="nav-text">数据库密码加密</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GMaya"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">GMaya</p>
+  <div class="site-description" itemprop="description">一分耕耘，一分收获。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">39</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:gmaya@qq.com" title="E-Mail → mailto:gmaya@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="订阅 → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>订阅</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sitemap.xml" title="网站地图 → &#x2F;sitemap.xml"><i class="fa fa-fw fa-sitemap"></i>网站地图</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/gfl1427097103" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;gfl1427097103" rel="noopener" target="_blank">我的CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <!--
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备20000931号-1 </a>
+  </div> -->
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GMaya</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">119k</span>
+      <span class="post-meta-divider">|</span><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备20000931号-1 </a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 2000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/2020/20200507/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('/js/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'V0Q5bpLttOJ6cRIpYKb8aMdi-gzGzoHsz',
+      appKey     : 'orowwJ71I8dKewPCYdDmwjqz',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！吐槽一番吧！",
+      avatar     : 'identicon',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
