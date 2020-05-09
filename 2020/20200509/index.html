@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gmaya.top","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot Admin 监控">
+<meta property="og:url" content="https://gmaya.top/2020/20200509/index.html">
+<meta property="og:site_name" content="GMaya">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200509094113525.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200509094208467.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200509094258625.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200509103652944.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020050912443692.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020050912433838.png">
+<meta property="article:published_time" content="2020-05-09T07:03:11.000Z">
+<meta property="article:modified_time" content="2020-05-09T07:03:38.877Z">
+<meta property="article:author" content="GMaya">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="SpringBoot Admin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg">
+
+<link rel="canonical" href="https://gmaya.top/2020/20200509/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Spring Boot Admin 监控 | GMaya</title>
+  
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?0e55601a9032e26ff859010f72e59ff7";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">GMaya</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">生命不止，奋斗不息。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">52</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="search-pop-overlay">
+  <div class="popup search-popup">
+      <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://gmaya.top/2020/20200509/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headpic.jpg">
+      <meta itemprop="name" content="GMaya">
+      <meta itemprop="description" content="一分耕耘，一分收获。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GMaya">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring Boot Admin 监控
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-09 15:03:11" itemprop="dateCreated datePublished" datetime="2020-05-09T15:03:11+08:00">2020-05-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index"><span itemprop="name">SpringCloud</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/20200509/" class="post-meta-item leancloud_visitors" data-flag-title="Spring Boot Admin 监控" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">评论数：</span>
+    
+    <a title="valine" href="/2020/20200509/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/20200509/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><img data-src="https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Spring Boot Admin 用于监控基于 Spring Boot 的应用，它是在 Spring Boot Actuator 的基础上提供简洁的可视化 WEB UI。Spring Boot Admin 提供了很多功能，如显示 name、id 和 version，显示在线状态，Loggers 的日志级别管理，Threads 线程管理，Environment 管理等。</p>
+</blockquote>
+<p>具体有什么好处，有什么作用，官网说的很清楚。<a href="https://github.com/codecentric/spring-boot-admin" target="_blank" rel="noopener">github地址</a></p>
+<h2 id="spring-boot-amdin-的服务端"><a href="#spring-boot-amdin-的服务端" class="headerlink" title="spring boot amdin 的服务端"></a>spring boot amdin 的服务端</h2><p>新增项目gmaya-springbootadmin。作为spring boot amdin 的服务端</p>
+<h3 id="pom文件"><a href="#pom文件" class="headerlink" title="pom文件"></a>pom文件</h3><p>新增pom文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;dependency&gt;</span></span><br><span class="line">       <span class="string">&lt;groupId&gt;de.codecentric&lt;/groupId&gt;</span></span><br><span class="line">       <span class="string">&lt;artifactId&gt;spring-boot-admin-starter-server&lt;/artifactId&gt;</span></span><br><span class="line">       <span class="string">&lt;version&gt;2.2.2&lt;/version&gt;</span></span><br><span class="line">   <span class="string">&lt;/dependency&gt;</span></span><br><span class="line">   <span class="string">&lt;dependency&gt;</span></span><br><span class="line">       <span class="string">&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span></span><br><span class="line">       <span class="string">&lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span></span><br><span class="line">   <span class="string">&lt;/dependency&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动类"><a href="#启动类" class="headerlink" title="启动类"></a>启动类</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">@SpringBootApplication</span></span><br><span class="line"><span class="string">@EnableDiscoveryClient</span></span><br><span class="line"><span class="string">@EnableAdminServer</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>修改application.yml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9100</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gmaya-springbootadmin</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8000/eureka/</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启健康检查</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控</span></span><br><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">      <span class="attr">exposure:</span></span><br><span class="line">        <span class="comment"># 通过HTTP公开所有的端点， 默认是info,health</span></span><br><span class="line">        <span class="attr">include:</span> <span class="string">'*'</span></span><br><span class="line">  <span class="attr">endpoint:</span></span><br><span class="line">    <span class="attr">health:</span></span><br><span class="line">      <span class="comment"># 显示完整信息，#默认是never（简要信息）</span></span><br><span class="line">      <span class="attr">show-details:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+
+
+<p>因为是使用的Eureka注册中心，所以不需要单独客户端了， 直接在想要监控的客户端直接暴露端点即可。</p>
+<h2 id="客户端修改"><a href="#客户端修改" class="headerlink" title="客户端修改"></a>客户端修改</h2><p>比如此时，我想要监控gmaya-wepapi-admin，gmaya-service-admin<br>只需要在这两个项目的配置类新增</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 监控</span></span><br><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">      <span class="attr">exposure:</span></span><br><span class="line">        <span class="comment"># 通过HTTP公开所有的端点， 默认是info,health</span></span><br><span class="line">        <span class="attr">include:</span> <span class="string">'*'</span></span><br><span class="line">  <span class="attr">endpoint:</span></span><br><span class="line">    <span class="attr">health:</span></span><br><span class="line">      <span class="comment"># 显示完整信息，#默认是never（简要信息）</span></span><br><span class="line">      <span class="attr">show-details:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h2><p>启动注册中心，admin服务端，两个客户端。</p>
+<p>注册中心页面<br><img data-src="https://img-blog.csdnimg.cn/20200509094113525.png" alt=""></p>
+<p>spring boot admin 页面<br><img data-src="https://img-blog.csdnimg.cn/20200509094208467.png" alt=""><br>点进去，可以查看服务的详细信息</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20200509094258625.png" alt=""></p>
+<h2 id="添加登录页面"><a href="#添加登录页面" class="headerlink" title="添加登录页面"></a>添加登录页面</h2><p>在spring boot amdin  服务端修改</p>
+<p>可参考<a href="https://github.com/codecentric/spring-boot-admin/tree/master/spring-boot-admin-samples/spring-boot-admin-sample-eureka" target="_blank" rel="noopener">官方示例</a></p>
+<p>pom新增</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&lt;dependency&gt;</span></span><br><span class="line">    <span class="string">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span></span><br><span class="line">    <span class="string">&lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;</span></span><br><span class="line"><span class="string">&lt;/dependency&gt;</span></span><br></pre></td></tr></table></figure>
+<p>配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gmaya-springbootadmin</span></span><br><span class="line">  <span class="attr">security:</span></span><br><span class="line">    <span class="attr">user:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">"gmaya"</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">"gmaya"</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8000/eureka/</span></span><br><span class="line">    <span class="attr">healthcheck:</span></span><br><span class="line">      <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启健康检查</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">metadata-map:</span></span><br><span class="line">      <span class="attr">user.name:</span> <span class="string">$&#123;spring.security.user.name&#125;</span></span><br><span class="line">      <span class="attr">user.password:</span> <span class="string">$&#123;spring.security.user.password&#125;</span></span><br></pre></td></tr></table></figure>
+<p>新增配置类<br>SecuritySecureConfig，直接将官方给出的示例改造一下拿过来了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> top.gmaya.gmayaspringbootadmin.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.HttpMethod;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.Customizer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.builders.HttpSecurity;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.web.csrf.CookieCsrfTokenRepository;</span><br><span class="line"><span class="keyword">import</span> org.springframework.security.web.util.matcher.AntPathRequestMatcher;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> de.codecentric.boot.admin.server.config.AdminServerProperties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * spring boot admin 官网示例 </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> GMaya</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@dateTime</span> 2020/5/9 10:30</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecuritySecureConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String adminContextPath;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SecuritySecureConfig</span><span class="params">(AdminServerProperties adminServerProperties)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.adminContextPath = adminServerProperties.getContextPath();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SavedRequestAwareAuthenticationSuccessHandler successHandler = <span class="keyword">new</span> SavedRequestAwareAuthenticationSuccessHandler();</span><br><span class="line">        successHandler.setTargetUrlParameter(<span class="string">"redirectTo"</span>);</span><br><span class="line">        successHandler.setDefaultTargetUrl(<span class="keyword">this</span>.adminContextPath + <span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">        http.authorizeRequests((authorizeRequests) -&gt; authorizeRequests</span><br><span class="line">            .antMatchers(<span class="keyword">this</span>.adminContextPath + <span class="string">"/assets/**"</span>).permitAll()</span><br><span class="line">            .antMatchers(<span class="keyword">this</span>.adminContextPath + <span class="string">"/login"</span>).permitAll().anyRequest().authenticated())</span><br><span class="line">            .formLogin((formLogin) -&gt; formLogin.loginPage(<span class="keyword">this</span>.adminContextPath + <span class="string">"/login"</span>)</span><br><span class="line">                .successHandler(successHandler))</span><br><span class="line">            .logout((logout) -&gt; logout.logoutUrl(<span class="keyword">this</span>.adminContextPath + <span class="string">"/logout"</span>))</span><br><span class="line">            .httpBasic(Customizer.withDefaults())</span><br><span class="line">            .csrf((csrf) -&gt; csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</span><br><span class="line">                .ignoringRequestMatchers(</span><br><span class="line">                    <span class="keyword">new</span> AntPathRequestMatcher(<span class="keyword">this</span>.adminContextPath + <span class="string">"/instances"</span>,</span><br><span class="line">                        HttpMethod.POST.toString()),</span><br><span class="line">                    <span class="keyword">new</span> AntPathRequestMatcher(<span class="keyword">this</span>.adminContextPath + <span class="string">"/instances/*"</span>,</span><br><span class="line">                        HttpMethod.DELETE.toString()),</span><br><span class="line">                    <span class="keyword">new</span> AntPathRequestMatcher(<span class="keyword">this</span>.adminContextPath + <span class="string">"/actuator/**"</span>)));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>重启，查看效果</p>
+<p><img data-src="https://img-blog.csdnimg.cn/20200509103652944.png" alt=""></p>
+<h2 id="邮件通知"><a href="#邮件通知" class="headerlink" title="邮件通知"></a>邮件通知</h2><p>如果服务下线，会进行邮件通知<br>在spring boot amdin  服务端修改</p>
+<p>pom新增</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--邮件通知--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-mail&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置文件application.yml修改</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gmaya-springbootadmin</span></span><br><span class="line">  <span class="attr">security:</span></span><br><span class="line">    <span class="attr">user:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">"gmaya"</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">"gmaya"</span></span><br><span class="line">  <span class="attr">mail:</span></span><br><span class="line">    <span class="comment"># 发件人使用的qq邮箱服务</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">smtp.qq.com</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">gmaya@qq.com</span></span><br><span class="line">    <span class="comment"># 授权码，不是密码，在qq邮箱设置-账号里面有生成授权码</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">ceevfekeeeeeeeee</span></span><br><span class="line">  <span class="attr">boot:</span></span><br><span class="line">    <span class="attr">admin:</span></span><br><span class="line">      <span class="attr">notify:</span></span><br><span class="line">        <span class="attr">mail:</span></span><br><span class="line">          <span class="comment"># 收件人，多个中间用,分隔</span></span><br><span class="line">          <span class="attr">to:</span> <span class="string">xxx@xxx.com</span></span><br><span class="line">          <span class="comment"># 发件人</span></span><br><span class="line">          <span class="attr">from:</span> <span class="string">gmaya@qq.com</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="https://img-blog.csdnimg.cn/2020050912443692.png" alt=""></p>
+<p>重启服务，然后将一个客户端关闭<br><img data-src="https://img-blog.csdnimg.cn/2020050912433838.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/WeChatQR.png" alt="GMaya 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/AliPayQR.jpg" alt="GMaya 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>GMaya
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://gmaya.top/2020/20200509/" title="Spring Boot Admin 监控">https://gmaya.top/2020/20200509/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/SpringBoot/" rel="tag"><i class="fa fa-tag"></i> SpringBoot</a>
+              <a href="/tags/SpringBoot-Admin/" rel="tag"><i class="fa fa-tag"></i> SpringBoot Admin</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/20200507/" rel="prev" title="有关Druid的一些配置">
+      <i class="fa fa-chevron-left"></i> 有关Druid的一些配置
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-boot-amdin-的服务端"><span class="nav-number">2.</span> <span class="nav-text">spring boot amdin 的服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pom文件"><span class="nav-number">2.1.</span> <span class="nav-text">pom文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动类"><span class="nav-number">2.2.</span> <span class="nav-text">启动类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">2.3.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端修改"><span class="nav-number">3.</span> <span class="nav-text">客户端修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看效果"><span class="nav-number">4.</span> <span class="nav-text">查看效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加登录页面"><span class="nav-number">5.</span> <span class="nav-text">添加登录页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮件通知"><span class="nav-number">6.</span> <span class="nav-text">邮件通知</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="GMaya"
+      src="/images/headpic.jpg">
+  <p class="site-author-name" itemprop="name">GMaya</p>
+  <div class="site-description" itemprop="description">一分耕耘，一分收获。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:gmaya@qq.com" title="E-Mail → mailto:gmaya@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="订阅 → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>订阅</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/sitemap.xml" title="网站地图 → &#x2F;sitemap.xml"><i class="fa fa-fw fa-sitemap"></i>网站地图</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/gfl1427097103" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;gfl1427097103" rel="noopener" target="_blank">我的CSDN</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+      
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <!--
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备20000931号-1 </a>
+  </div> -->
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">GMaya</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="站点总字数">124k</span>
+      <span class="post-meta-divider">|</span><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">豫ICP备20000931号-1 </a>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 2000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://gmaya.top/2020/20200509/',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('/js/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'V0Q5bpLttOJ6cRIpYKb8aMdi-gzGzoHsz',
+      appKey     : 'orowwJ71I8dKewPCYdDmwjqz',
+      placeholder: "ヾﾉ≧∀≦)o 来呀！吐槽一番吧！",
+      avatar     : 'identicon',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
