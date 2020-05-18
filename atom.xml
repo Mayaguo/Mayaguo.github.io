@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-05-16T05:19:51.092Z</updated>
+  <updated>2020-05-18T09:15:53.270Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yapi的安装与使用</title>
+    <link href="https://gmaya.top/2020/20200518/"/>
+    <id>https://gmaya.top/2020/20200518/</id>
+    <published>2020-05-18T09:16:21.000Z</published>
+    <updated>2020-05-18T09:15:53.270Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;YApi 是高效、易用、功能强大的 api
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Yapi" scheme="https://gmaya.top/tags/Yapi/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring Cloud Gateway网关整合</title>
@@ -444,29 +475,6 @@
       <category term="RabbitMQ" scheme="https://gmaya.top/tags/RabbitMQ/"/>
     
       <category term="SpringBoot" scheme="https://gmaya.top/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux下安装RabbitMQ入门级别</title>
-    <link href="https://gmaya.top/2020/20200409/"/>
-    <id>https://gmaya.top/2020/20200409/</id>
-    <published>2020-04-09T12:18:12.000Z</published>
-    <updated>2020-05-16T05:00:53.063Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- ![](https://s1.wailian.download/2020/04/09/SantoriniAerial_ZH-CN9367767863_1920x1080.jpg) --&gt;
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="https://gmaya.top/categories/Java/"/>
-    
-    
-      <category term="RabbitMQ" scheme="https://gmaya.top/tags/RabbitMQ/"/>
-    
-      <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
     
   </entry>
   

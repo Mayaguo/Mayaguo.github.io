@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Spring Cloud Eureka服务通信Ribbon/Feign（三）, JAVA,数据库,linux,个人技术">
+    <meta name="keywords" content="Yapi的安装与使用, JAVA,数据库,linux,个人技术">
     <meta name="description" content="一分耕耘，一分收获。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Spring Cloud Eureka服务通信Ribbon/Feign（三） | GMaya</title>
+    <title>Yapi的安装与使用 | GMaya</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -220,12 +220,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Spring Cloud Eureka服务通信Ribbon/Feign（三）</h1>
+                    <h1 class="description center-align post-title">Yapi的安装与使用</h1>
                 </div>
             </div>
         </div>
@@ -342,12 +342,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SpringCloud/">
-                                <span class="chip bg-color">SpringCloud</span>
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">工具</span>
                             </a>
                         
-                            <a href="/tags/Eureka/">
-                                <span class="chip bg-color">Eureka</span>
+                            <a href="/tags/Yapi/">
+                                <span class="chip bg-color">Yapi</span>
                             </a>
                         
                     </div>
@@ -358,8 +358,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SpringCloud/" class="post-category">
-                                SpringCloud
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -371,7 +371,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-16
+                    2020-05-18
                 </div>
                 
 
@@ -380,14 +380,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -397,161 +397,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <!-- ![](https://s1.wailian.download/2020/03/16/PlutoCrescent_ZH-CN3538488331_1920x1080.jpg) -->
-<a id="more"></a>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>每一个客户端就是一个完整的项目，是一个模块，假如我有订单模块，支付模块，用户模块，等等，那么我这些模块之间怎么相互调用呢？采用HttpClient工具类访问？</p>
-<h2 id="Ribbon-和-Feign-简介"><a href="#Ribbon-和-Feign-简介" class="headerlink" title="Ribbon 和 Feign 简介"></a>Ribbon 和 Feign 简介</h2><h3 id="Ribbon-简介"><a href="#Ribbon-简介" class="headerlink" title="Ribbon 简介"></a>Ribbon 简介</h3><blockquote>
-<p>Ribbon 是 Netflix 发布的开源项目，主要功能是提供客户端的软件负载均衡算法，将Netflix的中间层服务连接在一起。Ribbon 客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出 Load Balancer 后面所有的机器，Ribbon 会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。我们也很容易使用Ribbon实现自定义的负载均衡算法。简单地说，Ribbon 是一个客户端负载均衡器。</p>
+                <a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>YApi 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
 </blockquote>
-<h3 id="Feign-简介"><a href="#Feign-简介" class="headerlink" title="Feign 简介"></a>Feign 简介</h3><blockquote>
-<p>Feign 是一个声明式的 web service 客户端，它使得编写 web service 客户端更为容易。创建接口，为接口添加注解，即可使用Feign。Feign可以使用Feign注解或者JAX-RS注解，还支持热插拔的编码器和解码器。Spring Cloud 为Feign添加了Spring MVC的注解支持，并整合了Ribbon和Eureka来为使用 Feign 时提供负载均衡。</p>
-</blockquote>
-<h2 id="创建支付模块（客户端）"><a href="#创建支付模块（客户端）" class="headerlink" title="创建支付模块（客户端）"></a>创建支付模块（客户端）</h2><p>起名<code>pay</code>项目，也可以去<code>spring</code>官网 <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a>按照之前的办法创建<br>再介绍一个方法，直接在<code>idea</code>中创建<br><img src="https://img-blog.csdnimg.cn/20200316104221227.png" alt=""><br>下一步<br><img src="https://img-blog.csdnimg.cn/20200316104311198.png" alt=""><br>填写组织和项目名称<br><img src="https://img-blog.csdnimg.cn/20200316104405772.png" alt=""><br>搜索添加<br><img src="https://img-blog.csdnimg.cn/20200316104620686.png" alt=""><br>下一步<br><img src="https://img-blog.csdnimg.cn/20200316104718476.png" alt=""><br>完成<br>然后按照客户端的修改操作进行修改<br>修改<code>application.yml</code><br>因为是小<code>demo</code>，所以就不使用集群了，电脑有点卡。真实情况每个服务端和客户端有可能都不在一个服务器上</p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
-  application<span class="token operator">:</span>
-    name<span class="token operator">:</span> pay
-server<span class="token operator">:</span>
-  port<span class="token operator">:</span> <span class="token number">8081</span>
-eureka<span class="token operator">:</span>
-  client<span class="token operator">:</span>
-    service<span class="token operator">-</span>url<span class="token operator">:</span>
-      #注册中心路径，表示我们向这个注册中心注册服务，如果向多个注册中心注册，用“，”进行分隔
-      #defaultZone<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server01<span class="token operator">:</span><span class="token number">8761</span><span class="token operator">/</span>eureka<span class="token operator">/</span><span class="token punctuation">,</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server02<span class="token operator">:</span><span class="token number">8762</span><span class="token operator">/</span>eureka<span class="token operator">/</span>
-      defaultZone<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server01<span class="token operator">:</span><span class="token number">8761</span><span class="token operator">/</span>eureka<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>修改启动项<br>添加注解<code>@EnableDiscoveryClient</code><br>添加一个正常情况下的最简洁支付接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  支付接口
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 10:53
- * @ Version       :  1.0
- */</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PayController</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getPay"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">getPay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 返回支付信息</span>
-       <span class="token keyword">return</span> <span class="token string">"this pay！！！"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="创建订单模块（客户端）"><a href="#创建订单模块（客户端）" class="headerlink" title="创建订单模块（客户端）"></a>创建订单模块（客户端）</h2><p>跟上面支付模块一模一样的操作。。。<br>注意：<br><img src="https://img-blog.csdnimg.cn/20200316110022486.png" alt=""><br>创建订单最简洁订单的接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  订单接口
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 11:03
- * @ Version       :  1.0
- */</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderController</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getOrder"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 返回订单信息</span>
-       <span class="token keyword">return</span> <span class="token string">"this order！！！"</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>此时两个正常的项目已经创建完毕，那么我订单模块怎么去调用支付模块呢？</strong></p>
-<h2 id="方式一：RestTemplate调用"><a href="#方式一：RestTemplate调用" class="headerlink" title="方式一：RestTemplate调用"></a>方式一：RestTemplate调用</h2><p>修改订单模块接口</p>
-<pre class="line-numbers language-java"><code class="language-java"> <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getOrder"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        RestTemplate restTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String forObject <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span><span class="token string">"http://localhost:8081/getPay"</span><span class="token punctuation">,</span> String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-       <span class="token keyword">return</span> forObject<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>启动服务端，启动支付端，启动订单端<br>调用支付接口<br><img src="https://img-blog.csdnimg.cn/20200316111440912.png" alt=""><br>调用订单接口<br><img src="https://img-blog.csdnimg.cn/20200316111506428.png" alt=""><br>可以看出调用成功，但是缺点也很明显，必须要知道对方的url地址，对于多个实例那就难受了，所以是不可取的。</p>
-<h2 id="方式二：通过-LoadBalanced"><a href="#方式二：通过-LoadBalanced" class="headerlink" title="方式二：通过 @LoadBalanced"></a>方式二：通过 @LoadBalanced</h2><p>添加<code>RestTemplateConfig</code>配置</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  RestTemplate配置类
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 11:24
- * @ Version       :  1.0
- */</span>
-<span class="token annotation punctuation">@Component</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RestTemplateConfig</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@Bean</span>
-    <span class="token annotation punctuation">@LoadBalanced</span>
-    <span class="token keyword">public</span> RestTemplate <span class="token function">restTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200316112723276.png" alt=""><br>修改订单接口<br>此时只需要填写调用的项目名就好了，跟<code>ip</code>无关。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  订单接口接口
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 11:03
- * @ Version       :  1.0
- */</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderController</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> RestTemplate restTemplate<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getOrder"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        String forObject <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">getForObject</span><span class="token punctuation">(</span><span class="token string">"http://PAY/getPay"</span><span class="token punctuation">,</span> String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> forObject<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重启订单项目查看</p>
-<p><img src="https://img-blog.csdnimg.cn/20200316134202712.png" alt=""><br><strong><code>@LoadBalanced</code> 源码</strong><br>注解源码注释中说，用来标记<code>restTemplate</code>使之配置使用<code>LoadBalancerClient</code></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * Annotation to mark a RestTemplate or WebClient bean to be configured to use a
- * LoadBalancerClient.
- * @author Spencer Gibb
- */</span>
-<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span><span class="token punctuation">{</span> ElementType<span class="token punctuation">.</span>FIELD<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>PARAMETER<span class="token punctuation">,</span> ElementType<span class="token punctuation">.</span>METHOD <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Documented</span>
-<span class="token annotation punctuation">@Inherited</span>
-<span class="token annotation punctuation">@Qualifier</span>
-<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">LoadBalanced</span> <span class="token punctuation">{</span>
-
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><code>LoadBalancerClient</code>则表示客户端负载均衡器。<br><img src="https://img-blog.csdnimg.cn/20200316135308761.png" alt=""><br>所以使用<code>@LoadBalanced</code>就代表使用<code>ribbon</code>实现客户端的负载均衡<br>负载均衡的策略默认使用的是轮询算法</p>
-<blockquote>
-<p>负载均衡是在同一个功能的微服务中根据不同的策略选择不同的微服务，因此这些微服务对外暴露的实例名称要相同（spring.application.name）<br><code>ribbon</code>是一个客户端的负载均衡，必须要连接<code>eureka</code>，才能在指定的微服务实例中按照策略选择</p>
-</blockquote>
-<p>假设支付模块（<code>pay</code>）部署在两台或者多台服务器，只有端口号不一样，其他的都一样，那么我订单模块按照轮询算法去调用支付模块。</p>
-<h2 id="方式三：通过-Feign"><a href="#方式三：通过-Feign" class="headerlink" title="方式三：通过 Feign"></a>方式三：通过 Feign</h2><p>第一步：添加<code>Feign</code>依赖<br>打开订单模块<code>pom</code>文件</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
-            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
-            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>openfeign<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>第二步：修改订单模块启动类<code>OrderApplication</code><br>添加注解<code>@EnableFeignClients</code><br><img src="https://img-blog.csdnimg.cn/20200316142558747.png" alt=""><br>第三步：声明需要调用的接口<br>创建<code>PayClient</code>接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  支付接口声明
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 14:28
- * @ Version       :  1.0
- */</span>
-
-<span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"pay"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 服务名称</span>
-<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">PayClient</span> <span class="token punctuation">{</span>
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getPay"</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//  这里要和pay提供的接口一致</span>
-    String <span class="token function">getPay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="https://img-blog.csdnimg.cn/20200316143337289.png" alt=""><br>修改<code>OrderController</code></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
- * @ Description   :  订单接口接口
- * @ Author        :  GMaya
- * @ CreateDate    :  2020/3/16 11:03
- * @ Version       :  1.0
- */</span>
-<span class="token annotation punctuation">@RestController</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">OrderController</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@Autowired</span>
-    <span class="token keyword">private</span> PayClient payClient<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 注入支付模块服务</span>
-
-    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/getOrder"</span><span class="token punctuation">)</span>
-    <span class="token keyword">public</span> String <span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        String pay <span class="token operator">=</span> payClient<span class="token punctuation">.</span><span class="token function">getPay</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> pay<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>重启订单模块项目，一切正常！</p>
-<p>只有先入门，才能追查源码以及骚操作！</p>
+<p>简单来说，就是提供写接口文档的地方，后端人员写接口文档，前端人员直接在上面进行接口查看与开发。<br><a href="https://hellosean1025.github.io/yapi/index.html" target="_blank" rel="noopener">官网链接</a></p>
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p><code>linux</code>下安装<code>Yapi</code>需要先安装它的依赖环境</p>
+<h3 id="安装nodejs（7-6"><a href="#安装nodejs（7-6" class="headerlink" title="安装nodejs（7.6+)"></a>安装nodejs（7.6+)</h3><p> <strong>下载<code>nodejs</code>安装包</strong><br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<p>然后通过<code>ftp</code>上传到<code>linux</code>上。</p>
+<p>或者直接在<code>linux</code>下载</p>
+<pre class=" language-java"><code class="language-java">#  wget https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>nodejs<span class="token punctuation">.</span>org<span class="token operator">/</span>dist<span class="token operator">/</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>xz</code></pre>
+<p> <strong>解压</strong></p>
+<pre class=" language-java"><code class="language-java"># tar xf node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>xz</code></pre>
+<p>解压文件的 bin 目录底下包含了 node、npm 等命令，我们可以使用 ln 命令来设置软连接：</p>
+<pre class=" language-java"><code class="language-java"># ln <span class="token operator">-</span>s <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token operator">/</span>bin<span class="token operator">/</span>npm <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin
+# ln <span class="token operator">-</span>s <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token operator">/</span>bin<span class="token operator">/</span>node <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin</code></pre>
+<p><strong>检查</strong></p>
+<p>检查是否安装正确</p>
+<pre class=" language-java"><code class="language-java"># node <span class="token operator">-</span>v</code></pre>
+<pre class=" language-java"><code class="language-java"># npm <span class="token operator">-</span>v</code></pre>
+<h3 id="安装mongodb（2-6-）"><a href="#安装mongodb（2-6-）" class="headerlink" title="安装mongodb（2.6+）"></a>安装mongodb（2.6+）</h3><p><strong>下载<code>mongodb</code>安装包</strong><br><a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.18.tgz" target="_blank" rel="noopener">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.18.tgz</a></p>
+<p>也可以去官网下载其他版本<br><a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a><br>然后通过<code>ftp</code>上传到<code>linux</code>上。<br><strong>解压</strong></p>
+<pre class=" language-java"><code class="language-java"># tar <span class="token operator">-</span>zxvf mongodb<span class="token operator">-</span>linux<span class="token operator">-</span>x86_64<span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">.</span><span class="token number">18</span><span class="token punctuation">.</span>tgz </code></pre>
+<p><strong>拷贝到指定目录</strong></p>
+<pre class=" language-java"><code class="language-java"># mv mongodb<span class="token operator">-</span>linux<span class="token operator">-</span>x86_64<span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">.</span><span class="token number">18</span> <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb</code></pre>
+<p><strong>配置环境变量</strong></p>
+<pre class=" language-java"><code class="language-java"># vi <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre>
+<p>在最下面添加</p>
+<pre class=" language-java"><code class="language-java">export PATH<span class="token operator">=</span>$PATH<span class="token operator">:</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb<span class="token operator">/</span>bin</code></pre>
+<p><strong>创建文件夹</strong><br>一个存放数据，一个存放日志</p>
+<pre class=" language-java"><code class="language-java"># mkdir <span class="token operator">-</span>p <span class="token operator">/</span>data<span class="token operator">/</span>db
+# mkdir <span class="token operator">-</span>p <span class="token operator">/</span>logs</code></pre>
+<p><strong>创建<code>mongodb</code>配置文件</strong><br>进入bin目录</p>
+<pre class=" language-java"><code class="language-java"># cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb<span class="token operator">/</span>bin</code></pre>
+<p>创建<code>mongodb.conf</code>配置文件</p>
+<pre class=" language-java"><code class="language-java"># vi mongodb<span class="token punctuation">.</span>conf</code></pre>
+<p>直接拷贝写进去</p>
+<pre class=" language-powershell"><code class="language-powershell">dbpath = <span class="token operator">/</span><span class="token keyword">data</span><span class="token operator">/</span>db <span class="token comment" spellcheck="true"># 数据文件存放目录</span>
+logpath = <span class="token operator">/</span>logs<span class="token operator">/</span>mongodb<span class="token punctuation">.</span>log <span class="token comment" spellcheck="true"># 日志文件存放目录</span>
+port = 27017 <span class="token comment" spellcheck="true"># 端口</span>
+fork = true <span class="token comment" spellcheck="true"># 以守护程序的方式启用，即在后台运行</span>
+noauth = true <span class="token comment" spellcheck="true"># 不进行安全验证</span>
+<span class="token comment" spellcheck="true"># auth=true # 需要认证。如果放开注释，就必须创建MongoDB的账号，使用账号与密码才可远程</span>
+访问，第一次安装建议注释
+bind_ip=0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0 <span class="token comment" spellcheck="true"># 允许远程访问，或者直接注释，127.0.0.1是只允许本地访问</span></code></pre>
+<p><strong>启动mongodb</strong></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ./mongod -f mongodb.conf</span></code></pre>
+<p><strong>检查是否启动成功</strong></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># netstat -nltp|grep mongod</span></code></pre>
+<p>或者</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ps -ef | grep mongod</span></code></pre>
+<h2 id="安装yapi-cli"><a href="#安装yapi-cli" class="headerlink" title="安装yapi-cli"></a>安装yapi-cli</h2><p>直接在线安装</p>
+<pre class=" language-powershell"><code class="language-powershell">npm install <span class="token operator">-</span>g yapi<span class="token operator">-</span><span class="token function">cli</span> <span class="token operator">--</span>registry https:<span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org</code></pre>
+<p>配置<code>yapi</code></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ln -s /usr/local/node-v12.16.3-linux-x64/bin/yapi /usr/bin/yapi</span></code></pre>
+<p>启动</p>
+<pre class=" language-powershell"><code class="language-powershell">yapi server</code></pre>
+<p>如果访问没效果，请打开<code>9090</code>端口，重启防火墙<br>永久打开端口</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># firewall-cmd --zone=public --add-port=9090/tcp --permanent</span></code></pre>
+<p>重启防火墙</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># firewall-cmd --reload</span></code></pre>
+<p>然后再次启动<code>yapi server</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200518160859328.png" alt=""><br>写上公司名称，其余一般默认，直接部署即可。</p>
+<p>部署成功，请切换到部署目录，输入： “<code>node vendors/server/app.js</code>“ 指令启动服务器, 然后在浏览器打开 <code>http://127.0.0.1:3000</code> 访问</p>
+<p>切换目录</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># cd /usr/local/mongodb/bin/my-yapi/</span></code></pre>
+<p>启动服务器</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># node vendors/server/app.js </span></code></pre>
+<p>或者 以守护进程启动</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># node vendors/server/app.js &amp;</span></code></pre>
+<p>打开<code>http://127.0.0.1:3000</code> 访问<br>记得开3000端口，重启防火墙！！！<br><img src="https://img-blog.csdnimg.cn/20200518161619569.png" alt=""><br>very good！！！</p>
+<h2 id="使用yapi"><a href="#使用yapi" class="headerlink" title="使用yapi"></a>使用yapi</h2><p>使用默认账号登录<br>账号：<code>admin@admin.com</code><br>密码：<code>ymfe.org</code></p>
+<p>只有超级管理员可以管理分组</p>
+<p><strong>创建分组</strong><br><img src="https://img-blog.csdnimg.cn/20200518164158266.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518164102488.png" alt=""></p>
+<p>创建新项目<br><img src="https://img-blog.csdnimg.cn/20200518164340890.png" alt=""></p>
+<p>部分接口预览<br><img src="https://img-blog.csdnimg.cn/20200518164559897.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518164618719.png" alt=""><br>其中还有<code>Mock</code>地址等，前端直接访问。爽歪歪的，后端不管功能有没有做好，只要把接口定义好了，前端可以直接对比着开发。多爽，再也不用和前端说话了。/滑稽</p>
+<h2 id="新成员加入"><a href="#新成员加入" class="headerlink" title="新成员加入"></a>新成员加入</h2><p>当技术老大，也就是<code>admin</code>把项目弄好， 所有开发都可以页面注册账号，然后查看接口和维护接口了。</p>
+<p>所有成员注册账号<br><img src="https://img-blog.csdnimg.cn/20200518162825197.png" alt=""><br>然后管理员把他们都拉近项目组<br><img src="https://img-blog.csdnimg.cn/20200518164958389.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518165030112.png" alt=""><br>此时所有成员都可以看到接口啦。<br>登录成员账号查看<br><img src="https://img-blog.csdnimg.cn/20200518165312595.png" alt=""></p>
+<h2 id="安装浏览器插件"><a href="#安装浏览器插件" class="headerlink" title="安装浏览器插件"></a>安装浏览器插件</h2><p>其实写完接口的同时，可以直接进行浏览器访问本地服务，进行测试，就好比<code>postman</code>接口自测一样。<br><img src="https://img-blog.csdnimg.cn/20200518165730684.png" alt=""><br>这个可以直接点击截图里面的教程，安装浏览器插件<br><img src="https://img-blog.csdnimg.cn/20200518165816205.png" alt=""><br>此时本地启动我的项目（这个是前几篇写微服务写的，拿来用用）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200518170117666.png" alt=""></p>
+<p>测试一个 <code>get</code>请求<code>user/test</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200518170725536.png" alt=""><br>直接省去了postman。哈哈</p>
+<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><p>如果项目开发完，是备份也好，是给别人看也好，还是第三方使用也好，直接导出！<br><img src="https://img-blog.csdnimg.cn/20200518171125966.png" alt=""><br>导出效果查看<br><img src="https://img-blog.csdnimg.cn/20200518171227243.png" alt=""></p>
+<p>其实还有好多的功能，没有完全写到。慢慢体会吧。</p>
 
             </div>
             <hr/>
@@ -577,7 +505,7 @@ eureka<span class="token operator">:</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://gmaya.top/2020/20200316-2/">https://gmaya.top/2020/20200316-2/</a>
+                    <a href="https://gmaya.top/2020/20200518/">https://gmaya.top/2020/20200518/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -615,12 +543,12 @@ eureka<span class="token operator">:</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SpringCloud/">
-                                    <span class="chip bg-color">SpringCloud</span>
+                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">工具</span>
                                 </a>
                             
-                                <a href="/tags/Eureka/">
-                                    <span class="chip bg-color">Eureka</span>
+                                <a href="/tags/Yapi/">
+                                    <span class="chip bg-color">Yapi</span>
                                 </a>
                             
                         </div>
@@ -1048,54 +976,54 @@ eureka<span class="token operator">:</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/20200317/">
+                <a href="/2020/20200518/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Short 类型直接和数值1做对比">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Yapi的安装与使用">
                         
-                        <span class="card-title">Short 类型直接和数值1做对比</span>
+                        <span class="card-title">Yapi的安装与使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-
-今天写项目遇到了Short 返回1 需要做个判断，所以就多想了一下，研究了一下大声的告诉我，是true还是true还是true！！！
-    public static void main(String[] args) {
-      
+前言
+YApi 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
-                    <a href="/tags/Short/">
-                        <span class="chip bg-color">Short</span>
+                    <a href="/tags/Yapi/">
+                        <span class="chip bg-color">Yapi</span>
                     </a>
                     
                 </div>
@@ -1109,13 +1037,13 @@ eureka<span class="token operator">:</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/20200316/">
+                <a href="/2020/20200514/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Spring Cloud Eureka高可用的服务注册中心（二）">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Spring Cloud Gateway网关整合">
                         
-                        <span class="card-title">Spring Cloud Eureka高可用的服务注册中心（二）</span>
+                        <span class="card-title">Spring Cloud Gateway网关整合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1123,15 +1051,16 @@ eureka<span class="token operator">:</span>
                         
                             
 
+介绍
+Spring Cloud Gateway为Spring生态系统上的一个API网关组件，主要提供一种简单而有效的方式路由映射到指定的API，并为他们提供安全性、监控和限流等等。
 
-集群原理图如果只有一个注册中心（服务端），一旦挂掉，就直接GG，在分布式系统中，任何地方存在单点故障，整个系统就不是高可用的。（自己手画的难看见谅）
-
-创建服务端2在上一篇文章中写了最简单的单服务端，单客户端的例子。所以，在上一篇的基
+创建项目创建一个gmaya-gateway项目。
+修
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-14
                             </span>
                         <span class="publish-author">
                             
@@ -1152,8 +1081,8 @@ eureka<span class="token operator">:</span>
                         <span class="chip bg-color">SpringCloud</span>
                     </a>
                     
-                    <a href="/tags/Eureka/">
-                        <span class="chip bg-color">Eureka</span>
+                    <a href="/tags/SpringCloud-Gateway/">
+                        <span class="chip bg-color">SpringCloud Gateway</span>
                     </a>
                     
                 </div>

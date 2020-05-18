@@ -1,6 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Yapi的安装与使用</title>
+    <url>/2020/20200518/</url>
+    <content><![CDATA[<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>YApi 是高效、易用、功能强大的 api 管理平台，旨在为开发、产品、测试人员提供更优雅的接口管理服务。可以帮助开发者轻松创建、发布、维护 API，YApi 还为用户提供了优秀的交互体验，开发人员只需利用平台提供的接口数据写入工具以及简单的点击操作就可以实现接口的管理。</p>
+</blockquote>
+<p>简单来说，就是提供写接口文档的地方，后端人员写接口文档，前端人员直接在上面进行接口查看与开发。<br><a href="https://hellosean1025.github.io/yapi/index.html" target="_blank" rel="noopener">官网链接</a></p>
+<h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><p><code>linux</code>下安装<code>Yapi</code>需要先安装它的依赖环境</p>
+<h3 id="安装nodejs（7-6"><a href="#安装nodejs（7-6" class="headerlink" title="安装nodejs（7.6+)"></a>安装nodejs（7.6+)</h3><p> <strong>下载<code>nodejs</code>安装包</strong><br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<p>然后通过<code>ftp</code>上传到<code>linux</code>上。</p>
+<p>或者直接在<code>linux</code>下载</p>
+<pre class=" language-java"><code class="language-java">#  wget https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>nodejs<span class="token punctuation">.</span>org<span class="token operator">/</span>dist<span class="token operator">/</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>xz</code></pre>
+<p> <strong>解压</strong></p>
+<pre class=" language-java"><code class="language-java"># tar xf node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>xz</code></pre>
+<p>解压文件的 bin 目录底下包含了 node、npm 等命令，我们可以使用 ln 命令来设置软连接：</p>
+<pre class=" language-java"><code class="language-java"># ln <span class="token operator">-</span>s <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token operator">/</span>bin<span class="token operator">/</span>npm <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin
+# ln <span class="token operator">-</span>s <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>node<span class="token operator">-</span>v12<span class="token number">.16</span><span class="token punctuation">.</span><span class="token number">3</span><span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token operator">/</span>bin<span class="token operator">/</span>node <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>bin</code></pre>
+<p><strong>检查</strong></p>
+<p>检查是否安装正确</p>
+<pre class=" language-java"><code class="language-java"># node <span class="token operator">-</span>v</code></pre>
+<pre class=" language-java"><code class="language-java"># npm <span class="token operator">-</span>v</code></pre>
+<h3 id="安装mongodb（2-6-）"><a href="#安装mongodb（2-6-）" class="headerlink" title="安装mongodb（2.6+）"></a>安装mongodb（2.6+）</h3><p><strong>下载<code>mongodb</code>安装包</strong><br><a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.18.tgz" target="_blank" rel="noopener">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.18.tgz</a></p>
+<p>也可以去官网下载其他版本<br><a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a><br>然后通过<code>ftp</code>上传到<code>linux</code>上。<br><strong>解压</strong></p>
+<pre class=" language-java"><code class="language-java"># tar <span class="token operator">-</span>zxvf mongodb<span class="token operator">-</span>linux<span class="token operator">-</span>x86_64<span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">.</span><span class="token number">18</span><span class="token punctuation">.</span>tgz </code></pre>
+<p><strong>拷贝到指定目录</strong></p>
+<pre class=" language-java"><code class="language-java"># mv mongodb<span class="token operator">-</span>linux<span class="token operator">-</span>x86_64<span class="token operator">-</span><span class="token number">4.0</span><span class="token punctuation">.</span><span class="token number">18</span> <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb</code></pre>
+<p><strong>配置环境变量</strong></p>
+<pre class=" language-java"><code class="language-java"># vi <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre>
+<p>在最下面添加</p>
+<pre class=" language-java"><code class="language-java">export PATH<span class="token operator">=</span>$PATH<span class="token operator">:</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb<span class="token operator">/</span>bin</code></pre>
+<p><strong>创建文件夹</strong><br>一个存放数据，一个存放日志</p>
+<pre class=" language-java"><code class="language-java"># mkdir <span class="token operator">-</span>p <span class="token operator">/</span>data<span class="token operator">/</span>db
+# mkdir <span class="token operator">-</span>p <span class="token operator">/</span>logs</code></pre>
+<p><strong>创建<code>mongodb</code>配置文件</strong><br>进入bin目录</p>
+<pre class=" language-java"><code class="language-java"># cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>mongodb<span class="token operator">/</span>bin</code></pre>
+<p>创建<code>mongodb.conf</code>配置文件</p>
+<pre class=" language-java"><code class="language-java"># vi mongodb<span class="token punctuation">.</span>conf</code></pre>
+<p>直接拷贝写进去</p>
+<pre class=" language-powershell"><code class="language-powershell">dbpath = <span class="token operator">/</span><span class="token keyword">data</span><span class="token operator">/</span>db <span class="token comment" spellcheck="true"># 数据文件存放目录</span>
+logpath = <span class="token operator">/</span>logs<span class="token operator">/</span>mongodb<span class="token punctuation">.</span>log <span class="token comment" spellcheck="true"># 日志文件存放目录</span>
+port = 27017 <span class="token comment" spellcheck="true"># 端口</span>
+fork = true <span class="token comment" spellcheck="true"># 以守护程序的方式启用，即在后台运行</span>
+noauth = true <span class="token comment" spellcheck="true"># 不进行安全验证</span>
+<span class="token comment" spellcheck="true"># auth=true # 需要认证。如果放开注释，就必须创建MongoDB的账号，使用账号与密码才可远程</span>
+访问，第一次安装建议注释
+bind_ip=0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0 <span class="token comment" spellcheck="true"># 允许远程访问，或者直接注释，127.0.0.1是只允许本地访问</span></code></pre>
+<p><strong>启动mongodb</strong></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ./mongod -f mongodb.conf</span></code></pre>
+<p><strong>检查是否启动成功</strong></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># netstat -nltp|grep mongod</span></code></pre>
+<p>或者</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ps -ef | grep mongod</span></code></pre>
+<h2 id="安装yapi-cli"><a href="#安装yapi-cli" class="headerlink" title="安装yapi-cli"></a>安装yapi-cli</h2><p>直接在线安装</p>
+<pre class=" language-powershell"><code class="language-powershell">npm install <span class="token operator">-</span>g yapi<span class="token operator">-</span><span class="token function">cli</span> <span class="token operator">--</span>registry https:<span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org</code></pre>
+<p>配置<code>yapi</code></p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># ln -s /usr/local/node-v12.16.3-linux-x64/bin/yapi /usr/bin/yapi</span></code></pre>
+<p>启动</p>
+<pre class=" language-powershell"><code class="language-powershell">yapi server</code></pre>
+<p>如果访问没效果，请打开<code>9090</code>端口，重启防火墙<br>永久打开端口</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># firewall-cmd --zone=public --add-port=9090/tcp --permanent</span></code></pre>
+<p>重启防火墙</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># firewall-cmd --reload</span></code></pre>
+<p>然后再次启动<code>yapi server</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200518160859328.png" alt=""><br>写上公司名称，其余一般默认，直接部署即可。</p>
+<p>部署成功，请切换到部署目录，输入： “<code>node vendors/server/app.js</code>“ 指令启动服务器, 然后在浏览器打开 <code>http://127.0.0.1:3000</code> 访问</p>
+<p>切换目录</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># cd /usr/local/mongodb/bin/my-yapi/</span></code></pre>
+<p>启动服务器</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># node vendors/server/app.js </span></code></pre>
+<p>或者 以守护进程启动</p>
+<pre class=" language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># node vendors/server/app.js &amp;</span></code></pre>
+<p>打开<code>http://127.0.0.1:3000</code> 访问<br>记得开3000端口，重启防火墙！！！<br><img src="https://img-blog.csdnimg.cn/20200518161619569.png" alt=""><br>very good！！！</p>
+<h2 id="使用yapi"><a href="#使用yapi" class="headerlink" title="使用yapi"></a>使用yapi</h2><p>使用默认账号登录<br>账号：<code>admin@admin.com</code><br>密码：<code>ymfe.org</code></p>
+<p>只有超级管理员可以管理分组</p>
+<p><strong>创建分组</strong><br><img src="https://img-blog.csdnimg.cn/20200518164158266.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518164102488.png" alt=""></p>
+<p>创建新项目<br><img src="https://img-blog.csdnimg.cn/20200518164340890.png" alt=""></p>
+<p>部分接口预览<br><img src="https://img-blog.csdnimg.cn/20200518164559897.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518164618719.png" alt=""><br>其中还有<code>Mock</code>地址等，前端直接访问。爽歪歪的，后端不管功能有没有做好，只要把接口定义好了，前端可以直接对比着开发。多爽，再也不用和前端说话了。/滑稽</p>
+<h2 id="新成员加入"><a href="#新成员加入" class="headerlink" title="新成员加入"></a>新成员加入</h2><p>当技术老大，也就是<code>admin</code>把项目弄好， 所有开发都可以页面注册账号，然后查看接口和维护接口了。</p>
+<p>所有成员注册账号<br><img src="https://img-blog.csdnimg.cn/20200518162825197.png" alt=""><br>然后管理员把他们都拉近项目组<br><img src="https://img-blog.csdnimg.cn/20200518164958389.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200518165030112.png" alt=""><br>此时所有成员都可以看到接口啦。<br>登录成员账号查看<br><img src="https://img-blog.csdnimg.cn/20200518165312595.png" alt=""></p>
+<h2 id="安装浏览器插件"><a href="#安装浏览器插件" class="headerlink" title="安装浏览器插件"></a>安装浏览器插件</h2><p>其实写完接口的同时，可以直接进行浏览器访问本地服务，进行测试，就好比<code>postman</code>接口自测一样。<br><img src="https://img-blog.csdnimg.cn/20200518165730684.png" alt=""><br>这个可以直接点击截图里面的教程，安装浏览器插件<br><img src="https://img-blog.csdnimg.cn/20200518165816205.png" alt=""><br>此时本地启动我的项目（这个是前几篇写微服务写的，拿来用用）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200518170117666.png" alt=""></p>
+<p>测试一个 <code>get</code>请求<code>user/test</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200518170725536.png" alt=""><br>直接省去了postman。哈哈</p>
+<h2 id="数据导出"><a href="#数据导出" class="headerlink" title="数据导出"></a>数据导出</h2><p>如果项目开发完，是备份也好，是给别人看也好，还是第三方使用也好，直接导出！<br><img src="https://img-blog.csdnimg.cn/20200518171125966.png" alt=""><br>导出效果查看<br><img src="https://img-blog.csdnimg.cn/20200518171227243.png" alt=""></p>
+<p>其实还有好多的功能，没有完全写到。慢慢体会吧。</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>Yapi</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Spring Cloud Gateway网关整合</title>
     <url>/2020/20200514/</url>
     <content><![CDATA[<!-- ![](https://s1.wailian.download/2020/05/14/MooseWatching_ZH-CN9115714564_1920x1080.jpg) -->
