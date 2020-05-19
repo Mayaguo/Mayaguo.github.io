@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -401,25 +405,25 @@
 <p>然后点击默认地址 ,访问</p>
 <p><img src="https://img-blog.csdnimg.cn/20200403161530711.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200403161620674.png" alt=""><br>成功!</p>
 <h2 id="hello页面"><a href="#hello页面" class="headerlink" title="hello页面"></a>hello页面</h2><p><code>urls.py</code> 文件修改<br>页面请求<code>hello</code>路径, 找到<code>views</code>中的<code>hello</code>接口</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>urls <span class="token keyword">import</span> path
 <span class="token keyword">from</span> webdemo <span class="token keyword">import</span> views
 
 urlpatterns <span class="token operator">=</span> <span class="token punctuation">[</span>
     path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
     path<span class="token punctuation">(</span>r<span class="token string">'hello/'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>hello<span class="token punctuation">)</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">]</span></code></pre>
 <p><code>views.py</code> 文件修改</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render
 
 
 <span class="token comment" spellcheck="true"># Create your views here.</span>
 <span class="token comment" spellcheck="true"># 将请求定位到hello.html中</span>
 <span class="token keyword">def</span> <span class="token function">hello</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'hello.html'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><code>templates</code> 文件夹下新增<code>hello.heml</code>页面</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
 <span class="token operator">&lt;</span>html lang<span class="token operator">=</span><span class="token string">"en"</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
     <span class="token operator">&lt;</span>meta charset<span class="token operator">=</span><span class="token string">"UTF-8"</span><span class="token operator">></span>
@@ -432,11 +436,11 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
 <span class="token operator">&lt;</span>h4<span class="token operator">></span>Hello Pyhton<span class="token operator">!</span><span class="token operator">!</span><span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>h4<span class="token operator">></span>
 <span class="token operator">&lt;</span>h5<span class="token operator">></span>Hello Pyhton<span class="token operator">!</span><span class="token operator">!</span><span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>h5<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
 <p>启动,<br>访问<a href="http://127.0.0.1:8000/hello/" target="_blank" rel="noopener">http://127.0.0.1:8000/hello/</a><br><img src="https://img-blog.csdnimg.cn/20200403163423335.png" alt=""></p>
 <h2 id="加上数据库操作"><a href="#加上数据库操作" class="headerlink" title="加上数据库操作"></a>加上数据库操作</h2><p><code>settings.py</code> 文件修改<br>数据库默认的<code>sqlite</code>,其实这个数据库也不错,简单的保存也不需要密码啥的,就是性能不中<br>当初在写<code>epl</code>插件的时候,一般都是使用的<code>sqlite</code>,客户不需要安装数据库,直接本地生成了一个<code>.db</code>文件,简单了好多</p>
 <p>下面时区和语言在下面搜索一下即可</p>
-<pre class="line-numbers language-python"><code class="language-python">DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-python"><code class="language-python">DATABASES <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'default'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
         <span class="token string">'ENGINE'</span><span class="token punctuation">:</span> <span class="token string">'django.db.backends.mysql'</span><span class="token punctuation">,</span>
         <span class="token string">'NAME'</span><span class="token punctuation">:</span> <span class="token string">'python'</span><span class="token punctuation">,</span>
@@ -451,11 +455,11 @@ LANGUAGE_CODE <span class="token operator">=</span> <span class="token string">'
 
 TIME_ZONE <span class="token operator">=</span> <span class="token string">'Asia/Shanghai'</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><code>urls.py</code> 文件修改</p>
-<pre class="line-numbers language-python"><code class="language-python">    path<span class="token punctuation">(</span>r<span class="token string">'helloMysql/'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>helloMysql<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-python"><code class="language-python">    path<span class="token punctuation">(</span>r<span class="token string">'helloMysql/'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>helloMysql<span class="token punctuation">)</span></code></pre>
 <p><code>views.py</code> 文件修改<br>简简单单来个返回结果封装</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">helloMysql</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">helloMysql</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">:</span>
     data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token comment" spellcheck="true"># '-createtime' 前面加-为倒序</span>
     userList <span class="token operator">=</span> models<span class="token punctuation">.</span>User<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>all<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>order_by<span class="token punctuation">(</span><span class="token string">'-createtime'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -465,9 +469,9 @@ TIME_ZONE <span class="token operator">=</span> <span class="token string">'Asia
     <span class="token comment" spellcheck="true"># 方式二</span>
     data<span class="token punctuation">[</span><span class="token string">'result'</span><span class="token punctuation">]</span> <span class="token operator">=</span> list<span class="token punctuation">(</span>userList<span class="token punctuation">)</span>
     <span class="token keyword">return</span> JsonResponse<span class="token punctuation">(</span>data<span class="token punctuation">,</span> safe<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> json_dumps_params<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'ensure_ascii'</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>项目路径找到<code>models.py</code>,修改</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
 
 
 <span class="token comment" spellcheck="true"># Create your models here.</span>
@@ -481,7 +485,7 @@ TIME_ZONE <span class="token operator">=</span> <span class="token string">'Asia
     <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         db_table <span class="token operator">=</span> <span class="token string">"tb_user"</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>启动!!!  访问 <a href="http://127.0.0.1:8000/helloMysql/" target="_blank" rel="noopener">http://127.0.0.1:8000/helloMysql/</a><br>查看结果<br><img src="https://img-blog.csdnimg.cn/20200403210359645.png" alt=""></p>
 
             </div>
@@ -1095,6 +1099,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

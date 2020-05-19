@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -342,12 +346,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
                             <a href="/tags/%E5%B7%A5%E5%85%B7/">
                                 <span class="chip bg-color">工具</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -406,7 +410,7 @@
 <p>快速、简单避免OOM的java处理Excel工具，64M内存1分钟内读取75M(46W行25列)的Excel。</p>
 </blockquote>
 <p>写的内容大致和<a href="https://github.com/alibaba/easyexcel" target="_blank" rel="noopener">阅读官方文档</a>差不多</p>
-<h2 id="2-开始使用"><a href="#2-开始使用" class="headerlink" title="2. 开始使用"></a>2. 开始使用</h2><h3 id="2-1-引入jar"><a href="#2-1-引入jar" class="headerlink" title="2.1 引入jar"></a>2.1 引入jar</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>easyexcel插件 <span class="token operator">--</span><span class="token operator">></span>
+<h2 id="2-开始使用"><a href="#2-开始使用" class="headerlink" title="2. 开始使用"></a>2. 开始使用</h2><h3 id="2-1-引入jar"><a href="#2-1-引入jar" class="headerlink" title="2.1 引入jar"></a>2.1 引入jar</h3><pre class=" language-java"><code class="language-java"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>easyexcel插件 <span class="token operator">--</span><span class="token operator">></span>
 <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
     <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>alibaba<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
     <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>easyexcel<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
@@ -417,9 +421,9 @@
     <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>projectlombok<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
     <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>lombok<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
     <span class="token operator">&lt;</span>optional<span class="token operator">></span><span class="token boolean">true</span><span class="token operator">&lt;</span><span class="token operator">/</span>optional<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <h3 id="2-2-实体类"><a href="#2-2-实体类" class="headerlink" title="2.2 实体类"></a>2.2 实体类</h3><p>根据自己的情况自定义表格导入导出实体类</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>excelentity<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>excelentity<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ExcelIgnore<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ExcelProperty<span class="token punctuation">;</span>
@@ -456,9 +460,9 @@
     <span class="token annotation punctuation">@ExcelProperty</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"用户生日"</span><span class="token punctuation">,</span>index <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span>
     <span class="token keyword">private</span> Date userBrithday<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="2-3-ExcelUtil工具类"><a href="#2-3-ExcelUtil工具类" class="headerlink" title="2.3 ExcelUtil工具类"></a>2.3 ExcelUtil工具类</h3><p>根据实际情况封装成工具类，我就写了俩</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>EasyExcel<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>read<span class="token punctuation">.</span>listener<span class="token punctuation">.</span>ReadListener<span class="token punctuation">;</span>
@@ -508,9 +512,9 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="2-4-模板读取类"><a href="#2-4-模板读取类" class="headerlink" title="2.4 模板读取类"></a>2.4 模板读取类</h3><p>创建模板读取类， 这个是表格导入的时候需要的，表格中的数据将在这个类里面单独处理，根据类里面设置的数值进行存库，也就是<code>10w</code>条数据，每当1000条就存一下表，方便内存回收。 不然一次性读10w，要占多少。。。<br>实际情况将下面的构造方法注释打开，相当于你在<code>controlle</code>中调用，然后将<code>Service</code>传进来就<code>ok</code>了。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>excelentity<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>excelentity<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>context<span class="token punctuation">.</span>AnalysisContext<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>event<span class="token punctuation">.</span>AnalysisEventListener<span class="token punctuation">;</span>
@@ -584,8 +588,8 @@
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"存储数据库成功！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-5-controller测试"><a href="#2-5-controller测试" class="headerlink" title="2.5 controller测试"></a>2.5 controller测试</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
+</code></pre>
+<h3 id="2-5-controller测试"><a href="#2-5-controller测试" class="headerlink" title="2.5 controller测试"></a>2.5 controller测试</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>EasyExcel<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>excel<span class="token punctuation">.</span>ExcelReader<span class="token punctuation">;</span>
@@ -646,7 +650,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="3-测试"><a href="#3-测试" class="headerlink" title="3. 测试"></a>3. 测试</h2><h3 id="3-1-导出测试"><a href="#3-1-导出测试" class="headerlink" title="3.1 导出测试"></a>3.1 导出测试</h3><p>启动项目，浏览器访问接口<br>直接弹框提示保存位置。保存查看里面内容<br><img src="https://img-blog.csdnimg.cn/20200116140325950.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="导出结果"></p>
 <h3 id="3-2-导入测试"><a href="#3-2-导入测试" class="headerlink" title="3.2 导入测试"></a>3.2 导入测试</h3><p>使用postman测试文件导入<br><img src="https://img-blog.csdnimg.cn/20200116140457725.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="导入结果"><br>key：<code>Content-Type</code><br>value：<code>multipart/form-data</code><br><img src="https://img-blog.csdnimg.cn/20200116140542185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="头部信息"><br><img src="https://img-blog.csdnimg.cn/20200116140701324.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="结果"></p>
 
@@ -712,12 +716,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%B7%A5%E5%85%B7/">
                                     <span class="chip bg-color">工具</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -950,12 +954,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
                     <a href="/tags/%E9%85%B7q/">
                         <span class="chip bg-color">酷q</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
                 </div>
@@ -1265,6 +1269,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

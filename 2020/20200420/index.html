@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -401,7 +405,7 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当大量的客户访问请求打到后端，去访问数据库等，瞬间会爆炸的。<br>经过前端或者其他的方案进行限流外。<br>还是有大量的请求，这个时候需要削峰了。</p>
 <h2 id="简单的削峰例子"><a href="#简单的削峰例子" class="headerlink" title="简单的削峰例子"></a>简单的削峰例子</h2><p>先设置小一点，然后循环往队列里面放消息，消费的时候延迟<code>2</code>秒</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">spring<span class="token punctuation">:</span>
+<pre class=" language-javascript"><code class="language-javascript">spring<span class="token punctuation">:</span>
   rabbitmq<span class="token punctuation">:</span>
     host<span class="token punctuation">:</span> <span class="token number">192.168</span><span class="token punctuation">.</span><span class="token number">21.129</span>
     port<span class="token punctuation">:</span> <span class="token number">5672</span>
@@ -413,30 +417,30 @@
       simple<span class="token punctuation">:</span>
         prefetch<span class="token punctuation">:</span> <span class="token number">1</span> # 消费者每次从队列获取的消息数量
         concurrency<span class="token punctuation">:</span> <span class="token number">1</span> # 消费者数量
-        max<span class="token operator">-</span>concurrency<span class="token punctuation">:</span> <span class="token number">1</span> # 启动消费者最大数量<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        max<span class="token operator">-</span>concurrency<span class="token punctuation">:</span> <span class="token number">1</span> # 启动消费者最大数量</code></pre>
 <p>调用生产者</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">        <span class="token keyword">for</span> <span class="token punctuation">(</span>int i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">        <span class="token keyword">for</span> <span class="token punctuation">(</span>int i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">// 调用消息生产者</span>
             sender<span class="token punctuation">.</span><span class="token function">sender</span><span class="token punctuation">(</span>msg<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token punctuation">}</span></code></pre>
 <p>消费者</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">    @<span class="token function">RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE<span class="token punctuation">)</span>
+<pre class=" language-javascript"><code class="language-javascript">    @<span class="token function">RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE<span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receiver</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> throws InterruptedException <span class="token punctuation">{</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>2000L<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 模拟处理需要2秒</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者消费。。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p>页面访问：</p>
 <p><a href="http://localhost:8088/hello?msg=GMaya" target="_blank" rel="noopener">http://localhost:8088/hello?msg=GMaya</a></p>
 <p>此时消息会全部放到列队，但是会一条一条消费。简单的实现了削峰处理</p>
 <p><img src="https://img-blog.csdnimg.cn/20200420163647431.png" alt=""><br>调整消费者的数量</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">        prefetch<span class="token punctuation">:</span> <span class="token number">1</span> # 消费者每次从队列获取的消息数量
+<pre class=" language-javascript"><code class="language-javascript">        prefetch<span class="token punctuation">:</span> <span class="token number">1</span> # 消费者每次从队列获取的消息数量
         concurrency<span class="token punctuation">:</span> <span class="token number">2</span> # 消费者数量
-        max<span class="token operator">-</span>concurrency<span class="token punctuation">:</span> <span class="token number">10</span> # 启动消费者最大数量<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+        max<span class="token operator">-</span>concurrency<span class="token punctuation">:</span> <span class="token number">10</span> # 启动消费者最大数量</code></pre>
 <p>此时就会有两个消费者同时去消费队列中的消息。所以这个消费者数量需要根据实际的情况去设置所能承受的一个值，也就是峰值。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200420164005437.png" alt=""></p>
 <h2 id="重试策略"><a href="#重试策略" class="headerlink" title="重试策略"></a>重试策略</h2><p>如果说消费者在消费的过程中失败了，那么会一直消费，一直到成功为止。</p>
 <p>但是也可以添加重试策略，比如失败三次就不在消费了。</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">    listener<span class="token punctuation">:</span>
+<pre class=" language-javascript"><code class="language-javascript">    listener<span class="token punctuation">:</span>
       type<span class="token punctuation">:</span> simple
       simple<span class="token punctuation">:</span>
         prefetch<span class="token punctuation">:</span> <span class="token number">1</span> # 消费者每次从队列获取的消息数量
@@ -446,16 +450,16 @@
         retry<span class="token punctuation">:</span>
           enabled<span class="token punctuation">:</span> <span class="token boolean">true</span> #开启消费者重试
           max<span class="token operator">-</span>attempts<span class="token punctuation">:</span> <span class="token number">2</span> #最大重试次数
-          initial<span class="token operator">-</span>interval<span class="token punctuation">:</span> <span class="token number">2000</span> #重试间隔时间<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+          initial<span class="token operator">-</span>interval<span class="token punctuation">:</span> <span class="token number">2000</span> #重试间隔时间</code></pre>
 <p>模拟异常</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">    @<span class="token function">RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE<span class="token punctuation">)</span>
+<pre class=" language-javascript"><code class="language-javascript">    @<span class="token function">RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE<span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receiver</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> throws InterruptedException <span class="token punctuation">{</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>2000L<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 模拟处理需要2秒</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"GMaya8"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者消费。。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p>此时的结果就是其他的消息被消费，但是这个<code>GMaya8</code>没了，失败三次之后就没了。队列中也消失了。</p>
 <h2 id="如何保证rabbitmq消息不丢失"><a href="#如何保证rabbitmq消息不丢失" class="headerlink" title="如何保证rabbitmq消息不丢失"></a>如何保证rabbitmq消息不丢失</h2><p>丢失数据场景：</p>
 <ol>
@@ -464,7 +468,7 @@
 <li>消费端丢失，即消费端没消费成功。</li>
 </ol>
 <p>开启<code>confirm</code>回调，启动手动确定消息消费。</p>
-<pre class="line-numbers language-java"><code class="language-java">server<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">server<span class="token operator">:</span>
   port<span class="token operator">:</span> <span class="token number">8088</span>
 spring<span class="token operator">:</span>
   rabbitmq<span class="token operator">:</span>
@@ -494,9 +498,9 @@ spring<span class="token operator">:</span>
       # 出现上述情况broker会直接将消息丢弃<span class="token punctuation">;</span>通俗的讲，mandatory标志告诉broker代理服务器至少将消息route到一个队列中，
       # 否则就将消息<span class="token keyword">return</span>给发送者<span class="token punctuation">;</span>
       #<span class="token operator">:</span> <span class="token boolean">true</span> # 启用强制信息
-      mandatory<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      mandatory<span class="token operator">:</span> <span class="token boolean">true</span></code></pre>
 <p>使用交换机模式<br>生产者</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Sender</span> <span class="token keyword">implements</span> <span class="token class-name">RabbitTemplate<span class="token punctuation">.</span>ConfirmCallback</span><span class="token punctuation">{</span>
 
@@ -526,9 +530,9 @@ spring<span class="token operator">:</span>
             <span class="token comment" spellcheck="true">// 可以自己写重新发送消息</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>消费者</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE_A<span class="token punctuation">)</span>
+<pre class=" language-java"><code class="language-java">    <span class="token annotation punctuation">@RabbitListener</span><span class="token punctuation">(</span>queues <span class="token operator">=</span> MQConfig<span class="token punctuation">.</span>QUEUE_A<span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receiverA</span><span class="token punctuation">(</span>String msg<span class="token punctuation">,</span>Message message<span class="token punctuation">,</span> Channel channel<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"QUEUE_A消费者消费。。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
         channel<span class="token punctuation">.</span><span class="token function">basicAck</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">getMessageProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeliveryTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -538,7 +542,7 @@ spring<span class="token operator">:</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receiverB</span><span class="token punctuation">(</span>String msg<span class="token punctuation">,</span>Message message<span class="token punctuation">,</span> Channel channel<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"QUEUE_B消费者消费。。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
         channel<span class="token punctuation">.</span><span class="token function">basicAck</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">getMessageProperties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeliveryTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p>这个时候已经解决出现问题，倒是消息消失的情况。当处理好问题之后，重启就会重新消费</p>
 
             </div>
@@ -1162,6 +1166,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

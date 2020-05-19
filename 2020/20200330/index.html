@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -400,10 +404,10 @@
                 <!-- ![](https://s1.wailian.download/2020/03/30/WalkingCentral_ZH-CN6818231087_1920x1080.jpg) -->
 <a id="more"></a>
 <p>一个最简单的例子:<br>启动类添加注解</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableScheduling</span> <span class="token comment" spellcheck="true">// 开启定时任务</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableScheduling</span> <span class="token comment" spellcheck="true">// 开启定时任务</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200330113812718.png" alt=""></p>
 <h2 id="编写单线程demo"><a href="#编写单线程demo" class="headerlink" title="编写单线程demo"></a>编写单线程demo</h2><p><img src="https://img-blog.csdnimg.cn/20200330135435331.png" alt=""></p>
-<h3 id="cron-表达式"><a href="#cron-表达式" class="headerlink" title="cron 表达式"></a>cron 表达式</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<h3 id="cron-表达式"><a href="#cron-表达式" class="headerlink" title="cron 表达式"></a>cron 表达式</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
      * cron 表达式
      * 每2秒执行一次
      * @throws InterruptedException
@@ -413,8 +417,8 @@
         <span class="token comment" spellcheck="true">// 经过测试,使用cron表达式,定时任务第二次会等待第一次执行完毕再开始!</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>5000L<span class="token punctuation">)</span><span class="token punctuation">;</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"定时任务测试cron:"</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="fixedDelay"><a href="#fixedDelay" class="headerlink" title="fixedDelay"></a>fixedDelay</h3><pre class="line-numbers language-java"><code class="language-java"> <span class="token comment" spellcheck="true">/**
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="fixedDelay"><a href="#fixedDelay" class="headerlink" title="fixedDelay"></a>fixedDelay</h3><pre class=" language-java"><code class="language-java"> <span class="token comment" spellcheck="true">/**
      *  fixedDelay:
      *  第一次执行完毕才会执行第二次，时间间隔变为了7秒
      * @throws InterruptedException
@@ -423,9 +427,9 @@
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>5000L<span class="token punctuation">)</span><span class="token punctuation">;</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"定时任务测试fixedDelay:"</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/2020033014024565.png" alt=""></p>
-<h3 id="fixedRate"><a href="#fixedRate" class="headerlink" title="fixedRate"></a>fixedRate</h3><pre class="line-numbers language-java"><code class="language-java"> <span class="token comment" spellcheck="true">/**
+<h3 id="fixedRate"><a href="#fixedRate" class="headerlink" title="fixedRate"></a>fixedRate</h3><pre class=" language-java"><code class="language-java"> <span class="token comment" spellcheck="true">/**
      *  fixedRate:
      *  每隔2秒就会执行, 但是因为单线程,所以在5秒后会输出,间隔就是5秒
      * @throws InterruptedException
@@ -434,9 +438,9 @@
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> InterruptedException <span class="token punctuation">{</span>
         Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>5000L<span class="token punctuation">)</span><span class="token punctuation">;</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"定时任务测试fixedRate:"</span> <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200330140036576.png" alt=""><br>如果是一起执行这三个定时任务,那么会一个一个的来, 因为只有一个线程.</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  *
  * @author GMaya
  */</span>
@@ -449,9 +453,9 @@
         taskScheduler<span class="token punctuation">.</span><span class="token function">setPoolSize</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置线程池大小</span>
         <span class="token keyword">return</span> taskScheduler<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>如果只是加这一个配置类, 确实是使用了多线程, 每个定时任务都互相不影响.<br>但是一个线程第一次阻塞了,第二次就不行了,所以在定时任务上再加</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Async</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Async</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/202003301418328.png" alt=""><br>就是说你这次失败了, 不要影响我下次的运行<br><img src="https://img-blog.csdnimg.cn/20200330141948593.png" alt=""></p>
 
             </div>
@@ -1064,6 +1068,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

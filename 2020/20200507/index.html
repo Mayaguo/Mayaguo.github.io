@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -405,13 +409,13 @@
 <p>官方链接<a href="https://github.com/alibaba/druid" target="_blank" rel="noopener">https://github.com/alibaba/druid</a></p>
 <p>以下所有配置基于<code>springboot2.2.6</code>配置</p>
 <h2 id="怎么使用"><a href="#怎么使用" class="headerlink" title="怎么使用"></a>怎么使用</h2><p>maven项目直接引用</p>
-<pre class="line-numbers language-java"><code class="language-java">     <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>阿里数据库连接池 <span class="token operator">--</span><span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">     <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>阿里数据库连接池 <span class="token operator">--</span><span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>alibaba<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>druid<span class="token operator">-</span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
             <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">14</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Druid的一些常用配置"><a href="#Druid的一些常用配置" class="headerlink" title="Druid的一些常用配置"></a>Druid的一些常用配置</h2><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
+<h2 id="Druid的一些常用配置"><a href="#Druid的一些常用配置" class="headerlink" title="Druid的一些常用配置"></a>Druid的一些常用配置</h2><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">type</span><span class="token punctuation">:</span> com.alibaba.druid.pool.DruidDataSource
     <span class="token key atrule">druid</span><span class="token punctuation">:</span>
@@ -477,33 +481,33 @@
         <span class="token comment" spellcheck="true"># 排除一些不必要的url，比如.js,/css/等等</span>
         <span class="token key atrule">exclusions</span><span class="token punctuation">:</span> <span class="token string">'*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*'</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>注意：建议配置白名单，密码访问。<br><strong>test-on-borrow默认值问题：</strong><br>官方文档解释：<br><img src="https://img-blog.csdnimg.cn/20200507142829844.png" alt=""><br>然而自己查看实际效果却不一样，不知道是不是我的问题。<br>在源码中发现</p>
-<pre class="line-numbers language-java"><code class="language-java">dataMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"TestOnBorrow"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isTestOnBorrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-dataMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"TestOnReturn"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isTestOnReturn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">this</span><span class="token punctuation">.</span>testOnBorrow <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>testOnReturn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> DEFAULT_TEST_ON_BORROW <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> DEFAULT_TEST_ON_RETURN <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">dataMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"TestOnBorrow"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isTestOnBorrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+dataMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"TestOnReturn"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isTestOnReturn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">this</span><span class="token punctuation">.</span>testOnBorrow <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">this</span><span class="token punctuation">.</span>testOnReturn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> DEFAULT_TEST_ON_BORROW <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">boolean</span> DEFAULT_TEST_ON_RETURN <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></code></pre>
 <p>或者把这两个参数注释。启动查看页面<br><img src="https://img-blog.csdnimg.cn/20200507142735819.png" alt=""></p>
 <h2 id="数据库密码加密"><a href="#数据库密码加密" class="headerlink" title="数据库密码加密"></a>数据库密码加密</h2><p>找到<code>maven</code>仓库中<code>druid</code> 的<code>jar</code>包</p>
-<pre class="line-numbers language-java"><code class="language-java">D<span class="token operator">:</span>\maven<span class="token operator">-</span>repository\com\alibaba\druid\<span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">14</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">D<span class="token operator">:</span>\maven<span class="token operator">-</span>repository\com\alibaba\druid\<span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">14</span></code></pre>
 <p>然后打开<code>cmd</code>输入</p>
-<pre class="line-numbers language-java"><code class="language-java">java <span class="token operator">-</span>cp druid<span class="token operator">-</span><span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">14</span><span class="token punctuation">.</span>jar com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>config<span class="token punctuation">.</span>ConfigTools 你的密码<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">java <span class="token operator">-</span>cp druid<span class="token operator">-</span><span class="token number">1.1</span><span class="token punctuation">.</span><span class="token number">14</span><span class="token punctuation">.</span>jar com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>config<span class="token punctuation">.</span>ConfigTools 你的密码</code></pre>
 <p>然后得到</p>
-<pre class="line-numbers language-java"><code class="language-java">privateKey<span class="token operator">:</span>MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAty<span class="token operator">+</span>xzmC<span class="token operator">/</span>4596DAoD<span class="token operator">+</span>OI0zThfJq6P5ZdcBx<span class="token operator">+</span>iTrBisD9ViQSwOUktzYi1o4ZiJ<span class="token operator">+</span>Akv2rR9Q47<span class="token operator">+</span>CpEvjH123nvQIDAQABAkEAj<span class="token operator">+</span>IycrujfRKCNnqXbCGg<span class="token operator">/</span>6BLfIKYG<span class="token operator">+</span>mrKx05yzzYBz4e8R1<span class="token operator">/</span>c1HCOn8D5YWDtKEXX5o1FKmJPHFyd0<span class="token operator">/</span>OL8MhsQIhAP<span class="token operator">/</span>P35Vitx7jN1B8gmgcmRhKYTgc6bVrkwNG8oLZaYr<span class="token operator">/</span>AiEAt1IobJLPTOZffLkAY9K365IsK9Ky7a7uq4KniN8yOUMCIHWMbP41PVZ5LHrUrAvxUDxEOYZSauZNx2FTIa8U<span class="token operator">/</span>pW7AiEArQv47MSIuuacLHfWTmSTCOQqnhN<span class="token operator">+</span>o68FzRDAZQuLtVECIQCdBeUAddQSBtT7n32N36PWZS3oKnQ1sGVY2xCRC8o5Iw<span class="token operator">==</span>
+<pre class=" language-java"><code class="language-java">privateKey<span class="token operator">:</span>MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAty<span class="token operator">+</span>xzmC<span class="token operator">/</span>4596DAoD<span class="token operator">+</span>OI0zThfJq6P5ZdcBx<span class="token operator">+</span>iTrBisD9ViQSwOUktzYi1o4ZiJ<span class="token operator">+</span>Akv2rR9Q47<span class="token operator">+</span>CpEvjH123nvQIDAQABAkEAj<span class="token operator">+</span>IycrujfRKCNnqXbCGg<span class="token operator">/</span>6BLfIKYG<span class="token operator">+</span>mrKx05yzzYBz4e8R1<span class="token operator">/</span>c1HCOn8D5YWDtKEXX5o1FKmJPHFyd0<span class="token operator">/</span>OL8MhsQIhAP<span class="token operator">/</span>P35Vitx7jN1B8gmgcmRhKYTgc6bVrkwNG8oLZaYr<span class="token operator">/</span>AiEAt1IobJLPTOZffLkAY9K365IsK9Ky7a7uq4KniN8yOUMCIHWMbP41PVZ5LHrUrAvxUDxEOYZSauZNx2FTIa8U<span class="token operator">/</span>pW7AiEArQv47MSIuuacLHfWTmSTCOQqnhN<span class="token operator">+</span>o68FzRDAZQuLtVECIQCdBeUAddQSBtT7n32N36PWZS3oKnQ1sGVY2xCRC8o5Iw<span class="token operator">==</span>
 publicKey<span class="token operator">:</span>MFwwDQYJKoZIhvcNAQEBBQADS32sc5gv<span class="token operator">+</span>OfegwKA<span class="token operator">/</span>jiNM04Xyauj<span class="token operator">+</span>WXXAcfok6wYrA<span class="token operator">/</span>VYkEsDlJLc2ItaOGYifgJL9q0fUOO<span class="token operator">/</span>gqRL4x0K1gJ70CAwEAAQ<span class="token operator">==</span>
-password<span class="token operator">:</span>FsnBV<span class="token operator">+</span>3RyPMUBHjG4unvXV21Z1tC<span class="token operator">+</span>xi19Xy5f<span class="token operator">/</span>JSm0ktb5m17<span class="token operator">+</span>B5fOzyDNTcFACmhx3zg<span class="token operator">/</span>lMaFOIy0UfOA<span class="token operator">==</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+password<span class="token operator">:</span>FsnBV<span class="token operator">+</span>3RyPMUBHjG4unvXV21Z1tC<span class="token operator">+</span>xi19Xy5f<span class="token operator">/</span>JSm0ktb5m17<span class="token operator">+</span>B5fOzyDNTcFACmhx3zg<span class="token operator">/</span>lMaFOIy0UfOA<span class="token operator">==</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200507133602139.png" alt=""><br>然后更改配置<br>将明文密码替换</p>
-<pre class="line-numbers language-java"><code class="language-java">password<span class="token operator">:</span> gMs08dqeyRQC3fsgEvb4pgmr2W<span class="token operator">/</span>xVDgewGJLOJFZZOm8wfsVI0397uXGIe1W0rXJQl<span class="token operator">/</span>meyB<span class="token operator">/</span>GhqLt82fD8kiZw<span class="token operator">==</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">password<span class="token operator">:</span> gMs08dqeyRQC3fsgEvb4pgmr2W<span class="token operator">/</span>xVDgewGJLOJFZZOm8wfsVI0397uXGIe1W0rXJQl<span class="token operator">/</span>meyB<span class="token operator">/</span>GhqLt82fD8kiZw<span class="token operator">==</span></code></pre>
 <p>新增密码解密，同时<code>config.decrypt.key=</code>上面生成的<code>publicKey</code>.</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml">      <span class="token comment" spellcheck="true"># ConfigFilter,开启密码加密功能</span>
+<pre class=" language-yaml"><code class="language-yaml">      <span class="token comment" spellcheck="true"># ConfigFilter,开启密码加密功能</span>
       <span class="token key atrule">filter</span><span class="token punctuation">:</span>
         <span class="token key atrule">config</span><span class="token punctuation">:</span>
           <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
       <span class="token comment" spellcheck="true"># 配置参数，让ConfigFilter解密密码</span>
       <span class="token key atrule">connection-properties</span><span class="token punctuation">:</span> config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAK23puqpHZjqJ7+DQkJBWKIYdc0nkSqZeLVrQtwMvRwXCRgtG5+/IKO8xhMTSGwhjglloiTiVnJ9IynvpyFVpgUCAwEAAQ==
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200507140225156.png" alt=""></p>
 
             </div>
@@ -1122,6 +1126,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

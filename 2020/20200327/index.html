@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -400,7 +404,7 @@
                 <!-- ![](https://s1.wailian.download/2020/03/27/SpainBeeEaters_ZH-CN2414526119_1920x1080.jpg) -->
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>其实这个整合,和<code>spring</code> 或者 <code>spring boot</code> 整合一样的<br>其实都是一键生成的,自己把模板配好就行,从<code>controller</code>到<code>service</code>,<code>dao</code>,实体,增删改查<br>我只是拷贝过来几个测试这个项目<br>之前刚接触<code>mybatis-plus</code>的时候也写过自动生成的文章</p>
-<h2 id="引入jar"><a href="#引入jar" class="headerlink" title="引入jar"></a>引入jar</h2><pre class="line-numbers language-sql"><code class="language-sql">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+<h2 id="引入jar"><a href="#引入jar" class="headerlink" title="引入jar"></a>引入jar</h2><pre class=" language-sql"><code class="language-sql">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>baomidou<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mybatis<span class="token operator">-</span>plus<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
             <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">3.0</span><span class="token punctuation">.</span><span class="token number">7.1</span><span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
@@ -419,9 +423,9 @@
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>mysql<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>mysql<span class="token operator">-</span>connector<span class="token operator">-</span>java<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>我<code>mysql</code>数据库<code>8.0</code>以上的,如果你的是<code>5.+</code>的版本,自己该数据源即可</p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
   application<span class="token operator">:</span>
     name<span class="token operator">:</span> order
   datasource<span class="token operator">:</span>
@@ -440,8 +444,8 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
       column<span class="token operator">-</span>underline<span class="token operator">:</span> <span class="token boolean">true</span>
       logic<span class="token operator">-</span>delete<span class="token operator">-</span>value<span class="token operator">:</span> <span class="token number">1</span> # 数据库删除字段<span class="token punctuation">,</span><span class="token number">1</span>代表删除
       logic<span class="token operator">-</span>not<span class="token operator">-</span>delete<span class="token operator">-</span>value<span class="token operator">:</span> <span class="token number">0</span> # <span class="token number">0</span>代表没删除
-    banner<span class="token operator">:</span> <span class="token boolean">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="新增配置类"><a href="#新增配置类" class="headerlink" title="新增配置类"></a>新增配置类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+    banner<span class="token operator">:</span> <span class="token boolean">false</span></code></pre>
+<h2 id="新增配置类"><a href="#新增配置类" class="headerlink" title="新增配置类"></a>新增配置类</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span>
@@ -486,8 +490,8 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>entity<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>entity<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable<span class="token punctuation">;</span>
 
@@ -537,8 +541,8 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
     <span class="token keyword">private</span> Integer version<span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>dao<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="dao"><a href="#dao" class="headerlink" title="dao"></a>dao</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>dao<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>BaseMapper<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>UserEntity<span class="token punctuation">;</span>
@@ -549,8 +553,8 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserDao</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token operator">&lt;</span>UserEntity<span class="token operator">></span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="service"><a href="#service" class="headerlink" title="service"></a>service</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span>JSONObject<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>service<span class="token punctuation">.</span>IService<span class="token punctuation">;</span>
@@ -564,8 +568,8 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
 
     <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span>JSONObject jsonObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Service<span class="token punctuation">;</span>
@@ -602,7 +606,7 @@ mybatis<span class="token operator">-</span>plus<span class="token operator">:</
 
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
             </div>
             <hr/>
@@ -1218,6 +1222,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

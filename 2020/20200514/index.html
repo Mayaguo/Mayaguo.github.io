@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -403,7 +407,7 @@
 <p>Spring Cloud Gateway为Spring生态系统上的一个API网关组件，主要提供一种简单而有效的方式路由映射到指定的API，并为他们提供安全性、监控和限流等等。</p>
 </blockquote>
 <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>创建一个<code>gmaya-gateway</code>项目。</p>
-<h3 id="修改pom文件"><a href="#修改pom文件" class="headerlink" title="修改pom文件"></a>修改pom文件</h3><pre class="line-numbers language-java"><code class="language-java">       <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>gateway网关<span class="token punctuation">,</span>内置webflux 依赖<span class="token operator">--</span><span class="token operator">></span>
+<h3 id="修改pom文件"><a href="#修改pom文件" class="headerlink" title="修改pom文件"></a>修改pom文件</h3><pre class=" language-java"><code class="language-java">       <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>gateway网关<span class="token punctuation">,</span>内置webflux 依赖<span class="token operator">--</span><span class="token operator">></span>
        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>gateway<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
@@ -432,10 +436,10 @@
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>alibaba<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>fastjson<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="启动类修改"><a href="#启动类修改" class="headerlink" title="启动类修改"></a>启动类修改</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
-<span class="token annotation punctuation">@EnableDiscoveryClient</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h3><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
+<h3 id="启动类修改"><a href="#启动类修改" class="headerlink" title="启动类修改"></a>启动类修改</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableDiscoveryClient</span></code></pre>
+<h3 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">9200</span>
 
 <span class="token key atrule">spring</span><span class="token punctuation">:</span>
@@ -489,14 +493,14 @@
       <span class="token comment" spellcheck="true"># 显示完整信息，#默认是never（简要信息）</span>
       <span class="token key atrule">show-details</span><span class="token punctuation">:</span> always
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h2><p>注册中心：<code>gmaya-service-center</code> ：<code>8000</code><br>系统服务：<code>gmaya-service-admin</code> ：<code>9001</code><br>网关服务：<code>gmaya-gateway</code>  ：<code>9200</code></p>
 <p>启动三个项目，访问：</p>
-<pre class="line-numbers language-java"><code class="language-java">http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">9200</span><span class="token operator">/</span>admin<span class="token operator">/</span>user<span class="token operator">/</span>test<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">9200</span><span class="token operator">/</span>admin<span class="token operator">/</span>user<span class="token operator">/</span>test</code></pre>
 <p>没问题！</p>
 <p>测一下<code>gateway</code>  的负载均衡，现在再把系统服务启动一个<code>9011</code>端口。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200513152654508.png" alt=""></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">-</span>Dserver<span class="token punctuation">.</span>port<span class="token operator">=</span><span class="token number">9011</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token operator">-</span>Dserver<span class="token punctuation">.</span>port<span class="token operator">=</span><span class="token number">9011</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200513152827519.png" alt=""></p>
 <p>启动之后查看效果<br><img src="https://img-blog.csdnimg.cn/20200513152930866.png" alt=""></p>
 <p>此时已经有了一个服务名一样，但是端口不一样的两个服务了。<br>再次访问接口。<br>查看后端打印情况，确实是轮询方式实现了负载均衡。</p>
@@ -504,7 +508,7 @@
 <p>在分布式系统中，网关作为流量的入口，因此会有大量的请求进入网关，向其他服务发起调用，其他服务不可避免的会出现调用失败（超时、异常），失败时不能让请求堆积在网关上，需要快速失败并返回给客户端，想要实现这个要求，就必须在网关上做熔断、降级操作。</p>
 </blockquote>
 <p><strong>有两种方式进行熔断、降级</strong></p>
-<h3 id="webflux方式"><a href="#webflux方式" class="headerlink" title="webflux方式"></a>webflux方式</h3><h4 id="添加HystrixFallbackHandler"><a href="#添加HystrixFallbackHandler" class="headerlink" title="添加HystrixFallbackHandler"></a>添加HystrixFallbackHandler</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>handler<span class="token punctuation">;</span>
+<h3 id="webflux方式"><a href="#webflux方式" class="headerlink" title="webflux方式"></a>webflux方式</h3><h4 id="添加HystrixFallbackHandler"><a href="#添加HystrixFallbackHandler" class="headerlink" title="添加HystrixFallbackHandler"></a>添加HystrixFallbackHandler</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>handler<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>fastjson<span class="token punctuation">.</span>JSON<span class="token punctuation">;</span>
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span>
@@ -544,8 +548,8 @@
         <span class="token keyword">return</span> ServerResponse<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span>HttpStatus<span class="token punctuation">.</span>INTERNAL_SERVER_ERROR<span class="token punctuation">.</span><span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">contentType</span><span class="token punctuation">(</span>MediaType<span class="token punctuation">.</span>APPLICATION_JSON<span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">body</span><span class="token punctuation">(</span>BodyInserters<span class="token punctuation">.</span><span class="token function">fromValue</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="添加GatewayRoutesConfig"><a href="#添加GatewayRoutesConfig" class="headerlink" title="添加GatewayRoutesConfig"></a>添加GatewayRoutesConfig</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="添加GatewayRoutesConfig"><a href="#添加GatewayRoutesConfig" class="headerlink" title="添加GatewayRoutesConfig"></a>添加GatewayRoutesConfig</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>AllArgsConstructor<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
@@ -574,9 +578,9 @@
                 MediaType<span class="token punctuation">.</span>TEXT_PLAIN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>hystrixFallbackHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>大部分都省略了，和上面的一样。</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
     <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
       <span class="token key atrule">routes</span><span class="token punctuation">:</span>
@@ -599,12 +603,12 @@
           <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
         <span class="token key atrule">isolation</span><span class="token punctuation">:</span>
           <span class="token key atrule">thread</span><span class="token punctuation">:</span>
-            <span class="token key atrule">timeoutInMilliseconds</span><span class="token punctuation">:</span> <span class="token number">3000 </span><span class="token comment" spellcheck="true">#断路器超时时间，默认1000ms</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token key atrule">timeoutInMilliseconds</span><span class="token punctuation">:</span> <span class="token number">3000 </span><span class="token comment" spellcheck="true">#断路器超时时间，默认1000ms</span></code></pre>
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>系统服务接口中添加延迟，模拟超时<br><img src="https://img-blog.csdnimg.cn/20200513170042202.png" alt=""><br>此时访问，<code>3</code>秒后返回设置好的熔断信息</p>
 <p>或者将系统服务直接关闭。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200513170223218.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200513170251624.png" alt=""></p>
 <h3 id="web请求方式"><a href="#web请求方式" class="headerlink" title="web请求方式"></a>web请求方式</h3><p>这种方式和正常<code>controller</code>中方法一样</p>
-<h4 id="新建DefaultFallbackController"><a href="#新建DefaultFallbackController" class="headerlink" title="新建DefaultFallbackController"></a>新建DefaultFallbackController</h4><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
+<h4 id="新建DefaultFallbackController"><a href="#新建DefaultFallbackController" class="headerlink" title="新建DefaultFallbackController"></a>新建DefaultFallbackController</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>GetMapping<span class="token punctuation">;</span>
@@ -634,7 +638,7 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>将第一种方式配置先去掉，重启项目</p>
 <h4 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h4><p>浏览器访问<br><img src="https://img-blog.csdnimg.cn/20200513171355278.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200513171414809.png" alt=""><br>注意： 如果两个都开启了， 就会默认使用第一种方式。</p>
 <h2 id="添加限流"><a href="#添加限流" class="headerlink" title="添加限流"></a>添加限流</h2><blockquote>
@@ -644,7 +648,7 @@
 <p>采用<code>springcloud gateway</code> 为我们提供了限流过滤器<code>RequestRateLimiterGatewayFilterFactory</code>。使用<code>Redis</code>和<code>lua</code>脚本实现了令牌桶的方式限流。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200514094631899.png" alt=""></p>
 <h3 id="修改pom"><a href="#修改pom" class="headerlink" title="修改pom"></a>修改pom</h3><p>引入</p>
-<pre class="line-numbers language-java"><code class="language-java">       <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> redis配置 <span class="token operator">--</span><span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">       <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> redis配置 <span class="token operator">--</span><span class="token operator">></span>
        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
            <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>data<span class="token operator">-</span>redis<span class="token operator">-</span>reactive<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
@@ -655,9 +659,9 @@
            <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>commons<span class="token operator">-</span>pool2<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>    
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="添加配置类"><a href="#添加配置类" class="headerlink" title="添加配置类"></a>添加配置类</h3><p>创建<code>KeyResolverConfig</code>类</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> top<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>gmayagateway<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>gateway<span class="token punctuation">.</span>filter<span class="token punctuation">.</span>ratelimit<span class="token punctuation">.</span>KeyResolver<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
@@ -699,8 +703,8 @@
         return exchange -> Mono.just(exchange.getRequest().getQueryParams().getFirst("user"));
     }*/</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="修改配置文件-1"><a href="#修改配置文件-1" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+</code></pre>
+<h3 id="修改配置文件-1"><a href="#修改配置文件-1" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">cloud</span><span class="token punctuation">:</span>
     <span class="token key atrule">gateway</span><span class="token punctuation">:</span>
       <span class="token key atrule">routes</span><span class="token punctuation">:</span>
@@ -726,7 +730,7 @@
                 <span class="token comment" spellcheck="true"># 令牌桶每秒填充平均速率（实际情况适当加大即可：10）</span>
                 <span class="token key atrule">redis-rate-limiter.replenishRate</span><span class="token punctuation">:</span> <span class="token number">1</span>
                 <span class="token comment" spellcheck="true"># 令牌桶总容量（实际情况适当加大即可：20）</span>
-                <span class="token key atrule">redis-rate-limiter.burstCapacity</span><span class="token punctuation">:</span> <span class="token number">3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <span class="token key atrule">redis-rate-limiter.burstCapacity</span><span class="token punctuation">:</span> <span class="token number">3</span></code></pre>
 <h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>使用测试工具测试，每秒两次访问。<br><img src="https://img-blog.csdnimg.cn/20200514104558565.png" alt=""><br>查看redis中的值<br><img src="https://img-blog.csdnimg.cn/20200514093421968.png" alt=""><br>将令牌桶总容量中的<code>3</code>个值消耗完毕，再多次访问即页面就是一片空白。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200514095510740.png" alt=""><br><code>TODO</code> ： 后续有时间，研究一下自定义限流返回信息。</p>
 
@@ -1343,6 +1347,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -409,7 +413,7 @@
 <p>我结合官方<code>demo</code>,整合到自己的项目中去.以及中间遇到的问题记录</p>
 <h2 id="seata服务端"><a href="#seata服务端" class="headerlink" title="seata服务端"></a>seata服务端</h2><h3 id="下载seata服务端"><a href="#下载seata服务端" class="headerlink" title="下载seata服务端"></a>下载seata服务端</h3><p><code>seata</code>服务端下载链接:<a href="https://github.com/seata/seata/releases" target="_blank" rel="noopener">https://github.com/seata/seata/releases</a><br>我选的是最新的<code>v1.1.0</code>版本,下载到本地即可<br><img src="https://img-blog.csdnimg.cn/20200327132932324.png" alt=""></p>
 <h3 id="修改seata配置"><a href="#修改seata配置" class="headerlink" title="修改seata配置"></a>修改seata配置</h3><p>我这里就说<code>win</code>下怎么启动:<br>首先修改目录下的<code>conf</code>中的配置<br><strong>file.conf</strong><br>其中我没有使用<code>db</code>方式, 使用的默认<code>file</code>方式,应该不需要修改</p>
-<pre class="line-numbers language-java"><code class="language-java">
+<pre class=" language-java"><code class="language-java">
 ## transaction log store<span class="token punctuation">,</span> only used in seata<span class="token operator">-</span>server
 store <span class="token punctuation">{</span>
   ## store mode<span class="token operator">:</span> file、db
@@ -448,9 +452,9 @@ store <span class="token punctuation">{</span>
     lockTable <span class="token operator">=</span> <span class="token string">"lock_table"</span>
     queryLimit <span class="token operator">=</span> <span class="token number">100</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><strong>registry.conf</strong><br>我使用的类型是<code>eureka</code>,配置上之前的注册中心地址</p>
-<pre class="line-numbers language-java"><code class="language-java">registry <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">registry <span class="token punctuation">{</span>
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
   type <span class="token operator">=</span> <span class="token string">"eureka"</span>
   eureka <span class="token punctuation">{</span>
@@ -467,20 +471,20 @@ config <span class="token punctuation">{</span>
     name <span class="token operator">=</span> <span class="token string">"file.conf"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="启动seata服务端"><a href="#启动seata服务端" class="headerlink" title="启动seata服务端"></a>启动seata服务端</h3><p>修改完毕,首先启动你的注册中心<code>eureka</code>,然后启动这个<code>seata</code>服务端<br>首先进入<code>bin</code>目录<br><code>seata-server.bat</code>  这个是<code>win</code>命令,<br>在这个目录进入<code>cmd</code>, 将这个文件拖进窗口,输入</p>
-<pre class="line-numbers language-java"><code class="language-java"> <span class="token operator">-</span>h <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span> <span class="token operator">-</span>p <span class="token number">8091</span> <span class="token operator">-</span>m file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"> <span class="token operator">-</span>h <span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span> <span class="token operator">-</span>p <span class="token number">8091</span> <span class="token operator">-</span>m file</code></pre>
 <p>最终效果:<br><img src="https://img-blog.csdnimg.cn/20200327134047773.png" alt=""><br>脚本参数:<br><code>-p</code>:指定启动<code>seata server</code>的端口号。<br><code>-h</code>:指定<code>seata server</code>所绑定的主机<br><code>-m</code>:指定事务日志、事务执行信息存储的方式，目前支持<code>file</code>（文件方式）、<code>db</code>（数据库方式)</p>
 <p><strong>这个地方我遇到的问题:</strong><br>第一个:我没有指定主机,然后和后面的配置里面对应不上,显示连接不上<code>seata server</code>服务.</p>
-<h2 id="导入jar"><a href="#导入jar" class="headerlink" title="导入jar"></a>导入jar</h2><pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>seata<span class="token operator">--</span><span class="token operator">></span>
+<h2 id="导入jar"><a href="#导入jar" class="headerlink" title="导入jar"></a>导入jar</h2><pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>seata<span class="token operator">--</span><span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>alibaba<span class="token operator">-</span>seata<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
             <span class="token operator">&lt;</span>version<span class="token operator">></span><span class="token number">2.1</span><span class="token punctuation">.</span><span class="token number">0</span><span class="token punctuation">.</span>RELEASE<span class="token operator">&lt;</span><span class="token operator">/</span>version<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <h2 id="修改自己项目的配置"><a href="#修改自己项目的配置" class="headerlink" title="修改自己项目的配置"></a>修改自己项目的配置</h2><p>新增两个配置文件,每个模块里面都需要,先修改一个,然后拷贝过去就行了<br><img src="https://img-blog.csdnimg.cn/20200327134824680.png" alt=""></p>
 <h3 id="file-conf-文件"><a href="#file-conf-文件" class="headerlink" title="file.conf 文件"></a>file.conf 文件</h3><p>其中大部分是默认的,只需要修改一个地方</p>
-<pre class="line-numbers language-java"><code class="language-java">service <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">service <span class="token punctuation">{</span>
   #transaction service group mapping
   vgroup_mapping<span class="token punctuation">.</span>tx <span class="token operator">=</span> <span class="token string">"default"</span>
   #only support when registry<span class="token punctuation">.</span>type<span class="token operator">=</span>file<span class="token punctuation">,</span> please don't set multiple addresses
@@ -489,10 +493,10 @@ config <span class="token punctuation">{</span>
   enableDegrade <span class="token operator">=</span> <span class="token boolean">false</span>
   #disable seata
   disableGlobalTransaction <span class="token operator">=</span> <span class="token boolean">false</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>注意,这个<code>tx</code>这个名字可以自己改,但是<code>application.yml</code>中一定要与之对应,往下看<br><img src="https://img-blog.csdnimg.cn/20200327135329393.png" alt=""></p>
 <p>完整的<code>file.conf</code> 文件</p>
-<pre class="line-numbers language-java"><code class="language-java">transport <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">transport <span class="token punctuation">{</span>
   # tcp udt unix<span class="token operator">-</span>domain<span class="token operator">-</span>socket
   type <span class="token operator">=</span> <span class="token string">"TCP"</span>
   #NIO NATIVE
@@ -557,9 +561,9 @@ client <span class="token punctuation">{</span>
   log <span class="token punctuation">{</span>
     exceptionRate <span class="token operator">=</span> <span class="token number">100</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="registry-conf文件"><a href="#registry-conf文件" class="headerlink" title="registry.conf文件"></a>registry.conf文件</h3><p>注册选择<code>type</code> = <code>eureka</code>,然后配置<code>eureka</code>地址即可</p>
-<pre class="line-numbers language-java"><code class="language-java">registry <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">registry <span class="token punctuation">{</span>
   # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
   type <span class="token operator">=</span> <span class="token string">"eureka"</span>
 
@@ -641,21 +645,21 @@ config <span class="token punctuation">{</span>
     name <span class="token operator">=</span> <span class="token string">"file.conf"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="修改application-yml"><a href="#修改application-yml" class="headerlink" title="修改application.yml"></a>修改application.yml</h3><p><strong>第一个方式:</strong><br>注意,这个<code>tx-service-group</code>: 后面的<code>tx</code>一定要和上面配置中的<code>tx</code>一样.<strong>一定一定要一样</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
   cloud<span class="token operator">:</span>
     alibaba<span class="token operator">:</span>
       seata<span class="token operator">:</span>
-        tx<span class="token operator">-</span>service<span class="token operator">-</span>group<span class="token operator">:</span> tx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        tx<span class="token operator">-</span>service<span class="token operator">-</span>group<span class="token operator">:</span> tx</code></pre>
 <p><strong>第二个方式:</strong></p>
 <p><code>application.yml</code>这个文件不指定<code>tx-service-group</code>,那么<code>file.conf</code>这个文件的<code>vgroup_mapping.tx</code>就必须修改为<code>seata</code>默认的形式<br>在这个源码中可以看到,如果你没有定义,那么你这个<code>file.conf</code>配置中必须设置为<code>applicationName</code> + “<code>-fescar-service-group</code>“<br>举例:我这个项目就必须设置为<code>order-fescar-service-group</code></p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
   application<span class="token operator">:</span>
-    name<span class="token operator">:</span> order<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    name<span class="token operator">:</span> order</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200327140048543.png" alt=""><br>都是坑踩出来的…………..</p>
 <h3 id="新增数据源配置"><a href="#新增数据源配置" class="headerlink" title="新增数据源配置"></a>新增数据源配置</h3><p>一开始我最下面的<code>mybatis</code>的配置没有注释,就会发生添加语句执行找不到<code>mapper</code><br>注释掉就可以了.</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>gmaya<span class="token punctuation">.</span>order<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>druid<span class="token punctuation">.</span>pool<span class="token punctuation">.</span>DruidDataSource<span class="token punctuation">;</span>
 <span class="token keyword">import</span> io<span class="token punctuation">.</span>seata<span class="token punctuation">.</span>rm<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>DataSourceProxy<span class="token punctuation">;</span>
@@ -700,11 +704,11 @@ config <span class="token punctuation">{</span>
     }*/</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="修改启动类"><a href="#修改启动类" class="headerlink" title="修改启动类"></a>修改启动类</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token punctuation">(</span>exclude <span class="token operator">=</span> DataSourceAutoConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</code></pre>
+<h3 id="修改启动类"><a href="#修改启动类" class="headerlink" title="修改启动类"></a>修改启动类</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span><span class="token punctuation">(</span>exclude <span class="token operator">=</span> DataSourceAutoConfiguration<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span></code></pre>
 <p>修改完将以上操作在<code>pay</code>中复制.</p>
 <h3 id="数据库新增表"><a href="#数据库新增表" class="headerlink" title="数据库新增表"></a>数据库新增表</h3><p>因为我是模拟的, 所以,只要是操作数据库就行了,就没弄多个库,在一个数据库,一个表<code>tb_user</code><br>此时在加一个<code>seata</code>需要的表<code>undo_log</code></p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- ----------------------------</span>
+<pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- ----------------------------</span>
 <span class="token comment" spellcheck="true">-- Table structure for undo_log</span>
 <span class="token comment" spellcheck="true">-- ----------------------------</span>
 <span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>undo_log<span class="token punctuation">`</span><span class="token punctuation">;</span>
@@ -726,9 +730,9 @@ config <span class="token punctuation">{</span>
 <span class="token comment" spellcheck="true">-- Records of undo_log</span>
 <span class="token comment" spellcheck="true">-- ----------------------------</span>
 
-<span class="token keyword">SET</span> FOREIGN_KEY_CHECKS <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">SET</span> FOREIGN_KEY_CHECKS <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span></code></pre>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><code>order</code>中调用<code>pay</code>创建一条数据,然后自己在创建一条语句.<br>在<code>order</code>方法上加上注解</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token variable">@GlobalTransactional</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token variable">@GlobalTransactional</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/2020032714194427.png" alt=""><br>启动<code>order</code> 启动<code>pay</code>,<br>测试!</p>
 <p><code>pay</code>日志:<br>添加数据成功没错,但是结果回滚了<br><img src="https://img-blog.csdnimg.cn/20200327142124397.png" alt=""><br><code>order</code>日志:<br><img src="https://img-blog.csdnimg.cn/20200327142247204.png" alt=""><br>最终数据库还是没有添加进去</p>
 <p><strong>再测:</strong><br>调用订单–&gt;先本地添加数据, 然后在调用支付,让支付失败,看订单是否回滚<br>测试结果还是回滚.<br><img src="https://img-blog.csdnimg.cn/20200327142918573.png" alt=""><br>自己一步一步一步一步敲出来的,希望我下次不要遇到这些问题.</p>
@@ -1352,6 +1356,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

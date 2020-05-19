@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -397,18 +401,18 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>仅仅学习而已,不做其他非法操作.<br>习惯用小<code>demo</code>来熟练各种方法与技巧</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>进入腾讯新闻找到疫情入口<br><a href="https://news.qq.com/zt2020/page/feiyan.htm#/global" target="_blank" rel="noopener">https://news.qq.com/zt2020/page/feiyan.htm#/global</a><br>然后<code>F12</code>分析接口.<br>这对于<code>java</code>老鸟来说,分分钟找到.</p>
-<pre class="line-numbers language-python"><code class="language-python">https<span class="token punctuation">:</span><span class="token operator">//</span>api<span class="token punctuation">.</span>inews<span class="token punctuation">.</span>qq<span class="token punctuation">.</span>com<span class="token operator">/</span>newsqa<span class="token operator">/</span>v1<span class="token operator">/</span>automation<span class="token operator">/</span>foreign<span class="token operator">/</span>country<span class="token operator">/</span>ranklist<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-python"><code class="language-python">https<span class="token punctuation">:</span><span class="token operator">//</span>api<span class="token punctuation">.</span>inews<span class="token punctuation">.</span>qq<span class="token punctuation">.</span>com<span class="token operator">/</span>newsqa<span class="token operator">/</span>v1<span class="token operator">/</span>automation<span class="token operator">/</span>foreign<span class="token operator">/</span>country<span class="token operator">/</span>ranklist</code></pre>
 <p>然后分析<code>json</code>,取什么值, 用什么.</p>
 <h2 id="撸代码"><a href="#撸代码" class="headerlink" title="撸代码"></a>撸代码</h2><h3 id="装工具"><a href="#装工具" class="headerlink" title="装工具"></a>装工具</h3><p>由于是从<code>0</code>开始学的<code>python</code>,所以什么也没有,<br>只有一个<code>python</code>环境,所以直接来到jb家<a href="https://www.jetbrains.com/" target="_blank" rel="noopener">jetbrains</a>,撸一个<code>pycharm</code>, 用过<code>idea</code>的都知道,直接和<code>idea</code>安装方式一样,一毛一样!!!</p>
 <h3 id="hello"><a href="#hello" class="headerlink" title="hello"></a>hello</h3><p>进来不多说, 一个<code>hello</code>例子必须要有</p>
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello word!'</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <p>右键执行<br><img src="https://img-blog.csdnimg.cn/20200402202028116.png" alt=""></p>
 <h3 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h3><p>想要访问互联网, 你不得一个<code>requests</code>请求么?<br>刚好,导入这个<br>在<code>python</code>安装目录 –&gt; <code>Scripts</code> 包下,进入<code>cmd</code><br>输入</p>
-<pre class="line-numbers language-python"><code class="language-python">pip install requests<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-python"><code class="language-python">pip install requests</code></pre>
 <p>等待安装完成!<br>然后在<code>ide</code>里面设置引入<br><img src="https://img-blog.csdnimg.cn/2020040220292135.png" alt=""></p>
-<h3 id="访问接口"><a href="#访问接口" class="headerlink" title="访问接口"></a>访问接口</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
+<h3 id="访问接口"><a href="#访问接口" class="headerlink" title="访问接口"></a>访问接口</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
 <span class="token keyword">import</span> requests
 
 <span class="token comment" spellcheck="true"># 创建会话对象</span>
@@ -417,14 +421,14 @@ session <span class="token operator">=</span> requests<span class="token punctua
 result <span class="token operator">=</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist'</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># 打印结果</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/2020040220394210.png" alt=""><br>握草,真是方便快捷狠啊</p>
 <p>走一步学一部,看下这个<code>requests</code>包是啥</p>
 <blockquote>
 <p>Requests为Python处理了所有HTTP/1.1操作， 与Web服务的无缝集成。不需要为URL手动添加查询字符串或POST数据进行表单处理。基于urllib3, 能自动处理Keep-alive和HTTP连接池。</p>
 </blockquote>
 <p>此处 自行百度学习了小半个小时,以后用到复杂的再说.</p>
-<h3 id="处理结果"><a href="#处理结果" class="headerlink" title="处理结果"></a>处理结果</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
+<h3 id="处理结果"><a href="#处理结果" class="headerlink" title="处理结果"></a>处理结果</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># @Author: GMaya</span>
 <span class="token keyword">import</span> requests<span class="token punctuation">,</span> json<span class="token punctuation">,</span> jsonpath
 
 <span class="token comment" spellcheck="true"># 创建会话对象</span>
@@ -443,7 +447,7 @@ data <span class="token operator">=</span> jsonpath<span class="token punctuatio
     file <span class="token operator">=</span> <span class="token string">'D:\download\global-yq.txt'</span>
     <span class="token keyword">with</span> open<span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token string">'a+'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
         f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>res <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 加\n换行显示</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200402220637483.png" alt=""><br>结果已经保存到本地文本里面了.<br>有不懂的命令直接文档里面找,还是很容易的<br><a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank" rel="noopener">文档连接</a></p>
 
             </div>
@@ -1050,6 +1054,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

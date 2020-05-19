@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -406,7 +410,7 @@
 <p>MyBatis-Plus（简称 MP）是一个 MyBatis 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。</p>
 </blockquote>
 <h2 id="2-创建spring-boot-项目"><a href="#2-创建spring-boot-项目" class="headerlink" title="2. 创建spring boot 项目"></a>2. 创建spring boot 项目</h2><p>使用<code>idea</code>默认生成即可 …</p>
-<h2 id="3-修改pom文件"><a href="#3-修改pom文件" class="headerlink" title="3. 修改pom文件"></a>3. 修改pom文件</h2><pre class="line-numbers language-vbnet"><code class="language-vbnet">        <dependency>
+<h2 id="3-修改pom文件"><a href="#3-修改pom文件" class="headerlink" title="3. 修改pom文件"></a>3. 修改pom文件</h2><pre class=" language-vbnet"><code class="language-vbnet">        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -473,8 +477,8 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
-        </dependency><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="4-修改application-yml文件"><a href="#4-修改application-yml文件" class="headerlink" title="4. 修改application.yml文件"></a>4. 修改application.yml文件</h2><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+        </dependency></code></pre>
+<h2 id="4-修改application-yml文件"><a href="#4-修改application-yml文件" class="headerlink" title="4. 修改application.yml文件"></a>4. 修改application.yml文件</h2><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
 <span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
@@ -491,11 +495,11 @@
       <span class="token key atrule">logic-not-delete-value</span><span class="token punctuation">:</span> <span class="token number">0 </span><span class="token comment" spellcheck="true"># 逻辑未删除值(默认为 0)</span>
   <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
     <span class="token key atrule">log-impl</span><span class="token punctuation">:</span> org.apache.ibatis.logging.stdout.StdOutImpl
-    <span class="token comment" spellcheck="true">#线上关闭sql日志打印</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment" spellcheck="true">#线上关闭sql日志打印</span></code></pre>
 <h2 id="5-修改启动类"><a href="#5-修改启动类" class="headerlink" title="5. 修改启动类"></a>5. 修改启动类</h2><p><img src="https://img-blog.csdnimg.cn/20190612171238629.png" alt="启动类"></p>
 <h2 id="6-创建Mybatis-plus配置"><a href="#6-创建Mybatis-plus配置" class="headerlink" title="6. 创建Mybatis-plus配置"></a>6. 创建Mybatis-plus配置</h2><p>新建文件<code>MyBatisPlusConfiguration</code></p>
 <p><strong>注意</strong> : 如果使用<code>mp</code>自带的控制逻辑删除和控制版本号还有分页功能,则需要添加这个配置</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>plus<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>plus<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>plugins<span class="token punctuation">.</span>PaginationInterceptor<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
@@ -532,12 +536,12 @@
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">PaginationInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="7-编写自动生成工具类"><a href="#7-编写自动生成工具类" class="headerlink" title="7. 编写自动生成工具类"></a>7. 编写自动生成工具类</h2><p><strong>注 :</strong> 直接把Controller/service/serviceImpl/dao/mapper/form/vo全部生成</p>
 <p>此处使用默认<code>velocity</code> 模版引擎 则没有常用的<code>crud</code>方法,使用自己的模板则可以生成常用的<code>crud</code>方法</p>
 <p>其中自定义模板中有工具类是公司自己的<code>jar</code>包,所以只推荐参考</p>
 <p>拷贝<code>mybatis-plus-generator</code> <code>jar</code>包中的模板到自己项目<code>resources</code>下</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>plus<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>plus<span class="token punctuation">.</span>demo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>DbType<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>IdType<span class="token punctuation">;</span>
@@ -670,7 +674,7 @@
         ag<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><strong>注 :</strong> 如果是使用自定义模板,请注意修改模板中的<code>form</code>,<code>vo</code>引入包路径等</p>
 <p>使用默认模板请注释代码中生成<code>form</code>/<code>vo</code>代码</p>
 <p>第一次运行可能有以下错误,如果没有请忽略</p>
@@ -1304,6 +1308,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

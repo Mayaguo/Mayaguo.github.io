@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -402,39 +406,39 @@
 <h2 id="Linux安装RabbitMQ"><a href="#Linux安装RabbitMQ" class="headerlink" title="Linux安装RabbitMQ"></a>Linux安装RabbitMQ</h2><h3 id="安装erlang环境"><a href="#安装erlang环境" class="headerlink" title="安装erlang环境"></a>安装erlang环境</h3><blockquote>
 <p>由于RabbitMQ是基于Erlang（面向高并发的语言）语言开发，所以在安装RabbitMQ之前，需要先安装Erlang。</p>
 </blockquote>
-<pre class="line-numbers language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install epel<span class="token operator">-</span>release
+<pre class=" language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install epel<span class="token operator">-</span>release
 yum <span class="token operator">-</span>y update
 yum <span class="token operator">-</span>y install erlang socat
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>查看<code>erlang</code>版本</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">erl <span class="token operator">-</span>version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">erl <span class="token operator">-</span>version</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/2020040915052285.png" alt=""></p>
 <h3 id="安装RabbitMQ"><a href="#安装RabbitMQ" class="headerlink" title="安装RabbitMQ"></a>安装RabbitMQ</h3><p><strong>下载RabbitMQ</strong></p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">wget http:<span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>rabbitmq<span class="token punctuation">.</span>com<span class="token operator">/</span>releases<span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server<span class="token operator">/</span>v3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">-</span>1<span class="token punctuation">.</span>el7<span class="token punctuation">.</span>noarch<span class="token punctuation">.</span>rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">wget http:<span class="token operator">/</span><span class="token operator">/</span>www<span class="token punctuation">.</span>rabbitmq<span class="token punctuation">.</span>com<span class="token operator">/</span>releases<span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server<span class="token operator">/</span>v3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">-</span>1<span class="token punctuation">.</span>el7<span class="token punctuation">.</span>noarch<span class="token punctuation">.</span>rpm</code></pre>
 <p><strong>提示:</strong> 如果你没有wget,请先安装wget </p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget</code></pre>
 <p><strong>安装RabbitMQ</strong></p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">yum install rabbitmq<span class="token operator">-</span>server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">-</span>1<span class="token punctuation">.</span>el7<span class="token punctuation">.</span>noarch<span class="token punctuation">.</span>rpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">yum install rabbitmq<span class="token operator">-</span>server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>15<span class="token operator">-</span>1<span class="token punctuation">.</span>el7<span class="token punctuation">.</span>noarch<span class="token punctuation">.</span>rpm</code></pre>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>添加开机启动<code>RabbitMQ</code>服务</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">systemctl enable rabbitmq<span class="token operator">-</span>server<span class="token punctuation">.</span>service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">systemctl enable rabbitmq<span class="token operator">-</span>server<span class="token punctuation">.</span>service</code></pre>
 <p>启动web控制台</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">rabbitmq<span class="token operator">-</span>plugins enable rabbitmq_management<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">rabbitmq<span class="token operator">-</span>plugins enable rabbitmq_management</code></pre>
 <p>防火墙开放<code>15672</code>和<code>5672</code>端口</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token operator">/</span>sbin<span class="token operator">/</span>iptables <span class="token operator">-</span>I INPUT <span class="token operator">-</span>p tcp <span class="token operator">--</span>dport 15672 <span class="token operator">-</span>j ACCEPT
+<pre class=" language-powershell"><code class="language-powershell"><span class="token operator">/</span>sbin<span class="token operator">/</span>iptables <span class="token operator">-</span>I INPUT <span class="token operator">-</span>p tcp <span class="token operator">--</span>dport 15672 <span class="token operator">-</span>j ACCEPT
 <span class="token operator">/</span>sbin<span class="token operator">/</span>iptables <span class="token operator">-</span>I INPUT <span class="token operator">-</span>p tcp <span class="token operator">--</span>dport 5672 <span class="token operator">-</span>j ACCEPT
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <p>默认网页<code>guest</code>用户是不允许访问的，需要修改一下权限</p>
 <p>修改配置文件</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">vi <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq_server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>5<span class="token operator">/</span>ebin<span class="token operator">/</span>rabbit<span class="token punctuation">.</span>app<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">vi <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq_server<span class="token operator">-</span>3<span class="token punctuation">.</span>6<span class="token punctuation">.</span>5<span class="token operator">/</span>ebin<span class="token operator">/</span>rabbit<span class="token punctuation">.</span>app</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200409195424631.png" alt=""><br>启动, 停止 , 重启</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">service rabbitmq<span class="token operator">-</span>server <span class="token function">start</span>
+<pre class=" language-powershell"><code class="language-powershell">service rabbitmq<span class="token operator">-</span>server <span class="token function">start</span>
 service rabbitmq<span class="token operator">-</span>server stop
-service rabbitmq<span class="token operator">-</span>server restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+service rabbitmq<span class="token operator">-</span>server restart</code></pre>
 <p>注：有可能起不来 。。。</p>
 <p>进入</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>bin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>bin</code></pre>
 <p>启动 加 -detached 后台启动</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"> <span class="token punctuation">.</span><span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server <span class="token function">start</span> <span class="token operator">-</span>detached<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell"> <span class="token punctuation">.</span><span class="token operator">/</span>rabbitmq<span class="token operator">-</span>server <span class="token function">start</span> <span class="token operator">-</span>detached</code></pre>
 <p>浏览器输入<code>ip:15672</code><br>输入<code>guest</code>     <code>guest</code><br><img src="https://img-blog.csdnimg.cn/20200409153400333.png" alt=""></p>
 <p>服气，各种版本不一致问题，提不起来，项目访问不到，端口不通，这个安装感觉比<code>oracle</code>都麻烦！！！</p>
 
@@ -1058,6 +1062,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

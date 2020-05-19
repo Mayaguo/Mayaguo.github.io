@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -403,9 +407,9 @@
 <h2 id="集群原理图"><a href="#集群原理图" class="headerlink" title="集群原理图"></a>集群原理图</h2><p>如果只有一个注册中心（服务端），一旦挂掉，就直接<code>GG</code>，在分布式系统中，任何地方存在单点故障，整个系统就不是高可用的。（自己手画的难看见谅）</p>
 <p><img src="https://img-blog.csdnimg.cn/20200315221636385.png" alt=""></p>
 <h2 id="创建服务端2"><a href="#创建服务端2" class="headerlink" title="创建服务端2"></a>创建服务端2</h2><p>在上一篇文章中写了最简单的单服务端，单客户端的例子。所以，在上一篇的基础上，继续新建一个服务端，起名字叫做服务端2<br>登录<code>spring</code>官网 <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a><br><img src="https://img-blog.csdnimg.cn/20200315222938981.png" alt=""><br>保存到本地之后，导入项目<br><img src="https://img-blog.csdnimg.cn/20200315223158658.png" alt=""><br>服务器2（<code>EurekaServerTwo</code>）启动类添加注解</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableEurekaServer</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableEurekaServer</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315224555469.png" alt=""><br>修改<code>EurekaServerTwo</code>配置文件<code>application.yml</code></p>
-<pre class="line-numbers language-java"><code class="language-java">server<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">server<span class="token operator">:</span>
   port<span class="token operator">:</span> <span class="token number">8762</span>
 eureka<span class="token operator">:</span>
   client<span class="token operator">:</span>
@@ -422,9 +426,9 @@ eureka<span class="token operator">:</span>
     # 启用自我保护机制，默认为<span class="token boolean">true</span>
     enable<span class="token operator">-</span>self<span class="token operator">-</span>preservation<span class="token operator">:</span> <span class="token boolean">false</span>
 spring<span class="token operator">:</span>
-  profiles<span class="token operator">:</span> server02<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  profiles<span class="token operator">:</span> server02</code></pre>
 <h2 id="修改服务器1EurekaServer"><a href="#修改服务器1EurekaServer" class="headerlink" title="修改服务器1EurekaServer"></a>修改服务器1EurekaServer</h2><p>修改<code>EurekaServer</code>项目的配置文件<code>application.yml</code></p>
-<pre class="line-numbers language-java"><code class="language-java">server<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">server<span class="token operator">:</span>
   port<span class="token operator">:</span> <span class="token number">8761</span>
 eureka<span class="token operator">:</span>
   client<span class="token operator">:</span>
@@ -441,19 +445,19 @@ eureka<span class="token operator">:</span>
     # 启用自我保护机制，默认为<span class="token boolean">true</span>
     enable<span class="token operator">-</span>self<span class="token operator">-</span>preservation<span class="token operator">:</span> <span class="token boolean">false</span>
 spring<span class="token operator">:</span>
-  profiles<span class="token operator">:</span> server01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  profiles<span class="token operator">:</span> server01</code></pre>
 <h2 id="修改电脑hosts文件"><a href="#修改电脑hosts文件" class="headerlink" title="修改电脑hosts文件"></a>修改电脑hosts文件</h2><p>修改<code>host</code>文件添加对<code>application.yml</code>配置文件中<code>hostname</code>的映射<br>打开电脑<code>C:\Windows\System32\drivers\etc</code><br>找到hosts，在文件最后输入</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span>    server01
-<span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span>    server02<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span>    server01
+<span class="token number">127.0</span><span class="token punctuation">.</span><span class="token number">0.1</span>    server02</code></pre>
 <p>注意使用管理员权限，不然没办法保存</p>
 <h2 id="启动查看效果"><a href="#启动查看效果" class="headerlink" title="启动查看效果"></a>启动查看效果</h2><p>修改启动配置项<br><img src="https://img-blog.csdnimg.cn/20200315230830125.png" alt=""><br><strong>在服务器1配置</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">-</span>Dspring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span>server01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token operator">-</span>Dspring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span>server01</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315230914439.png" alt=""><br><strong>在服务器2配置</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">-</span>Dspring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span>server02<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token operator">-</span>Dspring<span class="token punctuation">.</span>profiles<span class="token punctuation">.</span>active<span class="token operator">=</span>server02</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315231015288.png" alt=""><br>启动服务器1，启动服务器2，启动客户端<br>如果在启动中报错，先则是因为服务器1向服务器2注册没有连接上，等你服务器2启动完毕就不会报错了。<br>最终在浏览器查看效果<br><strong><a href="http://localhost:8761/" target="_blank" rel="noopener">http://localhost:8761/</a></strong><br><img src="https://img-blog.csdnimg.cn/2020031523152013.png" alt=""><br><strong><a href="http://localhost:8762/" target="_blank" rel="noopener">http://localhost:8762/</a></strong><br><img src="https://img-blog.csdnimg.cn/20200315231601974.png" alt=""></p>
 <h2 id="停止服务器1"><a href="#停止服务器1" class="headerlink" title="停止服务器1"></a>停止服务器1</h2><p>此时检验效果，停止服务器1，即端口号为：<code>8761</code>的服务器<br><img src="https://img-blog.csdnimg.cn/20200315231759209.png" alt=""><br>稍微等待一会，因为有默认的失效时间。<br>查看<code>http://localhost:8762</code><br>此时客户端已经消失，<br><img src="https://img-blog.csdnimg.cn/2020031523232598.png" alt=""><br>这是因为客户端没有配置服务器2的注册。</p>
 <h2 id="修改客户端"><a href="#修改客户端" class="headerlink" title="修改客户端"></a>修改客户端</h2><p>修改<code>EurekaClient</code>项目的配置文件<code>application.yml</code><br>将两个注册中心全部配置上去</p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
   application<span class="token operator">:</span>
     name<span class="token operator">:</span> eureka<span class="token operator">-</span>client
 server<span class="token operator">:</span>
@@ -462,7 +466,7 @@ eureka<span class="token operator">:</span>
   client<span class="token operator">:</span>
     service<span class="token operator">-</span>url<span class="token operator">:</span>
       #注册中心路径，表示我们向这个注册中心注册服务，如果向多个注册中心注册，用“，”进行分隔
-      defaultZone<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server01<span class="token operator">:</span><span class="token number">8761</span><span class="token operator">/</span>eureka<span class="token operator">/</span><span class="token punctuation">,</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server02<span class="token operator">:</span><span class="token number">8762</span><span class="token operator">/</span>eureka<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+      defaultZone<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server01<span class="token operator">:</span><span class="token number">8761</span><span class="token operator">/</span>eureka<span class="token operator">/</span><span class="token punctuation">,</span>http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>server02<span class="token operator">:</span><span class="token number">8762</span><span class="token operator">/</span>eureka<span class="token operator">/</span></code></pre>
 <p>将<code>server02</code>注册进来，重新启动服务端1，服务端2，客户端，再次演示上面断掉服务端1的操作<br>这个时候<code>server02</code>就能一直显示客户端的注册</p>
 <p>这样就算一个服务器挂掉，对整体也不会有影响了。</p>
 
@@ -1082,6 +1086,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

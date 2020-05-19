@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -405,9 +409,9 @@
 </blockquote>
 <h2 id="创建eureka服务端"><a href="#创建eureka服务端" class="headerlink" title="创建eureka服务端"></a>创建eureka服务端</h2><p>登录<code>spring</code>官网 <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a><br><img src="https://img-blog.csdnimg.cn/20200315173526729.png" alt=""><br>写好组名称，和项目名称,搜索<code>eureka server</code>，点击<code>+</code>，选择导出到本地。<br><img src="https://img-blog.csdnimg.cn/20200315173919500.png" alt=""><br>将下载好的项目导入<code>idea</code>。</p>
 <p>然后在<code>eureka server</code>项目启动类添加注解</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableEurekaServer</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableEurekaServer</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315175550115.png" alt=""><br>修改配置<code>application.yml</code>文件<br>其中<code>defaultZone</code><strong>前后注意空格</strong>，而且这个单词是关联不出来的。</p>
-<pre class="line-numbers language-java"><code class="language-java">server<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">server<span class="token operator">:</span>
   port<span class="token operator">:</span> <span class="token number">8761</span>
 eureka<span class="token operator">:</span>
   client<span class="token operator">:</span>
@@ -422,19 +426,19 @@ spring<span class="token operator">:</span>
   application<span class="token operator">:</span>
     # 微服务名称
     name<span class="token operator">:</span> eureka
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>启动<code>localhost:8761</code>显示页面即为成功！</p>
 <p><img src="https://img-blog.csdnimg.cn/20200315203638407.png" alt=""></p>
 <h2 id="创建eureka客户端"><a href="#创建eureka客户端" class="headerlink" title="创建eureka客户端"></a>创建eureka客户端</h2><p>登录<code>spring</code>官网 <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a><br>修改项目名称，搜索<code>eureka discovery client</code> 。点击+ ，保存到本地<br><img src="https://img-blog.csdnimg.cn/20200315204041224.png" alt=""><br>保存到本地之后，在上一个项目中打开<br><img src="https://img-blog.csdnimg.cn/20200315175306228.png" alt=""><br>选择<code>eureka</code>客户端导入。<br><img src="https://img-blog.csdnimg.cn/20200315175355975.png" alt=""></p>
 <p>修改<code>eureka</code>客户端启动类<br>添加注解</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableDiscoveryClient</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableDiscoveryClient</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315204457915.png" alt=""><br><code>pom</code>文件添加</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>web<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <p>修改配置文件<code>application.yml</code></p>
-<pre class="line-numbers language-java"><code class="language-java">spring<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">spring<span class="token operator">:</span>
   application<span class="token operator">:</span>
     name<span class="token operator">:</span> eureka<span class="token operator">-</span>client
 server<span class="token operator">:</span>
@@ -444,7 +448,7 @@ eureka<span class="token operator">:</span>
     service<span class="token operator">-</span>url<span class="token operator">:</span>
       #注册中心路径，表示我们向这个注册中心注册服务，如果向多个注册中心注册，用“<span class="token punctuation">,</span>”进行分隔
       defaultZone<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">8761</span><span class="token operator">/</span>eureka<span class="token operator">/</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200315210244310.png" alt=""><br>启动服务端，启动客户端<br><img src="https://img-blog.csdnimg.cn/20200315210433640.png" alt=""><br>最简单的一个<code>spring cloud</code> + <code>eureka</code> 服务注册到此结束。全部是采用默认形式，最简单的一个项目搭建。</p>
 
             </div>
@@ -1067,6 +1071,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

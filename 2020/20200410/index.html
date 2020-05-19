@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -404,13 +408,13 @@
 </blockquote>
 <p>安装完<code>MQ</code>，就该写个例子研究研究了。<br>新建<code>Spring Boot</code> 项目。</p>
 <h2 id="修改pom文件"><a href="#修改pom文件" class="headerlink" title="修改pom文件"></a>修改pom文件</h2><p>新增<code>RabbitMQ</code> 支持</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">    <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
         <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
         <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>boot<span class="token operator">-</span>starter<span class="token operator">-</span>amqp<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>默认网页<code>guest</code>用户是不允许访问的，需要修改一下权限。上篇有写</p>
-<pre class="line-numbers language-java"><code class="language-java">server<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">server<span class="token operator">:</span>
   port<span class="token operator">:</span> <span class="token number">8088</span>
 spring<span class="token operator">:</span>
   rabbitmq<span class="token operator">:</span>
@@ -419,7 +423,7 @@ spring<span class="token operator">:</span>
     username<span class="token operator">:</span> guest
     password<span class="token operator">:</span> guest
     virtual<span class="token operator">-</span>host<span class="token operator">:</span> <span class="token operator">/</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="四种交换机"><a href="#四种交换机" class="headerlink" title="四种交换机"></a>四种交换机</h2><p>交换机的功能主要是接收消息并且转发到绑定的队列，交换机不存储消息。</p>
 <p>交换机有四种类型：<code>Direct</code>, <code>topic</code>, <code>Headers</code> and <code>Fanout</code></p>
 <blockquote>
@@ -434,7 +438,7 @@ spring<span class="token operator">:</span>
 <blockquote>
 <p>Fanout是路由广播的形式,将会把消息发给绑定它的全部队列,即便设置了key,也会被忽略.</p>
 </blockquote>
-<h2 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h2><h3 id="创建配置类"><a href="#创建配置类" class="headerlink" title="创建配置类"></a>创建配置类</h3><pre class="line-numbers language-java"><code class="language-java">
+<h2 id="Direct"><a href="#Direct" class="headerlink" title="Direct"></a>Direct</h2><h3 id="创建配置类"><a href="#创建配置类" class="headerlink" title="创建配置类"></a>创建配置类</h3><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * 消息队列配置类
  * @author GMaya
@@ -455,9 +459,9 @@ spring<span class="token operator">:</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="创建生产者"><a href="#创建生产者" class="headerlink" title="创建生产者"></a>创建生产者</h3><p>用来提供消息产生的</p>
-<pre class="line-numbers language-java"><code class="language-java">
+<pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * 消息队列生产者,比如订单下完,需要生产一个邮件推送的消息
  * @author GMaya
@@ -477,9 +481,9 @@ spring<span class="token operator">:</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="创建消费者"><a href="#创建消费者" class="headerlink" title="创建消费者"></a>创建消费者</h3><p>用来消费消息的</p>
-<pre class="line-numbers language-java"><code class="language-java">
+<pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * 消息列队 , 消费者, 用来消费队列中的消息
  * @author GMaya
@@ -495,9 +499,9 @@ spring<span class="token operator">:</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>写个<code>hello</code>，然后调用。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
 
@@ -511,10 +515,10 @@ spring<span class="token operator">:</span>
         <span class="token keyword">return</span> <span class="token string">"hello rabbitmq!!!"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>浏览器访问 <code>http://localhost:8088/hello?msg=你好啊</code></p>
 <p><img src="https://img-blog.csdnimg.cn/20200410104352630.png" alt=""></p>
-<h2 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h2><h3 id="修改配置类"><a href="#修改配置类" class="headerlink" title="修改配置类"></a>修改配置类</h3><pre class="line-numbers language-java"><code class="language-java">
+<h2 id="topic"><a href="#topic" class="headerlink" title="topic"></a>topic</h2><h3 id="修改配置类"><a href="#修改配置类" class="headerlink" title="修改配置类"></a>修改配置类</h3><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * 消息队列配置类
  * @author GMaya
@@ -567,8 +571,8 @@ spring<span class="token operator">:</span>
     <span class="token comment" spellcheck="true">// Topic Exchange 可以用通配符 ---begin</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="修改生产者"><a href="#修改生产者" class="headerlink" title="修改生产者"></a>修改生产者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+</code></pre>
+<h3 id="修改生产者"><a href="#修改生产者" class="headerlink" title="修改生产者"></a>修改生产者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 消息队列生产者,比如订单下完,需要生产一个邮件推送的消息
  * @author GMaya
  * @dateTime 2020/4/9 15:42
@@ -599,8 +603,8 @@ spring<span class="token operator">:</span>
 
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="修改消费者"><a href="#修改消费者" class="headerlink" title="修改消费者"></a>修改消费者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<span class="token punctuation">}</span></code></pre>
+<h3 id="修改消费者"><a href="#修改消费者" class="headerlink" title="修改消费者"></a>修改消费者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 消息列队 , 消费者, 用来消费队列中的消息
  * @author GMaya
  * @dateTime 2020/4/9 15:58
@@ -623,10 +627,10 @@ spring<span class="token operator">:</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">receiverB</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"QUEUE_B消费者消费。。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>完全匹配<br><img src="https://img-blog.csdnimg.cn/20200410113651384.png" alt=""><br>模糊匹配<br><img src="https://img-blog.csdnimg.cn/20200410113741617.png" alt=""></p>
 <h2 id="Fanout"><a href="#Fanout" class="headerlink" title="Fanout"></a>Fanout</h2><h3 id="修改配置类-1"><a href="#修改配置类-1" class="headerlink" title="修改配置类"></a>修改配置类</h3><p>在<code>topic</code>配置类基础上新增代码</p>
-<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">// Fanout Exchange 消息广播的模式 ---begin</span>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">// Fanout Exchange 消息广播的模式 ---begin</span>
 
     <span class="token comment" spellcheck="true">// 定义Fanout交换机名称</span>
     <span class="token comment" spellcheck="true">// 不管路由键或者是路由模式，会把消息发给绑定给它的全部队列，如果配置了routing_key会被忽略。</span>
@@ -644,9 +648,9 @@ spring<span class="token operator">:</span>
         <span class="token keyword">return</span> BindingBuilder<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token function">topicQueueB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token function">fanoutExchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">// Fanout Exchange 消息广播的模式 ---end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment" spellcheck="true">// Fanout Exchange 消息广播的模式 ---end</span></code></pre>
 <p>消费者不需要更改（因为是使用的<code>topic</code>中的两个，已经写过了）</p>
-<h3 id="修改生产者-1"><a href="#修改生产者-1" class="headerlink" title="修改生产者"></a>修改生产者</h3><pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+<h3 id="修改生产者-1"><a href="#修改生产者-1" class="headerlink" title="修改生产者"></a>修改生产者</h3><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
      * fanout 模式
      * @param msg
      */</span>
@@ -654,8 +658,8 @@ spring<span class="token operator">:</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"fanout生产者生产消息。。。。。{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// 会把消息发送给 所有绑定到此交换机的全部列队；routing_key会被忽略。</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>amqpTemplate<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span>MQConfig<span class="token punctuation">.</span>FANOUT_EXCHANGE<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+    <span class="token punctuation">}</span></code></pre>
+<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloController</span> <span class="token punctuation">{</span>
 
@@ -671,11 +675,11 @@ spring<span class="token operator">:</span>
         <span class="token keyword">return</span> <span class="token string">"hello rabbitmq!!!"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200410141531194.png" alt=""></p>
 <h2 id="延迟队列（死信队列）"><a href="#延迟队列（死信队列）" class="headerlink" title="延迟队列（死信队列）"></a>延迟队列（死信队列）</h2><p>模拟订单创建完，如果<code>30</code>分钟后还没有支付，则取消订单。<br>要实现的办法很多， 使用<code>RabbitMQ</code>延迟队列是其中一个办法！</p>
 <p>使用死信队列大致思路：<br><img src="https://img-blog.csdnimg.cn/202004101700583.png" alt=""></p>
-<h3 id="订单MQ配置类"><a href="#订单MQ配置类" class="headerlink" title="订单MQ配置类"></a>订单MQ配置类</h3><pre class="line-numbers language-java"><code class="language-java">
+<h3 id="订单MQ配置类"><a href="#订单MQ配置类" class="headerlink" title="订单MQ配置类"></a>订单MQ配置类</h3><pre class=" language-java"><code class="language-java">
 <span class="token comment" spellcheck="true">/**
  * 订单业务配置
  * 死信对列使用的 orderTTLExchange，orderTTLQueue，orderTTLKey
@@ -746,8 +750,8 @@ spring<span class="token operator">:</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="订单生产者"><a href="#订单生产者" class="headerlink" title="订单生产者"></a>订单生产者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+</code></pre>
+<h3 id="订单生产者"><a href="#订单生产者" class="headerlink" title="订单生产者"></a>订单生产者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 订单消息生产着
  * @author GMaya
  * @dateTime 2020/4/10 15:48
@@ -777,8 +781,8 @@ spring<span class="token operator">:</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="订单消费者"><a href="#订单消费者" class="headerlink" title="订单消费者"></a>订单消费者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+</code></pre>
+<h3 id="订单消费者"><a href="#订单消费者" class="headerlink" title="订单消费者"></a>订单消费者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 订单消息消费者
  * 主要用于检查订单状态是否支付
  * @author GMaya
@@ -793,8 +797,8 @@ spring<span class="token operator">:</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者===订单号：{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// TODO 处理判断此订单状态是否支付，如果没有支付则取消订单！</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="调用测试"><a href="#调用测试" class="headerlink" title="调用测试"></a>调用测试</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<span class="token punctuation">}</span></code></pre>
+<h3 id="调用测试"><a href="#调用测试" class="headerlink" title="调用测试"></a>调用测试</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  *
  * @author GMaya
  * @dateTime 2020/4/9 15:37
@@ -813,7 +817,7 @@ spring<span class="token operator">:</span>
         <span class="token keyword">return</span> <span class="token string">"order创建成功！"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>模拟<code>20</code>秒后进行实际调用处理<br>将<code>20</code>秒换成<code>30</code>分钟，实现超过<code>30</code>分钟还未支付的订单处理<br><img src="https://img-blog.csdnimg.cn/20200410170553124.png" alt=""><br><img src="https://img-blog.csdnimg.cn/20200410170805913.png" alt=""><br>上述代码全部上传到<code>gitee</code>。<br>项目地址：<a href="https://gitee.com/GMaya/springboot-rabbitmq" target="_blank" rel="noopener">https://gitee.com/GMaya/springboot-rabbitmq</a><br>欢迎<code>star</code></p>
 
             </div>
@@ -1432,6 +1436,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

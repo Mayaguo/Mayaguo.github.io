@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -401,41 +405,41 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇安装完<code>jdk</code>，<code>tomcat</code> 就在来一个<code>Nginx</code>。</p>
 <h2 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h2><p>进入你想要安装的目录</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span></code></pre>
 <p>创建<code>nginx</code>文件夹</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">mkdir nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">mkdir nginx</code></pre>
 <p>进入<code>nginx</code>目录下</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">cd nginx<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">cd nginx<span class="token operator">/</span></code></pre>
 <p>下载<code>nginx</code><br>在线下载或者自己下载好然后上传过来。</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">wget http:<span class="token operator">/</span><span class="token operator">/</span>nginx<span class="token punctuation">.</span>org<span class="token operator">/</span>download<span class="token operator">/</span>nginx<span class="token operator">-</span>1<span class="token punctuation">.</span>16<span class="token punctuation">.</span>1<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">wget http:<span class="token operator">/</span><span class="token operator">/</span>nginx<span class="token punctuation">.</span>org<span class="token operator">/</span>download<span class="token operator">/</span>nginx<span class="token operator">-</span>1<span class="token punctuation">.</span>16<span class="token punctuation">.</span>1<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz</code></pre>
 <p>提示: 如果你没有<code>wget</code>,请先安装<code>wget</code></p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget</code></pre>
 <p>安装所需的插件</p>
-<pre class="line-numbers language-java"><code class="language-java">yum install gcc c<span class="token operator">++</span>
+<pre class=" language-java"><code class="language-java">yum install gcc c<span class="token operator">++</span>
 yum install <span class="token operator">-</span>y pcre pcre<span class="token operator">-</span>devel
 yum install <span class="token operator">-</span>y zlib zlib<span class="token operator">-</span>devel
-yum install <span class="token operator">-</span>y openssl openssl<span class="token operator">-</span>devel<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+yum install <span class="token operator">-</span>y openssl openssl<span class="token operator">-</span>devel</code></pre>
 <blockquote>
 <p>用于编译c、c++代码的GCC；<br>用<code>c</code>语言编写的正则表达式函数库<code>Pcre</code>(使用<code>rewrite</code>模块)；<br>用于数据压缩的函式库的<code>Zlib</code>；<br>安全套接字层密码库<code>OpenSSL</code>（启用<code>SSL</code>支持）</p>
 </blockquote>
 <p>解压，编译<br>按照顺序执行</p>
-<pre class="line-numbers language-java"><code class="language-java">tar <span class="token operator">-</span>zxvf nginx<span class="token operator">-</span><span class="token number">1.16</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">cd nginx<span class="token operator">-</span><span class="token number">1.16</span><span class="token punctuation">.</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token punctuation">.</span>/configure<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java">make <span class="token operator">&amp;&amp;</span> sudo make install<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">tar <span class="token operator">-</span>zxvf nginx<span class="token operator">-</span><span class="token number">1.16</span><span class="token punctuation">.</span><span class="token number">1</span><span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz </code></pre>
+<pre class=" language-java"><code class="language-java">cd nginx<span class="token operator">-</span><span class="token number">1.16</span><span class="token punctuation">.</span><span class="token number">1</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/configure</code></pre>
+<pre class=" language-java"><code class="language-java">make <span class="token operator">&amp;&amp;</span> sudo make install</code></pre>
 <h2 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h2><p><strong>启动</strong></p>
-<pre class="line-numbers language-java"><code class="language-java">cd sbin<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">cd sbin<span class="token operator">/</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx</code></pre>
 <p><strong>停用</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>s stop<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>s stop</code></pre>
 <p><strong>重启</strong></p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>s reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>s reload</code></pre>
 <p>检查修改的<code>nginx.conf</code>配置是否正确</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span>/nginx <span class="token operator">-</span>t</code></pre>
 <p>启动完之后，浏览器访问<code>http://192.168.21.129/</code><br>如果没有开启<code>80</code>端口，是不行的<br>开启<code>80</code>端口<br>我使用的是<code>centos7</code><br>加入<code>80</code>规则<br><code>–permanent</code> #永久生效，没有此参数设置，重启后会失效。</p>
-<pre class="line-numbers language-java"><code class="language-java">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone<span class="token operator">=</span><span class="token keyword">public</span> <span class="token operator">--</span>add<span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">80</span><span class="token operator">/</span>tcp <span class="token operator">--</span>permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone<span class="token operator">=</span><span class="token keyword">public</span> <span class="token operator">--</span>add<span class="token operator">-</span>port<span class="token operator">=</span><span class="token number">80</span><span class="token operator">/</span>tcp <span class="token operator">--</span>permanent</code></pre>
 <p>重启防火墙</p>
-<pre class="line-numbers language-java"><code class="language-java">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>reload</code></pre>
 <p>刷新页面<code>http://192.168.21.129/</code><br><img src="https://img-blog.csdnimg.cn/20200413141903835.png" alt=""></p>
 
             </div>
@@ -1058,6 +1062,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

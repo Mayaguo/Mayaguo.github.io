@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -342,12 +346,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/win10/">
-                                <span class="chip bg-color">win10</span>
-                            </a>
-                        
                             <a href="/tags/%E5%AE%89%E8%A3%85git/">
                                 <span class="chip bg-color">安装git</span>
+                            </a>
+                        
+                            <a href="/tags/win10/">
+                                <span class="chip bg-color">win10</span>
                             </a>
                         
                     </div>
@@ -403,7 +407,7 @@
 <h2 id="下载小乌龟"><a href="#下载小乌龟" class="headerlink" title="下载小乌龟"></a>下载小乌龟</h2><p>去<a href="https://tortoisegit.org/download/" target="_blank" rel="noopener">tortoriseGit官网</a>下载<code>64</code>位小乌龟。<br>然后下面还有一个中文语言包（不下载也行），<code>Language Packs</code> 下面的 <code>Chinese, simplified</code><br>先安装小乌龟，一路暴力下一步到结束。安装语言包，一路到结束。<br>鼠标右键打开小乌龟设置，选择语言为中文，结束！</p>
 <h2 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h2><p>鼠标右键 打开 <code>Git Bash</code></p>
 <p>输入下面的命令<br>将邮箱换成你自己的邮箱、然后回车</p>
-<pre class="line-numbers language-java"><code class="language-java">ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>o <span class="token operator">-</span>t rsa <span class="token operator">-</span>b <span class="token number">4096</span> <span class="token operator">-</span>C <span class="token string">"email@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">ssh<span class="token operator">-</span>keygen <span class="token operator">-</span>o <span class="token operator">-</span>t rsa <span class="token operator">-</span>b <span class="token number">4096</span> <span class="token operator">-</span>C <span class="token string">"email@example.com"</span></code></pre>
 <p>然后出现提示 密钥保存的位置。记一下<br>使用默认密钥地址，继续回车<br>提示你对密钥设置密码，这里无需设置，直接按回车键就好，要按两次回车键。<br>之后就会显示保存成功<br>然后打开默认位置，看一下有没有两个文件<br><img src="https://img-blog.csdnimg.cn/20200306173738233.png" alt="密钥"></p>
 <h2 id="添加密钥到Git服务器"><a href="#添加密钥到Git服务器" class="headerlink" title="添加密钥到Git服务器"></a>添加密钥到Git服务器</h2><p>登录进来之后点击右上角的图标，选择settings设置SSH密钥<br><img src="https://img-blog.csdnimg.cn/2020030617384577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>选择 <code>SSH keys</code><br>然后 <code>new SSH keys</code><br>将刚才生成的公钥放进去保存即可。</p>
 <h2 id="配置本地私钥"><a href="#配置本地私钥" class="headerlink" title="配置本地私钥"></a>配置本地私钥</h2><p>在文件夹空白处右键选择<code>TortoiseGit</code>的设置(<code>setting</code>)选项<br><img src="https://img-blog.csdnimg.cn/20200306174116319.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>一直点下一步到下面的这个页面，中间会让你输入你的名称和邮箱（名称随便写，邮箱还写你那个邮箱），然后点击 生成<code>PuTTY</code>密钥对<br><img src="https://img-blog.csdnimg.cn/20200306174318690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dmbDE0MjcwOTcxMDM=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>选择你刚才的私钥<br><img src="https://img-blog.csdnimg.cn/20200306174349611.png" alt="在这里插入图片描述"><br>然后点击<code>Save private key</code> 保存成<code>PuTTY</code> 格式的私钥<br><img src="https://img-blog.csdnimg.cn/20200306174436984.png" alt="在这里插入图片描述"><br>保存成功后关闭窗口</p>
@@ -471,12 +475,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/win10/">
-                                    <span class="chip bg-color">win10</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%AE%89%E8%A3%85git/">
                                     <span class="chip bg-color">安装git</span>
+                                </a>
+                            
+                                <a href="/tags/win10/">
+                                    <span class="chip bg-color">win10</span>
                                 </a>
                             
                         </div>
@@ -765,12 +769,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
                     <a href="/tags/%E9%85%B7q/">
                         <span class="chip bg-color">酷q</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
                     </a>
                     
                 </div>
@@ -1028,6 +1032,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

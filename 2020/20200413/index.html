@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -401,29 +405,29 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一直都想写一遍这个，虽然不是经常用到。这次准备搞一下<code>Nginx</code>,所以就从<code>0</code>开始，记录一下。</p>
 <h2 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h2><p>进入你想要安装的目录</p>
-<pre class="line-numbers language-java"><code class="language-java">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span></code></pre>
 <p>创建jdk文件夹</p>
-<pre class="line-numbers language-java"><code class="language-java">mkdir jdk1<span class="token number">.8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">mkdir jdk1<span class="token number">.8</span></code></pre>
 <p>进入<code>jdk</code>目录下</p>
-<pre class="line-numbers language-java"><code class="language-java">cd jdk1<span class="token number">.8</span><span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">cd jdk1<span class="token number">.8</span><span class="token operator">/</span></code></pre>
 <p>下载<code>jdk1.8</code></p>
 <p>在线下载或者自己下载好然后上传过来。</p>
-<pre class="line-numbers language-java"><code class="language-java">wget <span class="token operator">--</span>no<span class="token operator">-</span>check<span class="token operator">-</span>certificate <span class="token operator">--</span>no<span class="token operator">-</span>cookies <span class="token operator">--</span>header <span class="token string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>download<span class="token punctuation">.</span>oracle<span class="token punctuation">.</span>com<span class="token operator">/</span>otn<span class="token operator">-</span>pub<span class="token operator">/</span>java<span class="token operator">/</span>jdk<span class="token operator">/</span>8u131<span class="token operator">-</span>b11<span class="token operator">/</span>d54c1d3a095b4ff2b6607d096fa80163<span class="token operator">/</span>jdk<span class="token operator">-</span>8u131<span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">wget <span class="token operator">--</span>no<span class="token operator">-</span>check<span class="token operator">-</span>certificate <span class="token operator">--</span>no<span class="token operator">-</span>cookies <span class="token operator">--</span>header <span class="token string">"Cookie: oraclelicense=accept-securebackup-cookie"</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>download<span class="token punctuation">.</span>oracle<span class="token punctuation">.</span>com<span class="token operator">/</span>otn<span class="token operator">-</span>pub<span class="token operator">/</span>java<span class="token operator">/</span>jdk<span class="token operator">/</span>8u131<span class="token operator">-</span>b11<span class="token operator">/</span>d54c1d3a095b4ff2b6607d096fa80163<span class="token operator">/</span>jdk<span class="token operator">-</span>8u131<span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz</code></pre>
 <p>耐心等待。。。<br><img src="https://img-blog.csdnimg.cn/20200413112955686.png" alt=""><br>解压</p>
-<pre class="line-numbers language-java"><code class="language-java">tar <span class="token operator">-</span>zxvf jdk<span class="token operator">-</span>8u131<span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">tar <span class="token operator">-</span>zxvf jdk<span class="token operator">-</span>8u131<span class="token operator">-</span>linux<span class="token operator">-</span>x64<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz</code></pre>
 <h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>先找到你的<code>jdk</code>安装目录记录一下</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_131<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_131</code></pre>
 <p>添加环境变量</p>
-<pre class="line-numbers language-java"><code class="language-java">vi <span class="token operator">/</span>etc<span class="token operator">/</span>profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">vi <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre>
 <p>输入<code>a</code>，在文本最后面加上</p>
-<pre class="line-numbers language-java"><code class="language-java">export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_131
+<pre class=" language-java"><code class="language-java">export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_131
 export CLASSPATH<span class="token operator">=</span><span class="token punctuation">.</span><span class="token punctuation">:</span>$JAVA_HOME<span class="token operator">/</span>lib<span class="token operator">/</span>dt<span class="token punctuation">.</span>jar<span class="token operator">:</span>$JAVA_HOME<span class="token operator">/</span>lib<span class="token operator">/</span>tools<span class="token punctuation">.</span>jar
 export PATH<span class="token operator">=</span>$PATH<span class="token operator">:</span>$JAVA_HOME<span class="token operator">/</span>bin
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>按 <code>esc</code>，然后<code>：wq</code>保存退出。<br>加载环境变量</p>
-<pre class="line-numbers language-java"><code class="language-java">source <span class="token operator">/</span>etc<span class="token operator">/</span>profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">source <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre>
 <p>查看版本号，看是否安装成功！</p>
-<pre class="line-numbers language-java"><code class="language-java">java <span class="token operator">-</span>version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">java <span class="token operator">-</span>version</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200413130521190.png" alt=""></p>
 
             </div>
@@ -1045,6 +1049,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

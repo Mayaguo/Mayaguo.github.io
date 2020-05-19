@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -404,11 +408,11 @@
 <h2 id="Hexo内部优化"><a href="#Hexo内部优化" class="headerlink" title="Hexo内部优化"></a>Hexo内部优化</h2><p>我的个人博客站点使用<code>hexo</code>搭建，使用<code>next</code>模板。<br>模板配置文件搜索：<code>motion</code><br><code>enable</code>：是否开启页面动画，就是刚进来有没有那个慢吞吞的特效<br><code>async</code>：是否开启异步加载，就是你的页面内容和特效是一起加载的。<br><img src="https://img-blog.csdnimg.cn/20200414141036404.png" alt=""></p>
 <h2 id="Nginx优化访问"><a href="#Nginx优化访问" class="headerlink" title="Nginx优化访问"></a>Nginx优化访问</h2><p>我的博客静态页面是通过Nginx代理的</p>
 <h3 id="修改worker-connections"><a href="#修改worker-connections" class="headerlink" title="修改worker_connections"></a>修改worker_connections</h3><p>默认是<code>1024</code>，相对而言扩大<code>5</code>倍，根据自己服务器决定</p>
-<pre class="line-numbers language-java"><code class="language-java">events <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">events <span class="token punctuation">{</span>
     worker_connections  <span class="token number">5024</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="修改http配置"><a href="#修改http配置" class="headerlink" title="修改http配置"></a>修改http配置</h3><p>需要哪个就加上哪个</p>
-<pre class="line-numbers language-java"><code class="language-java">http <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">http <span class="token punctuation">{</span>
     include       mime<span class="token punctuation">.</span>types<span class="token punctuation">;</span>
     default_type  application<span class="token operator">/</span>octet<span class="token operator">-</span>stream<span class="token punctuation">;</span>
 
@@ -439,15 +443,15 @@
     # 是否在http header中添加Vary<span class="token operator">:</span> Accept<span class="token operator">-</span>Encoding，建议开启
     gzip_vary on<span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="开启https访问"><a href="#开启https访问" class="headerlink" title="开启https访问"></a>开启https访问</h3><p>不喜欢网站一直显示不安全。<br>如果是<code>http</code>请求，将转发到<code>https</code></p>
-<pre class="line-numbers language-java"><code class="language-java">    server <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">    server <span class="token punctuation">{</span>
         listen       <span class="token number">80</span><span class="token punctuation">;</span>
         server_name  gmaya<span class="token punctuation">.</span>top<span class="token punctuation">;</span>
         rewrite <span class="token operator">^</span><span class="token punctuation">(</span><span class="token punctuation">.</span>*<span class="token punctuation">)</span>$ https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>$host<span class="token operator">:</span><span class="token number">443</span><span class="token operator">/</span>$<span class="token number">1</span> permanent<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <h3 id="静态资源缓存"><a href="#静态资源缓存" class="headerlink" title="静态资源缓存"></a>静态资源缓存</h3><p>如果不是<code>https</code>，直接把内容加到<code>80</code>端口即可</p>
-<pre class="line-numbers language-java"><code class="language-java">    server <span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java">    server <span class="token punctuation">{</span>
         listen       <span class="token number">443</span> ssl<span class="token punctuation">;</span>
         server_name  gmaya<span class="token punctuation">.</span>top<span class="token punctuation">;</span>
         # 添加自己的证书
@@ -484,7 +488,7 @@
             index  index<span class="token punctuation">.</span>html index<span class="token punctuation">.</span>htm<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <p>我博客上还有很多外链，哎，懒得换咯！（如果有一天外链挂了，再迁移过来。）</p>
 <p>虽然一天到晚，总浏览量还不到<code>20</code>，哈哈。</p>
 
@@ -1103,6 +1107,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

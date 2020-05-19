@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>GMaya</title>
   
-  <subtitle>生命不止，奋斗不息。</subtitle>
+  <subtitle>风萧萧兮易水寒</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
@@ -290,9 +290,9 @@
       <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-      <category term="自动拉取git" scheme="https://gmaya.top/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/"/>
-    
       <category term="win10" scheme="https://gmaya.top/tags/win10/"/>
+    
+      <category term="自动拉取git" scheme="https://gmaya.top/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/"/>
     
   </entry>
   

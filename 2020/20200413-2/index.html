@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -401,24 +405,24 @@
 <a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇安装完<code>jdk</code>，就在来一个<code>Tomcat</code>。</p>
 <h2 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h2><p>进入你想要安装的目录</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">cd <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span></code></pre>
 <p>创建<code>tomcat</code>文件夹</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">mkdir tomcat<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">mkdir tomcat</code></pre>
 <p>进入<code>tomcat</code>目录下</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">cd tomcat<span class="token operator">/</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">cd tomcat<span class="token operator">/</span></code></pre>
 <p>下载<code>tomcat 8</code><br>在线下载或者自己下载好然后上传过来。</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">wget https:<span class="token operator">/</span><span class="token operator">/</span>mirror<span class="token punctuation">.</span>bit<span class="token punctuation">.</span>edu<span class="token punctuation">.</span>cn<span class="token operator">/</span>apache<span class="token operator">/</span>tomcat<span class="token operator">/</span>tomcat<span class="token operator">-</span>8<span class="token operator">/</span>v8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token operator">/</span>bin<span class="token operator">/</span>apache<span class="token operator">-</span>tomcat<span class="token operator">-</span>8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">wget https:<span class="token operator">/</span><span class="token operator">/</span>mirror<span class="token punctuation">.</span>bit<span class="token punctuation">.</span>edu<span class="token punctuation">.</span>cn<span class="token operator">/</span>apache<span class="token operator">/</span>tomcat<span class="token operator">/</span>tomcat<span class="token operator">-</span>8<span class="token operator">/</span>v8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token operator">/</span>bin<span class="token operator">/</span>apache<span class="token operator">-</span>tomcat<span class="token operator">-</span>8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz</code></pre>
 <p>提示: 如果你没有<code>wget</code>,请先安装<code>wget</code></p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">yum <span class="token operator">-</span>y install wget</code></pre>
 <p>解压</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">tar <span class="token operator">-</span>zxvf apache<span class="token operator">-</span>tomcat<span class="token operator">-</span>8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">tar <span class="token operator">-</span>zxvf apache<span class="token operator">-</span>tomcat<span class="token operator">-</span>8<span class="token punctuation">.</span>5<span class="token punctuation">.</span>54<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz </code></pre>
 <p>开启默认<code>8080</code>端口<br>我使用的是<code>centos7</code><br>加入<code>8080</code> 规则<br><code>--permanent</code> #永久生效，没有此参数设置，重启后会失效。</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone=public <span class="token operator">--</span>add<span class="token operator">-</span>port=8080<span class="token operator">/</span>tcp <span class="token operator">--</span>permanent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>zone=public <span class="token operator">--</span>add<span class="token operator">-</span>port=8080<span class="token operator">/</span>tcp <span class="token operator">--</span>permanent</code></pre>
 <p>重启防火墙</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>reload<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell">firewall<span class="token operator">-</span>cmd <span class="token operator">--</span>reload</code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200413134305824.png" alt=""></p>
 <p>启动</p>
-<pre class="line-numbers language-powershell"><code class="language-powershell"> <span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>startup<span class="token punctuation">.</span>sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-powershell"><code class="language-powershell"> <span class="token punctuation">.</span><span class="token operator">/</span>bin<span class="token operator">/</span>startup<span class="token punctuation">.</span>sh</code></pre>
 <p>浏览器访问： <a href="http://192.168.21.129:8080/" target="_blank" rel="noopener">http://192.168.21.129:8080/</a><br><img src="https://img-blog.csdnimg.cn/2020041313435613.png" alt=""></p>
 
             </div>
@@ -1046,6 +1050,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

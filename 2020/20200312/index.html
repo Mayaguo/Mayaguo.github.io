@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -399,17 +403,17 @@
 <h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>我的博客使用<code>next</code>模板为<code>Mist</code>，打开主题配置文件<br><img src="https://img-blog.csdnimg.cn/20200312112907956.png" alt=""></p>
 <h2 id="添加背景线条效果"><a href="#添加背景线条效果" class="headerlink" title="添加背景线条效果"></a>添加背景线条效果</h2><p><img src="https://img-blog.csdnimg.cn/2020031211451787.png" alt=""><br>我是参考<a href="https://github.com/theme-next/theme-next-canvas-nest" target="_blank" rel="noopener">canvas-nest</a>官方网站</p>
 <h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><p>在根目录的<code>source</code> 文件夹下创建<code>_data</code>文件夹，然后创建<code>footer.swig</code><br><img src="https://img-blog.csdnimg.cn/20200312113617444.png" alt=""><br>注意不要将位置创建到主题里面去，然后将代码拷贝进去即可</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script color<span class="token operator">=</span><span class="token string">"0,0,0"</span> opacity<span class="token operator">=</span><span class="token string">"0.5"</span> zIndex<span class="token operator">=</span><span class="token string">"-1"</span> count<span class="token operator">=</span><span class="token string">"99"</span> src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script color<span class="token operator">=</span><span class="token string">"0,0,0"</span> opacity<span class="token operator">=</span><span class="token string">"0.5"</span> zIndex<span class="token operator">=</span><span class="token string">"-1"</span> count<span class="token operator">=</span><span class="token string">"99"</span> src<span class="token operator">=</span><span class="token string">"https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
 <p>其中<code>color</code>是颜色值，<code>opacity</code>是透明度，<code>zIndex</code>是现在层级，<code>count</code>是线条数量。</p>
 <h3 id="设置路径"><a href="#设置路径" class="headerlink" title="设置路径"></a>设置路径</h3><p>打开<strong>主题配置文件</strong><br>搜索 <code>custom_file_path</code> 将<code>footer</code>注释打开<br><img src="https://img-blog.csdnimg.cn/20200312113927646.png" alt=""><br>然后 <code>hexo g</code>  ， <code>hexo s</code>  ，启动看看效果</p>
 <h2 id="首页文章之间周围有边框"><a href="#首页文章之间周围有边框" class="headerlink" title="首页文章之间周围有边框"></a>首页文章之间周围有边框</h2><p>刚开始这个首页文章之间没有边框，每个文章之间没有明显的间隔。<br>效果：<br><img src="https://img-blog.csdnimg.cn/20200312135123740.png" alt=""><br>打开：\themes\next\source\css_common\components\post\post.styl<br><img src="https://img-blog.csdnimg.cn/20200312135622899.png" alt=""><br>大概<code>35</code>行，找到<code>motion.transition.post_block</code><br>修改前：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>hexo<span class="token operator">-</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token string">'motion.transition.post_block'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>hexo<span class="token operator">-</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token string">'motion.transition.post_block'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">,</span> <span class="token punctuation">.</span>pagination<span class="token punctuation">,</span> <span class="token punctuation">.</span>comments <span class="token punctuation">{</span>
       opacity<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span></code></pre>
 <p>修改后：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">  <span class="token keyword">if</span> <span class="token punctuation">(</span>hexo<span class="token operator">-</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token string">'motion.transition.post_block'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token keyword">if</span> <span class="token punctuation">(</span>hexo<span class="token operator">-</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token string">'motion.transition.post_block'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">{</span>
        opacity<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
        padding<span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
@@ -419,19 +423,19 @@
    <span class="token punctuation">.</span>pagination<span class="token punctuation">,</span> <span class="token punctuation">.</span>comments <span class="token punctuation">{</span>
       opacity<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span></code></pre>
 <p>然后 <code>hexo g</code>  ， <code>hexo s</code>  ，启动看看效果</p>
 <h2 id="修改文章之间的间隔"><a href="#修改文章之间的间隔" class="headerlink" title="修改文章之间的间隔"></a>修改文章之间的间隔</h2><p>默认的文章间距<code>120px</code>，有点大。</p>
 <p>打开：\themes\next\source\css_schemes\Mist_posts-expand.styl<br><img src="https://img-blog.csdnimg.cn/20200312140746217.png" alt=""><br>大概<code>24</code>行，找到<code>.post-block:not</code><br>修改前：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">  <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">:</span>first<span class="token operator">-</span>child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">:</span>first<span class="token operator">-</span>child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     margin<span class="token operator">-</span>top<span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span></code></pre>
 <p>将<code>120</code>px，修改为你想要的间距，我改成了<code>20</code>px<br>修改后：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">  <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">:</span>first<span class="token operator">-</span>child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token punctuation">.</span>post<span class="token operator">-</span>block<span class="token punctuation">:</span><span class="token function">not</span><span class="token punctuation">(</span><span class="token punctuation">:</span>first<span class="token operator">-</span>child<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     margin<span class="token operator">-</span>top<span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+  <span class="token punctuation">}</span></code></pre>
 <h2 id="评论数显示为英文问题"><a href="#评论数显示为英文问题" class="headerlink" title="评论数显示为英文问题"></a>评论数显示为英文问题</h2><p>我使用的<code>Valine</code>评论，但是文章标题下面显示的评论数为英文。<br>打开：\themes\next\languages\zh-CN.yml<br><img src="https://img-blog.csdnimg.cn/2020031214110617.png" alt=""><br>在post下面新增：</p>
-<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">comments.valine</span><span class="token punctuation">:</span> 评论数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">comments.valine</span><span class="token punctuation">:</span> 评论数</code></pre>
 <p>注意空格，和下面保持对齐<br><img src="https://img-blog.csdnimg.cn/2020031214125048.png" alt=""></p>
 
             </div>
@@ -1041,6 +1045,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

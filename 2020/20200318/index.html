@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -404,12 +408,12 @@
 </blockquote>
 <p>常常会遇到正在使用某个系统，点击到某一个功能的时候显示该模块正在升级或者请稍后查看等。怎么实现呢？？</p>
 <h2 id="使用Feign整合Hystrix"><a href="#使用Feign整合Hystrix" class="headerlink" title="使用Feign整合Hystrix"></a>使用Feign整合Hystrix</h2><p>默认是不开启的，需要修改配置文件<code>application.yml</code>，添加下面的代码</p>
-<pre class="line-numbers language-java"><code class="language-java">feign<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">feign<span class="token operator">:</span>
   hystrix<span class="token operator">:</span>
     #开启Hystrix熔断，默认<span class="token boolean">false</span>
-    enabled<span class="token operator">:</span> <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+    enabled<span class="token operator">:</span> <span class="token boolean">true</span></code></pre>
 <p>新增支付模块熔断器</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * @ Description   :  支付模块熔断器
  * @ Author        :  GMaya
  * @ CreateDate    :  2020/3/18 9:35
@@ -420,23 +424,23 @@
     <span class="token annotation punctuation">@Override</span> <span class="token keyword">public</span> String <span class="token function">getPay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string">"支付模块正在抢修，请稍后！"</span> <span class="token operator">+</span><span class="token string">" :feign演示"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/20200318094335346.png" alt=""><br>修改<code>PayClient</code>接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"pay"</span><span class="token punctuation">,</span>fallback <span class="token operator">=</span> PayClientFallBack<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 服务名称</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"pay"</span><span class="token punctuation">,</span>fallback <span class="token operator">=</span> PayClientFallBack<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 服务名称</span></code></pre>
 <p>启动服务端，启动<code>pay</code>客户端，启动<code>order</code>客户端。<br>访问<code>http://localhost:8082/getOrder</code><br><img src="https://img-blog.csdnimg.cn/20200318094502143.png" alt=""><br>然后把<code>pay</code>客户端关掉！<br><img src="https://img-blog.csdnimg.cn/20200318094538663.png" alt=""></p>
 <h2 id="使用RestTemplat整合Hystrix"><a href="#使用RestTemplat整合Hystrix" class="headerlink" title="使用RestTemplat整合Hystrix"></a>使用RestTemplat整合Hystrix</h2><p>pom添加j依赖</p>
-<pre class="line-numbers language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>熔断器<span class="token operator">--</span><span class="token operator">></span>
+<pre class=" language-java"><code class="language-java">        <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>熔断器<span class="token operator">--</span><span class="token operator">></span>
         <span class="token operator">&lt;</span>dependency<span class="token operator">></span>
             <span class="token operator">&lt;</span>groupId<span class="token operator">></span>org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token operator">&lt;</span><span class="token operator">/</span>groupId<span class="token operator">></span>
             <span class="token operator">&lt;</span>artifactId<span class="token operator">></span>spring<span class="token operator">-</span>cloud<span class="token operator">-</span>starter<span class="token operator">-</span>netflix<span class="token operator">-</span>hystrix<span class="token operator">&lt;</span><span class="token operator">/</span>artifactId<span class="token operator">></span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>dependency<span class="token operator">></span></code></pre>
 <p>启动类新增注解</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableCircuitBreaker</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@EnableCircuitBreaker</span></code></pre>
 <p>或者</p>
 <p><code>@SpringBootApplication</code>+<code>@EnableDiscoveryClient</code>+<code>@EnableCircuitBreaker</code><br>也可以使用<code>@SpringCloudApplication</code> 一个顶替仨</p>
 <p><code>SpringCloudApplication</code>注解 源码：<br><img src="https://img-blog.csdnimg.cn/20200318100928732.png" alt=""></p>
 <p>修改订单接口</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * @ Description   :  订单接口接口
  * @ Author        :  GMaya
  * @ CreateDate    :  2020/3/16 11:03
@@ -462,9 +466,9 @@
     <span class="token keyword">private</span> String <span class="token function">getRestTemplateFallBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string">"不好啦，机房着火了，restTemplate演示！"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/202003181003090.png" alt=""><br>当然，当接口多的时候，还可以改造</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * @ Description   :  订单接口接口
  * @ Author        :  GMaya
  * @ CreateDate    :  2020/3/16 11:03
@@ -496,11 +500,11 @@
     <span class="token keyword">private</span> String <span class="token function">defaultFallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string">"默认熔断！"</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><img src="https://img-blog.csdnimg.cn/2020031810064596.png" alt=""><br>重启查看</p>
 <p><img src="https://img-blog.csdnimg.cn/202003181009599.png" alt=""><br><strong>最后：</strong><br>额外配置，如需更多，请查看专业解释</p>
 <p>如果设置和默认值一样，没必要写出来配置</p>
-<pre class="line-numbers language-java"><code class="language-java">feign<span class="token operator">:</span>
+<pre class=" language-java"><code class="language-java">feign<span class="token operator">:</span>
   hystrix<span class="token operator">:</span>
     #开启Hystrix熔断，默认<span class="token boolean">false</span>
     enabled<span class="token operator">:</span> <span class="token boolean">true</span>
@@ -518,7 +522,7 @@ hystrix<span class="token operator">:</span>
         # 执行是否启用超时，默认启用<span class="token boolean">true</span>，只在线程池隔离中有效。
         timeout<span class="token operator">:</span>
           enabled<span class="token operator">:</span> <span class="token boolean">true</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 
             </div>
             <hr/>
@@ -1137,6 +1141,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

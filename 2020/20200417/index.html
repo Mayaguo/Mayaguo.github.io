@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -405,14 +409,14 @@
 </blockquote>
 <p>完整代码链接<a href="https://gitee.com/GMaya/springboot-rabbitmq" target="_blank" rel="noopener">https://gitee.com/GMaya/springboot-rabbitmq</a></p>
 <h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>首先找到<code>RabbitMQ</code>插件目录<br>我的是在</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq_server<span class="token operator">-</span><span class="token number">3.6</span><span class="token punctuation">.</span><span class="token number">15</span><span class="token operator">/</span>plugins<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token operator">/</span>usr<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq<span class="token operator">/</span>lib<span class="token operator">/</span>rabbitmq_server<span class="token operator">-</span><span class="token number">3.6</span><span class="token punctuation">.</span><span class="token number">15</span><span class="token operator">/</span>plugins</code></pre>
 <p>然后下载插件<br><a href="https://www.rabbitmq.com/community-plugins.html" target="_blank" rel="noopener">https://www.rabbitmq.com/community-plugins.html</a><br>下载需要的版本，我下载的是<code>3.6.x</code><br><img src="https://img-blog.csdnimg.cn/20200417140527781.png" alt=""><br>解压之后把rabbitmq_delayed_message_exchange-20171215-3.6.x.ez文件上传到<code>plugins</code>目录</p>
 <p>然后开启插件</p>
-<pre class="line-numbers language-java"><code class="language-java">rabbitmq<span class="token operator">-</span>plugins enable rabbitmq_delayed_message_exchange<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">rabbitmq<span class="token operator">-</span>plugins enable rabbitmq_delayed_message_exchange</code></pre>
 <p>查看开启的插件列表</p>
-<pre class="line-numbers language-java"><code class="language-java">rabbitmq<span class="token operator">-</span>plugins list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-java"><code class="language-java">rabbitmq<span class="token operator">-</span>plugins list</code></pre>
 <p>重启服务</p>
-<h2 id="集成到spring-boot"><a href="#集成到spring-boot" class="headerlink" title="集成到spring boot"></a>集成到spring boot</h2><h3 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<h2 id="集成到spring-boot"><a href="#集成到spring-boot" class="headerlink" title="集成到spring boot"></a>集成到spring boot</h2><h3 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 使用rabbitmq-delayed-message-exchange 构建一个的延迟队列
  * @author GMaya
  * @dateTime 2020/4/17 14:17
@@ -450,8 +454,8 @@
     Binding <span class="token function">binding</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> BindingBuilder<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token function">delayedQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span><span class="token function">customExchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">"delayedQueue"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">noargs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<span class="token punctuation">}</span></code></pre>
+<h3 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * delayed消息生产着
  * @author GMaya
  * @dateTime 2020/4/17 14:20
@@ -477,8 +481,8 @@
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+<span class="token punctuation">}</span></code></pre>
+<h3 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * 消费者
  * @author GMaya
  * @dateTime 2020/4/17 14:27
@@ -490,7 +494,7 @@
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">orderMsg</span><span class="token punctuation">(</span>String msg<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"消费者===订单号：{}"</span><span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>在<code>HelloController</code>中注入调用<br>启动项目访问测试<br><a href="http://localhost:8088/hello?msg=hello,delay" target="_blank" rel="noopener">http://localhost:8088/hello?msg=hello,delay</a><br><img src="https://img-blog.csdnimg.cn/20200417144124808.png" alt=""><br>完美延迟！</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>使用<code>RabbitMQ</code>两种延迟消息方法，</p>
 <ol>
@@ -799,12 +803,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/">
-                        <span class="chip bg-color">自动拉取git</span>
-                    </a>
-                    
                     <a href="/tags/win10/">
                         <span class="chip bg-color">win10</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/">
+                        <span class="chip bg-color">自动拉取git</span>
                     </a>
                     
                 </div>
@@ -1119,6 +1123,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 

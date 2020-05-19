@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery.min.js"></script>
-
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="GMaya" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -39,6 +39,8 @@
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/mylogo.png" class="logo-img" alt="LOGO">
                     
                     <span class="logo-span">GMaya</span>
                 </a>
@@ -125,6 +127,8 @@
 <div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
+        
+        <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
         <div class="logo-name">GMaya</div>
         <div class="logo-desc">
@@ -402,7 +406,7 @@
 <p>腾讯公益<code>404</code>页面，寻找丢失儿童，让大家一起关注此项公益事业！<br>效果如：<br><a href="https://gmaya.top/404.html">https://gmaya.top/404.html</a></p>
 <p>目的：<br>如果访问网站不存在的页面，则返回腾讯公益<code>404</code>页面</p>
 <p>使用方法，新建 <code>404.html</code> 页面，放到主题的 <code>source</code> 目录下，内容如下：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE HTML<span class="token operator">></span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE HTML<span class="token operator">></span>
 <span class="token operator">&lt;</span>html<span class="token operator">></span>
 <span class="token operator">&lt;</span>head<span class="token operator">></span>
   <span class="token operator">&lt;</span>meta http<span class="token operator">-</span>equiv<span class="token operator">=</span><span class="token string">"content-type"</span> content<span class="token operator">=</span><span class="token string">"text/html;charset=utf-8;"</span><span class="token operator">/</span><span class="token operator">></span>
@@ -419,10 +423,10 @@
   <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://qzone.qq.com/gy/404/data.js"</span> charset<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
   <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"https://qzone.qq.com/gy/404/page.js"</span> charset<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">></span></code></pre>
 <p>修改<code>nginx</code>配置，只要访问的页面不存在则跳转到<code>404</code>公益页面。</p>
 <p>在<code>nginx.conf</code>的<code>443</code>端口下添加</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">error_page  <span class="token number">404</span>      <span class="token operator">/</span><span class="token number">404</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript">error_page  <span class="token number">404</span>      <span class="token operator">/</span><span class="token number">404</span><span class="token punctuation">.</span>html<span class="token punctuation">;</span></code></pre>
 <p>重启即可</p>
 
             </div>
@@ -784,12 +788,12 @@ spring:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/">
-                        <span class="chip bg-color">自动拉取git</span>
-                    </a>
-                    
                     <a href="/tags/win10/">
                         <span class="chip bg-color">win10</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%87%AA%E5%8A%A8%E6%8B%89%E5%8F%96git/">
+                        <span class="chip bg-color">自动拉取git</span>
                     </a>
                     
                 </div>
@@ -1047,6 +1051,12 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
     <a href="mailto:gmaya@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="https://blog.csdn.net/gfl1427097103" class="tooltipped" target="_blank" data-tooltip="关注我的CSDN" data-position="top" data-delay="50">
+        <i class="fab fa-csdn">C</i>
     </a>
 
 
