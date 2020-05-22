@@ -77,6 +77,36 @@
   </entry>
   
   <entry>
+    <title>Spring Cloud Gateway网关整合</title>
+    <link href="https://gmaya.top/2020/20200514/"/>
+    <id>https://gmaya.top/2020/20200514/</id>
+    <published>2020-05-14T05:38:11.000Z</published>
+    <updated>2020-05-22T06:21:43.742Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Spring Cloud
+        
+      
+    
+    </summary>
+    
+    
+      <category term="SpringCloud" scheme="https://gmaya.top/categories/SpringCloud/"/>
+    
+    
+      <category term="SpringCloud" scheme="https://gmaya.top/tags/SpringCloud/"/>
+    
+      <category term="SpringCloud Gateway" scheme="https://gmaya.top/tags/SpringCloud-Gateway/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Spring Boot Admin 监控</title>
     <link href="https://gmaya.top/2020/20200509/"/>
     <id>https://gmaya.top/2020/20200509/</id>
@@ -519,29 +549,6 @@
     
     
       <category term="工具" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot整合RabbitMQ入门</title>
-    <link href="https://gmaya.top/2020/20200410/"/>
-    <id>https://gmaya.top/2020/20200410/</id>
-    <published>2020-04-10T09:22:31.000Z</published>
-    <updated>2020-05-16T05:02:25.257Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- ![](https://s1.wailian.download/2020/04/10/UnicornoftheSea_ZH-CN2949385175_1920x1080.jpg) --&gt;
-    
-    </summary>
-    
-    
-      <category term="SpringBoot" scheme="https://gmaya.top/categories/SpringBoot/"/>
-    
-    
-      <category term="RabbitMQ" scheme="https://gmaya.top/tags/RabbitMQ/"/>
-    
-      <category term="SpringBoot" scheme="https://gmaya.top/tags/SpringBoot/"/>
     
   </entry>
   
