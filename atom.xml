@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-05-18T09:15:53.270Z</updated>
+  <updated>2020-05-22T03:29:08.195Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Yapi的安装与使用</title>
-    <link href="https://gmaya.top/2020/20200518/"/>
-    <id>https://gmaya.top/2020/20200518/</id>
-    <published>2020-05-18T09:16:21.000Z</published>
-    <updated>2020-05-18T09:15:53.270Z</updated>
+    <title>手撕Redis6.0</title>
+    <link href="https://gmaya.top/2020/20200522/"/>
+    <id>https://gmaya.top/2020/20200522/</id>
+    <published>2020-05-22T03:24:21.000Z</published>
+    <updated>2020-05-22T03:29:08.195Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,37 @@
       
         
         
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库。性能极高：
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Redis" scheme="https://gmaya.top/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="https://gmaya.top/tags/Redis/"/>
+    
+      <category term="新特性" scheme="https://gmaya.top/tags/%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Yapi的安装与使用</title>
+    <link href="https://gmaya.top/2020/20200518/"/>
+    <id>https://gmaya.top/2020/20200518/</id>
+    <published>2020-05-18T09:16:21.000Z</published>
+    <updated>2020-05-22T03:29:41.782Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;YApi 是高效、易用、功能强大的 api
         
       
@@ -48,38 +77,22 @@
   </entry>
   
   <entry>
-    <title>Spring Cloud Gateway网关整合</title>
-    <link href="https://gmaya.top/2020/20200514/"/>
-    <id>https://gmaya.top/2020/20200514/</id>
-    <published>2020-05-14T05:38:11.000Z</published>
-    <updated>2020-05-16T05:19:51.092Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- ![](https://s1.wailian.download/2020/05/14/MooseWatching_ZH-CN9115714564_1920x1080.jpg) --&gt;
-    
-    </summary>
-    
-    
-      <category term="SpringCloud" scheme="https://gmaya.top/categories/SpringCloud/"/>
-    
-    
-      <category term="SpringCloud" scheme="https://gmaya.top/tags/SpringCloud/"/>
-    
-      <category term="SpringCloud Gateway" scheme="https://gmaya.top/tags/SpringCloud-Gateway/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Spring Boot Admin 监控</title>
     <link href="https://gmaya.top/2020/20200509/"/>
     <id>https://gmaya.top/2020/20200509/</id>
     <published>2020-05-09T07:03:11.000Z</published>
-    <updated>2020-05-16T05:19:07.733Z</updated>
+    <updated>2020-05-22T03:32:50.349Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/05/13/SeagullsChat_ZH-CN8973709588_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Spring Boot Admin 用于监控基于 Spring Boot 的应用，它是在 Spring Boot
+        
+      
     
     </summary>
     
@@ -98,11 +111,18 @@
     <link href="https://gmaya.top/2020/20200507/"/>
     <id>https://gmaya.top/2020/20200507/</id>
     <published>2020-05-07T06:07:14.000Z</published>
-    <updated>2020-05-16T05:18:07.093Z</updated>
+    <updated>2020-05-22T03:30:32.165Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/05/07/SiegeofCusco_ZH-CN9108219313_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;h2 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Druid 是 Java 语言中最好的数据库连接池。 Druid
+        
+      
     
     </summary>
     
@@ -121,11 +141,18 @@
     <link href="https://gmaya.top/2020/20200426/"/>
     <id>https://gmaya.top/2020/20200426/</id>
     <published>2020-04-26T03:10:14.000Z</published>
-    <updated>2020-05-16T05:17:08.781Z</updated>
+    <updated>2020-05-22T03:31:17.807Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/26/FalklandRockhoppers_ZH-CN5370686595_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;图片，视频等一些静态资源放到自己网站会有一定的访问延迟。&lt;/p&gt;
+&lt;h2 id=&quot;开通存储桶&quot;&gt;&lt;a href=&quot;#开通存储桶&quot;
+        
+      
     
     </summary>
     
@@ -144,11 +171,17 @@
     <link href="https://gmaya.top/2020/20200425/"/>
     <id>https://gmaya.top/2020/20200425/</id>
     <published>2020-04-25T08:16:14.000Z</published>
-    <updated>2020-05-16T05:17:14.660Z</updated>
+    <updated>2020-05-22T03:31:33.088Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/26/MegellanicCloud_ZH-CN5132305226_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -167,11 +200,17 @@
     <link href="https://gmaya.top/2020/20200424/"/>
     <id>https://gmaya.top/2020/20200424/</id>
     <published>2020-04-24T02:55:14.000Z</published>
-    <updated>2020-05-16T05:14:35.003Z</updated>
+    <updated>2020-05-22T03:33:07.554Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/24/KingEider_ZH-CN3559595357_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;h2 id=&quot;撞库&quot;&gt;&lt;a href=&quot;#撞库&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -188,11 +227,18 @@
     <link href="https://gmaya.top/2020/20200422/"/>
     <id>https://gmaya.top/2020/20200422/</id>
     <published>2020-04-22T05:49:14.000Z</published>
-    <updated>2020-05-16T05:14:11.936Z</updated>
+    <updated>2020-05-22T03:34:47.643Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/22/GPS_ZH-CN5160095061_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;p&gt;每次阿里推出最新的开发手册，自己都会去喵一眼，看一下。养成好习惯&lt;br&gt;泰山版：&lt;br&gt;新增&lt;code&gt;5&lt;/code&gt;条日期时间规约；新增&lt;code&gt;2&lt;/code&gt;条表别名&lt;code&gt;sql&lt;/code&gt;规约；新增统一错误码规约。&lt;/p&gt;
+&lt;p&gt;官网地址：&lt;a
+        
+      
     
     </summary>
     
@@ -209,11 +255,18 @@
     <link href="https://gmaya.top/2020/20200421/"/>
     <id>https://gmaya.top/2020/20200421/</id>
     <published>2020-04-21T03:30:14.000Z</published>
-    <updated>2020-05-16T05:13:56.030Z</updated>
+    <updated>2020-05-22T03:35:00.817Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/21/BluebellWood_ZH-CN8128422960_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;SnowFlake 算法，是 Twitter 开源的分布式 id
+        
+      
     
     </summary>
     
@@ -232,11 +285,19 @@
     <link href="https://gmaya.top/2020/20200420/"/>
     <id>https://gmaya.top/2020/20200420/</id>
     <published>2020-04-20T10:06:14.000Z</published>
-    <updated>2020-05-16T05:13:24.785Z</updated>
+    <updated>2020-05-22T03:35:22.143Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/20/NeistPoint_ZH-CN3115403132_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;!-- ![](https://s1.wailian.download/2020/04/20/NeistPoint_ZH-CN3115403132_1920x1080.jpg) --&gt;
+
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
@@ -255,11 +316,17 @@
     <link href="https://gmaya.top/2020/20200419/"/>
     <id>https://gmaya.top/2020/20200419/</id>
     <published>2020-04-19T10:24:14.000Z</published>
-    <updated>2020-05-16T05:12:48.386Z</updated>
+    <updated>2020-05-22T03:35:54.281Z</updated>
     
     <summary type="html">
     
-      &lt;!-- ![](https://s1.wailian.download/2020/04/19/VernalFalls_ZH-CN2664125316_1920x1080.jpg) --&gt;
+      
+      
+        
+        
+          &lt;!-- ![](https://s1.wailian.download/2020/04/19/VernalFalls_ZH-CN2664125316_1920x1080.jpg)
+        
+      
     
     </summary>
     
@@ -278,7 +345,7 @@
     <link href="https://gmaya.top/2020/20200417-2/"/>
     <id>https://gmaya.top/2020/20200417-2/</id>
     <published>2020-04-17T09:34:14.000Z</published>
-    <updated>2020-05-16T05:11:55.657Z</updated>
+    <updated>2020-05-22T03:36:11.561Z</updated>
     
     <summary type="html">
     
@@ -301,7 +368,7 @@
     <link href="https://gmaya.top/2020/20200417/"/>
     <id>https://gmaya.top/2020/20200417/</id>
     <published>2020-04-17T07:00:14.000Z</published>
-    <updated>2020-05-16T05:11:00.825Z</updated>
+    <updated>2020-05-22T03:36:22.980Z</updated>
     
     <summary type="html">
     
@@ -324,7 +391,7 @@
     <link href="https://gmaya.top/2020/20200414-2/"/>
     <id>https://gmaya.top/2020/20200414-2/</id>
     <published>2020-04-14T06:32:14.000Z</published>
-    <updated>2020-05-16T05:10:18.114Z</updated>
+    <updated>2020-05-22T03:36:31.469Z</updated>
     
     <summary type="html">
     
