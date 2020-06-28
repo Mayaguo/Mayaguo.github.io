@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Feign注解的简单使用</title>
+    <url>/2020/20200628/</url>
+    <content><![CDATA[<h2 id="调用微服务"><a href="#调用微服务" class="headerlink" title="调用微服务"></a>调用微服务</h2><p>如果在同一个注册中心上的微服务。<br><code>name:</code>就是在注册中心的名称</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"gmaya-service-admin"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserFacade</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user/add"</span><span class="token punctuation">)</span>
+    R <span class="token function">add</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> F<span class="token operator">&lt;</span>UserDTO<span class="token operator">></span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user/test"</span><span class="token punctuation">)</span>
+    R <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="调用单体服务"><a href="#调用单体服务" class="headerlink" title="调用单体服务"></a>调用单体服务</h2><p>如果调用一个独立的服务。<br>一般可以直接使用httpUtil直接调用。<br>使用feign调用：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>url <span class="token operator">=</span> <span class="token string">"${userUrl}"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserFacade</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user/add"</span><span class="token punctuation">)</span>
+    R <span class="token function">add</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> F<span class="token operator">&lt;</span>UserDTO<span class="token operator">></span> f<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"user/test"</span><span class="token punctuation">)</span>
+    R <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>同时在<code>application.yml</code>配置<code>url</code></p>
+<pre class=" language-java"><code class="language-java">userUrl<span class="token operator">:</span> http<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token number">10.10</span><span class="token punctuation">.</span><span class="token number">10.10</span><span class="token operator">:</span><span class="token number">1010</span></code></pre>
+]]></content>
+      <categories>
+        <category>Feign</category>
+      </categories>
+      <tags>
+        <tag>Feign</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手撕Redis6.0</title>
     <url>/2020/20200522/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>

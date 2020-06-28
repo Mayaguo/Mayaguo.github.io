@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gmaya.top/"/>
-  <updated>2020-05-22T03:29:08.195Z</updated>
+  <updated>2020-06-28T07:58:43.903Z</updated>
   <id>https://gmaya.top/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Feign注解的简单使用</title>
+    <link href="https://gmaya.top/2020/20200628/"/>
+    <id>https://gmaya.top/2020/20200628/</id>
+    <published>2020-06-28T07:54:21.000Z</published>
+    <updated>2020-06-28T07:58:43.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;调用微服务&quot;&gt;&lt;a href=&quot;#调用微服务&quot; class=&quot;headerlink&quot; title=&quot;调用微服务&quot;&gt;&lt;/a&gt;调用微服务&lt;/h2&gt;&lt;p&gt;如果在同一个注册中心上的微服务。&lt;br&gt;&lt;code&gt;name:&lt;/code&gt;就是在注册中心的名称&lt;/p&gt;
+&lt;pre
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Feign" scheme="https://gmaya.top/categories/Feign/"/>
+    
+    
+      <category term="Feign" scheme="https://gmaya.top/tags/Feign/"/>
+    
+  </entry>
   
   <entry>
     <title>手撕Redis6.0</title>
@@ -528,27 +556,6 @@
       <category term="Linux" scheme="https://gmaya.top/tags/Linux/"/>
     
       <category term="jdk" scheme="https://gmaya.top/tags/jdk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分享一下Typora工具</title>
-    <link href="https://gmaya.top/2020/20200411/"/>
-    <id>https://gmaya.top/2020/20200411/</id>
-    <published>2020-04-11T13:11:11.000Z</published>
-    <updated>2020-05-16T05:02:45.292Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- ![](https://s1.wailian.download/2020/04/11/SeventeenSolstice_ZH-CN4901756341_1920x1080.jpg) --&gt;
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://gmaya.top/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="工具" scheme="https://gmaya.top/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
