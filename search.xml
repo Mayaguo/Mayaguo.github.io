@@ -3038,7 +3038,7 @@ bind_ip=0<span class="token punctuation">.</span>0<span class="token punctuation
       </tags>
   </entry>
   <entry>
-    <title>有关Druid的一些配置</title>
+    <title>有关Druid的详细配置</title>
     <url>/2020/20200507/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
 <p>Druid 是 Java 语言中最好的数据库连接池。 Druid 能够提供强大的监控和扩展功能。</p>
@@ -7092,8 +7092,8 @@ sign ＝ getSign (入参)
         <category>酷q</category>
       </categories>
       <tags>
-        <tag>酷q</tag>
         <tag>工具</tag>
+        <tag>酷q</tag>
       </tags>
   </entry>
   <entry>
@@ -7356,8 +7356,8 @@ sign ＝ getSign (入参)
         <category>Java</category>
       </categories>
       <tags>
-        <tag>工具</tag>
         <tag>Java</tag>
+        <tag>工具</tag>
       </tags>
   </entry>
   <entry>
